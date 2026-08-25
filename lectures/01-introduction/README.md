@@ -38,14 +38,7 @@ Unless you have a super trivial question, **I much prefer you scheduling office 
 the course**. Even if we only spend 5 minutes on a Zoom call, it is a lot easier for me to keep track of my calendar 
 this way, and a lot harder for me to lose track of your e-mail.
 
-Anyway, other things I enjoy are:
-
-- **Slice of life anime**: my favourite is [***Hibike! Euphonium***](https://youtu.be/Cb9OAuquKaI)
-- **French history**: anything starting with the French Revolution of 1789 to the end of the de Gaulle presidency in 1969. 
-- **Literature**: my current favourite is [***Territory of Light***](https://us.macmillan.com/books/9780374273217).
-- **Playing music**: I play a [**Rickenbacker 4001C64**](http://www.rickenbacker.com/model.asp?model=4001C64).
-
-That's all I want to flex at the present moment. I basically spent the rest of the class talking about the syllabus, so
+I basically spent the rest of the class talking about the syllabus, so
 please refer to it in the [**Brightspace page**](https://brightspace.nyu.edu/d2l/le/lessons/218479/units/7496633).
 
 <a id="2"></a>
