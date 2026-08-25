@@ -580,4 +580,4 @@ One other cute and useful thing you can do is convert a string into a list of ea
 ['T', 'h', 'e', ' ', 'N', 'a', 't', 's', 'u', 'y', 'a', 's', 'u', 'm', 'i', ' ', 'B', 'a', 'n', 'd']
 ```
 
-<sub>**Previous: [Python Lists](/lectures/lists/)** | **Next: [Python Dictionaries](/lectures/dictionaries/)**</sub>
+<sub>**Previous: [Python Lists](/lectures/15-lists/)** | **Next: [Python Dictionaries](/lectures/17-dictionaries/)**</sub>

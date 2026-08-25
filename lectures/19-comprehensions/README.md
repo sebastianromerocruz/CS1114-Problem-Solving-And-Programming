@@ -340,4 +340,4 @@ Output:
 {'Mexico': 'Mexico City', 'France': 'Paris', 'Lisboa': 'Portugal', 'Tokyo': 'Japan', 'Algeria': 'Algiers'}
 ```
 
-<sub>**Previous: [Dictionaries Methods](/lectures/dictionary_methods/)** | **Next: [Introduction to Object-Oriented Programming](/lectures/oop_1/)**</sub>
+<sub>**Previous: [Dictionaries Methods](/lectures/18-dictionary-methods-and-iteration/)** | **Next: [Introduction to Object-Oriented Programming](/lectures/20-oop-introduction/)**</sub>

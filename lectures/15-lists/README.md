@@ -500,4 +500,4 @@ False
 True
 ```
 
-<sub>**Previous: [File Output and Exception](/lectures/file_output/)** | **Next: [Memory Maps](/lectures/memory_maps/)**</sub>
+<sub>**Previous: [File Output and Exception](/lectures/14-file-output-and-exceptions/)** | **Next: [Memory Maps](/lectures/16-memory-maps/)**</sub>

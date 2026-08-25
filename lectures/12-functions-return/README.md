@@ -302,4 +302,4 @@ def main():
 main()
 ```
 
-<sub>**Previous: [Functions: Parameters](/lectures/functions_parameters/)** | **Next: [File Input](/lectures/file_input/)**</sub>
+<sub>**Previous: [Functions: Parameters](/lectures/11-functions-parameters/)** | **Next: [File Input](/lectures/13-file-input/)**</sub>

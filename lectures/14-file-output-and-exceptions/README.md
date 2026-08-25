@@ -272,7 +272,7 @@ finally:
 
 And there you go. We have code that, in spite of something going unexpectedly wrong, does _not_ crash and instead ends gracefully.
 
-<sub>**Previous: [File Input](/lectures/file_input/)** | **Next: [Python Lists](/lectures/lists/)**</sub>
+<sub>**Previous: [File Input](/lectures/13-file-input/)** | **Next: [Python Lists](/lectures/15-lists/)**</sub>
 
 <!-- ### Part 1: _Exceptions_
 

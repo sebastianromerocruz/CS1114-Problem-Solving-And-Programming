@@ -106,7 +106,7 @@ file_obj = open(filepath, 'r')
 
 So, what's going on here? The `open()` function (as far as this course is concerned) accepts two arguments:
 
-1. The **path of the file** you want to open, in `str` form. Since `data.csv` exists in the same directory (folder) as our current file, we don't have to give the full filepath, but I certainly could do so (`/Users/sebastianromerocruz/Documents/NYU_Adjunct/CS1114-material/lectures/file_input/data.csv`, in my case) and it would work just the same.
+1. The **path of the file** you want to open, in `str` form. Since `data.csv` exists in the same directory (folder) as our current file, we don't have to give the full filepath, but I certainly could do so (`/Users/sebastianromerocruz/Documents/NYU_Adjunct/CS1114-material/lectures/13-file-input/data.csv`, in my case) and it would work just the same.
 2. The **mode that you want to open the file with**. In order to read the contents of a file, we use `'r'`, which stands for "read mode".
 
 Notice that it's not enough to just make a call to `open()`—we also have to save its returned value into a variable (in this case, the variable `file_obj`).
@@ -298,7 +298,7 @@ def print_temperatures(filepath):
 
 Closing your file, while not required in this class, is a very important step later down the line in your computer science career. If you don't the file that you are working on, any other function, process, and/or app that wants to make use of this app will not be able to, causing the whole operation to fail.
 
-<sub>**Previous: [Functions: `return`](/lectures/functions_return/)** | **Next: [File Output and Exceptions](/lectures/file_output/)**</sub>
+<sub>**Previous: [Functions: `return`](/lectures/12-functions-return/)** | **Next: [File Output and Exceptions](/lectures/14-file-output-and-exceptions/)**</sub>
 
 <!-- 1. [**Warm-Up**](#part-1-warm-up)
 1. [**Data From Files**](#part-2-data-from-files)
@@ -460,7 +460,7 @@ file_obj = open(file_path, 'r')
 
 So, what's going on here? The `open()` function (as far as this course is concerned) accepts to arguments:
 
-1. The **path of the file** you want to open, in `str` form. Since `student_grades.txt` exists in the same directory (folder) as our current file, we don't have to give the full filepath, but I certainly could do so (`/Users/sebastianromerocruz/Documents/NYU_Adjunct/CS1114-material/lectures/file_input/solutions/student_grades.txt`, in my case) and it would work just the same.
+1. The **path of the file** you want to open, in `str` form. Since `student_grades.txt` exists in the same directory (folder) as our current file, we don't have to give the full filepath, but I certainly could do so (`/Users/sebastianromerocruz/Documents/NYU_Adjunct/CS1114-material/lectures/13-file-input/solutions/student_grades.txt`, in my case) and it would work just the same.
 2. The **mode that you want to open the file with**. In order to read the contents of a file, we use `'r'`, which stands for "read mode".
 
 Notice that it's not enough to just make a call to `open()`—we also have to save its returned value into a variable (in this case, the variable `file_obj`).

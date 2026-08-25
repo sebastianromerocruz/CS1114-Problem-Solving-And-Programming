@@ -498,4 +498,4 @@ us, the programmers, to parse that input into a usable form.
 
 ---
 
-<sub>**Previous: [Programming Fundamentals 1](/lectures/02-programming-fundamentals-1)** || **Next: [Number Systems and Python Modules](/lectures/number_systems)**</sub>
+<sub>**Previous: [Programming Fundamentals 1](/lectures/02-programming-fundamentals-1)** || **Next: [Number Systems and Python Modules](/lectures/04-number-systems-and-python-modules)**</sub>

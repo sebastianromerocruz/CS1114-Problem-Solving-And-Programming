@@ -355,4 +355,4 @@ the following syntax:
 'mdJml'
 ```
 
-<sub>**Previous: [Manipulating Strings](/lectures/manipulating_strings)** | **Next: [Functions: Parameters](/lectures/functions_parameters/)**</sub>
+<sub>**Previous: [Manipulating Strings](/lectures/10-manipulating-strings)** | **Next: [Functions: Parameters](/lectures/11-functions-parameters/)**</sub>

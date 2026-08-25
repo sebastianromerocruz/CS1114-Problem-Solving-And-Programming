@@ -14,7 +14,7 @@
 ### Part 1: _A Sample Problem, for Motivation_
 
 Let's start with a simple problem to illustrate the usefulness of the topic we're covering next. Let's say we have a 
-[**file**](https://raw.githubusercontent.com/sebastianromerocruz/CS1114-material/main/lectures/dictionaries/video_game_clean.csv) that contains information for a large number of video games:
+[**file**](https://raw.githubusercontent.com/sebastianromerocruz/CS1114-material/main/lectures/17-dictionaries/video_game_clean.csv) that contains information for a large number of video games:
 
 ```csv
 ID,Name,Platform,Year_of_Release,Genre,Publisher,NA_players,EU_players,JP_players,Other_players,Global_players,Critic_Score,Critic_Count,User_Score,User_Count,Developer,Rating
@@ -30,7 +30,7 @@ ID,Name,Platform,Year_of_Release,Genre,Publisher,NA_players,EU_players,JP_player
 10,Duck Hunt,NES,1984,Shooter,Nintendo,26.93,0.63,0.28,0.47,28.31,NA,NA,,NA,,
 ```
 
-<sub>**Figure 1**: First ten lines of [**video_game.csv**](https://github.com/sebastianromerocruz/CS1114-material/blob/main/lectures/dictionaries/video_game_clean.csv) ([**Source**](https://www.kaggle.com/juttugarakesh/video-game-data)). Cleaned up from the [**original**](https://www.kaggle.com/datasets/juttugarakesh/video-game-data) using [**cleanup.py**](https://github.com/sebastianromerocruz/CS1114-material/blob/main/lectures/dictionaries/cleanup.py).</sub>
+<sub>**Figure 1**: First ten lines of [**video_game.csv**](https://github.com/sebastianromerocruz/CS1114-material/blob/main/lectures/17-dictionaries/video_game_clean.csv) ([**Source**](https://www.kaggle.com/juttugarakesh/video-game-data)). Cleaned up from the [**original**](https://www.kaggle.com/datasets/juttugarakesh/video-game-data) using [**cleanup.py**](https://github.com/sebastianromerocruz/CS1114-material/blob/main/lectures/17-dictionaries/cleanup.py).</sub>
 
 Write a function called **`extract_data()`** that accepts a filepath (i.e. a string containing the name and location) for this csv as its only parameter and **returns a list of 
 each of these video games' information (as lists)**. The information we want to include will be:
@@ -487,4 +487,4 @@ def extract_data_to_dict(data_string):
     return data
 ```
 
-<sub>**Previous: [Memory Maps](/lectures/memory_maps/)** | **Next: [Dictionary Methods and Iteration](/lectures/dictionary_methods/)**</sub>
+<sub>**Previous: [Memory Maps](/lectures/16-memory-maps/)** | **Next: [Dictionary Methods and Iteration](/lectures/18-dictionary-methods-and-iteration/)**</sub>

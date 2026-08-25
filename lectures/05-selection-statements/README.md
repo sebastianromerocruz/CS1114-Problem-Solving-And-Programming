@@ -438,4 +438,4 @@ single paths of only two options.
 
 ---
 
-<sub>**Previous: [Number Systems and Python Modules](/lectures/number_systems)** || **Next: [Control-Flow Structures: The `while`-Loop](/lectures/while_loops)**</sub>
+<sub>**Previous: [Number Systems and Python Modules](/lectures/04-number-systems-and-python-modules)** || **Next: [Control-Flow Structures: The `while`-Loop](/lectures/07-while-loop)**</sub>
