@@ -277,4 +277,11 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 
+### CS1114: unreleased lectures ###
+# Ignore everything under lectures/ by default, then whitelist each folder as it's
+# released to students. To release a lecture: add its "!lectures/NN-topic/" line below,
+# then `git add lectures/NN-topic/` and un-comment its entry in the root README.
+lectures/*
+!lectures/01-introduction/
+
 # End of https://www.toptal.com/developers/gitignore/api/python,pycharm+all,macos

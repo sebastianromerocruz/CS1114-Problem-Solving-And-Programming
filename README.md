@@ -15,6 +15,9 @@ resource, send me an [**email**](mailto:src402@nyu.edu) about it with the subjec
 <sub>To be released every Monday and Wednesday after 6:20pm.</sub>
 
 1. [**Introduction**](lectures/01-introduction/)
+
+<!-- Released on a rolling basis as the semester progresses. To release a lecture,
+un-ignore its folder in .gitignore, `git add` it, and un-comment its entry here.
 2. [**Programming Fundamentals 1**](lectures/02-programming-fundamentals-1/)
 3. [**Programming Fundamentals 2**](lectures/03-programming-fundamentals-2/)
 4. [**Number Systems and Python Modules**](lectures/04-number-systems-and-python-modules/)
@@ -36,7 +39,7 @@ resource, send me an [**email**](mailto:src402@nyu.edu) about it with the subjec
 20. [**Intro to Object-Oriented Programming**](lectures/20-oop-introduction/)
 21. [**Intro to Object-Oriented Programming: Methods and the `__str__()` Method**](lectures/21-oop-methods-and-str/)
 22. [**Intro to Object-Oriented Programming: Dunder / "Magic" Methods**](lectures/22-oop-dunder-methods/)
-23. [**Final Exam Review**](lectures/23-final-exam-review/)
+23. [**Final Exam Review**](lectures/23-final-exam-review/) -->
 
 ### How To Use This Repository
 
@@ -81,4 +84,4 @@ That is, each [**lecture**](#Lectures) sub-folder contains a lecture notes `READ
 
 ---
 
-<sub>© Sebastián Romero Cruz 2023</sub>
+<sub>© Sebastián Romero Cruz 2026</sub>
