@@ -14,9 +14,9 @@ resource, send me an [**email**](mailto:src402@nyu.edu) about it with the subjec
 
 <sub>To be released every Monday and Wednesday after 6:20pm.</sub>
 
-1. [**Introduction**](lectures/introduction/)
-2. [**Programming Fundamentals 1**](lectures/fundamentals_1/)
-3. [**Programming Fundamentals 2**](lectures/fundamentals_2/)
+1. [**Introduction**](lectures/01-introduction/)
+2. [**Programming Fundamentals 1**](lectures/02-programming-fundamentals-1/)
+3. [**Programming Fundamentals 2**](lectures/03-programming-fundamentals-2/)
 4. [**Number Systems and Python Modules**](lectures/number_systems/)
 5. [**Selection Statements: `if`, and `else`**](lectures/selection_statements/)
 6. [**Selection Statements: `elif` and Common Mistakes**](lectures/selection_statements#part-3-elif-statements)
@@ -35,7 +35,7 @@ resource, send me an [**email**](mailto:src402@nyu.edu) about it with the subjec
 19. [**Comprehensions**](lectures/comprehensions/)
 20. [**Intro to Object-Oriented Programming**](lectures/oop_1/)
 21. [**Intro to Object-Oriented Programming: Methods and the `__str__()` Method**](lectures/oop_2/)
-22. [**Intro to Object-Oriented Programming: Dunder / "Magic" Methods**](lectures/oop_3/)
+22. [**Intro to Object-Oriented Programming: Dunder / "Magic" Methods**](lectures/22-oop-dunder-methods/)
 23. [**Final Exam Review**](lectures/final_review/)
 
 ### How To Use This Repository

@@ -1,14 +1,25 @@
 <h2 align=center>Lecture 02</h2>
 
-<h1 align=center>Programming Fundamentals: Values, Types, and Variables</h2>
+<h1 align=center>Programming Fundamentals: Values, Types, and Variables</h1>
 
-<h3 align=center>5 Pluviôse, Year CCXXXI</h3>
+<h3 align=center>21 Fructidor, Year CCXXXIV</h3>
 
-***Song of the day***: _[**Dances**](https://youtu.be/7NvcYGIDQfc) by Воплі Відоплясова (BB) (1993)_
+<p align=center><strong><em>Song of the day</strong>: <a href="https://youtu.be/7NvcYGIDQfc"><strong><u>Dances</u></strong></a> by Воплі Відоплясова (VV) (1993)</em></p>
 
 ---
 
-### Part 0: _Getting Organised_
+## Sections
+
+1. [**Getting Organised**](#1)
+2. [**Parts of a Program**](#2)
+3. [**Values and Types**](#3)
+4. [**Variables**](#4)
+
+---
+
+<a id="1"></a>
+
+## Getting Organised
 
 One of the most underrated strategies for succeeding in this course is staying organised; keeping your files in places where you can readily find them will help you more than I can express in writing—you really have to see it to believe it. Go ahead and create a folder structure that looks like this:
 
@@ -38,9 +49,11 @@ You don't have to follow my naming convention (in fact, I use three different na
 
 That taken care of, let's take a look at IDLE, the canonical starting point with Python IDEs.
 
-### Part 1: _Parts of a Program_
+<a id="2"></a>
 
-The moment you open IDLE up. You will be met with the following window:
+## Parts of a Program
+
+The moment you open IDLE up, you will be met with the following window:
 
 ![idle](assets/shell.png)
 
@@ -77,7 +90,9 @@ The window should switch over to the console, showing you the result of running 
 
 <sub>**Figure 8**: The output of our `py` file being displayed on our console.</sub>
 
-### Part 2: _Values and Types_
+<a id="3"></a>
+
+## Values and Types
 
 The very first thing we will learn about is quite literally the reason why computer science exists: data—things like our
 ages, our grades, our names, etc..
@@ -99,7 +114,7 @@ end of the semester, but for now we can be introduced to the most basic object t
 | `float`  | `3.1416`, `22.7`, `-4.0`, `1.0`                                              | A data type representing a **floating-point (decimal-valued)** number value,  positive or negative, and is only an approximation. Be careful using them in calculations.           |
 | `str`    | `"Cardcaptor Sakura"`,  `'Viva la Revolución'`, `'''Comments'''`,  `"""""""` | A data type representing a **sequence of characters (string)** characters. Can be  enclosed using `'`, `"`, `'''` (or `"""`)                                                       |
 
-_**Figure 9**: Three of the most common types in Python._
+<sub>**Figure 9**: Three of the most common types in Python.</sub>
 
 The keywords `int`, `float`, and `str`, aside from representing these three types, also serve as **conversion
 functions**:
@@ -123,9 +138,9 @@ Traceback (most recent call last):
 ValueError: could not convert string to float: 'Liz and the Blue Bird'
 ```
 
-_**Code Block 1**: Examples of valid and invalid type conversions in Python._
+<sub>**Code Block 1**: Examples of valid and invalid type conversions in Python.</sub>
 
-The process of converting values from one type to the other is often called **type casting**. So, code block 2, in
+The process of converting values from one type to the other is often called **type casting**. So, code block 1, in
 order, reads as follows:
 
 > The value of the float value `4.5` casted as an **integer** is `4`.
@@ -146,7 +161,9 @@ However, if the rest of the program operates on `3.15` assuming that it is a flo
 crash. Being able to catch and recognize these errors takes some practice, but it is something you should be consciously
 watching out for from the beginning.
 
-### Part 2: _Variables_
+<a id="4"></a>
+
+## Variables
 
 Okay, so we have a way of representing data in the form of types, but how do we store this data so that we can use it
 in our programs? This is the job of ***variables***.
@@ -161,25 +178,25 @@ us.
 For example, if we wanted to store the current year, we'd do something like this in Python:
 
 ```python
-current_year = 2022
+current_year = 2026
 ```
 
-In this statement, `current_year` is the name of the variable, `=` is the **assignment operator**, and `2021` is the
+In this statement, `current_year` is the name of the variable, `=` is the **assignment operator**, and `2026` is the
 value.
 
 If I try doing this in IDLE's console, you'll see this:
 
 ![current_year](assets/current_year_int.png)
 
-_**Figure 10**: A visualization of Python storing the integer value `2021` inside a variable called `current_year`._
+<sub>**Figure 10**: A visualization of Python storing the integer value `2026` inside a variable called `current_year`.</sub>
 
 Now, I could have called this variable anything I wanted. As long as your variable names start with an alphabetic
 character or an underscore (`_`), you are not restricted in any way:
 
 ![more_variables](assets/more_variables.png)
 
-_**Figure 9**: A visualization of Python storing integer and string values inside variables `_name`, `current_year`,
-`x`._
+<sub>**Figure 11**: A visualization of Python storing integer and string values inside variables `_name`, `current_year`,
+`x`.</sub>
 
 Technically speaking a variable represents a value store in your computer's memory. When you create a variable, you are
 basically telling your computer something like this:
@@ -209,9 +226,9 @@ In memory, this might look like this
    Programmer                     Computer
 ```
 
-<sub>**Figure 11**: The memory model of creating a variable called `_name`, which is storing the string value
+<sub>**Figure 12**: The memory model of creating a variable called `_name`, which is storing the string value
 `"Sebastián"`. The identifier `name` is only for **you** to be able to easily access this value. To your computer,
-though, this is just memory location d (`memo_loc d`).</sub>
+though, this is just memory location d (`mem_loc d`).</sub>
 
 Now, of course, not all variable names are understood equally. Just like labels on boxes, giving your variables relevant,
 explicative names is the way to go. In this class, in particular, make sure to follow these rules in order to not get
@@ -230,7 +247,7 @@ is where the names of your variables are stored, and the object space is where t
 
 ![name_object_spaces](assets/name_object_spaces.png)
 
-_**Figure 12**: Examples of namespace vs. object space connections._
+<sub>**Figure 13**: Examples of namespace vs. object space connections.</sub>
 
 These basically refer to the way values are stored and referenced in your computer's memory. You don't have to know much
 more about this; you'll learn more about memory than you'll ever want to during the rest of your four years as a
@@ -238,4 +255,4 @@ CS/CE/EE major.
 
 ---
 
-<sub>**Previous: [Introduction](/lectures/introduction)** || **Next: [Programming Fundamentals 2](/lectures/fundamentals_2)**</sub>
+<sub>**Previous: [Introduction](/lectures/01-introduction)** || **Next: [Programming Fundamentals 2](/lectures/03-programming-fundamentals-2)**</sub>

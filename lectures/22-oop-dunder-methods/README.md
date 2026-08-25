@@ -2,29 +2,44 @@
 
 <h1 align=center>Object-Oriented Programming: "Magic" / Dunder Methods</h1>
 
-### 11 Floréal, CCXXXI
+<h3 align=center>11 Floréal, Year CCXXXI</h3>
 
-***Song of the day***: _[**Sgt. Pepper's Lonely Hearts Club Band**](https://youtu.be/lsuJqhLl7R8) by The Flaming Lips [feat. My Morning Jacket, Fever the Ghost & J. Mascis] (2014)._
+<p align=center><strong><em>Song of the day</strong>: <a href="https://youtu.be/lsuJqhLl7R8"><strong><u>Sgt. Pepper's Lonely Hearts Club Band</u></strong></a> by The Flaming Lips [feat. My Morning Jacket, Fever the Ghost & J. Mascis] (2014)</em></p>
 
-### Sections
+---
 
-1. [**Review: _Mathematical Complex_**](#part-1-mathematical-complex)
-    1. [**Creating `Complex` Objects**](#creating-complex-objects)
-    2. [**Printing `Complex` Objects**](#printing-complex-objects)
-    3. [**Performing Arithmetic on `Complex` Objects**](#performing-arithmetic-on-complex-objects)
-2. [**Special / "Dunder" Methods**](#part-2-special--dunder-methods)
+## Sections
 
-### Part 1: _Mathematical Complex_
+1. [**Review: `Complex` Numbers**](#1)
+    1. [**Creating `Complex` Objects**](#1-1)
+    2. [**Printing `Complex` Objects**](#1-2)
+    3. [**Performing Arithmetic on `Complex` Objects**](#1-3)
+2. [**Special / "Dunder" Methods**](#2)
+
+---
+
+<a id="1"></a>
+
+## Review: `Complex` Numbers
 
 In mathematics, a [**complex number**](https://en.wikipedia.org/wiki/Complex_number) is a value that contains a real 
 number part (that is, any whole or decimal number) and an imaginary part:
 
-![complex](assets/complex.png)
-![complex_examples](assets/complex_examples.png)
+<a id="fg-1"></a>
 
-<sub>**Figures 1 & 2**: The general structure of a complex number along with some examples. 
-[**Source**](https://www.khanacademy.org/math/algebra2/x2ec2f6f830c9fb89:complex/x2ec2f6f830c9fb89:complex-num/a/intro-to-complex-numbers) </sub>
+<p align=center>
+    <img src="assets/complex.png">
+    </img>
+    <img src="assets/complex_examples.png">
+    </img>
+</p>
 
+<p align=center>
+    <sub>
+        <strong>Figures 1 & 2</strong>: The general structure of a complex number along with some examples.
+        <a href="https://www.khanacademy.org/math/algebra2/x2ec2f6f830c9fb89:complex/x2ec2f6f830c9fb89:complex-num/a/intro-to-complex-numbers"><strong>Source</strong></a>
+    </sub>
+</p>
 
 Performing arithmetic operations on complex numbers is quite simple:
 
@@ -34,14 +49,14 @@ Performing arithmetic operations on complex numbers is quite simple:
 | **Subtraction**    | `(a + bi) - (c + di) = (a - c) + (b - d)i`     |
 | **Multiplication** | `(a + bi) • (c + di) = (ac - bd) + (ad + bc)i` |
 
-<sub>**Figures 3**: Complex number arithmetic, where `a`, `b`, `c`, and `d` are real numbers.</sub>
+<sub>**Figure 3**: Complex number arithmetic, where `a`, `b`, `c`, and `d` are real numbers.</sub>
 
 Since Python doesn't have a native complex number type, let's create our own class to simulate these numbers and their
 behaviour.
 
----
+<a id="1-1"></a>
 
-#### _Creating `Complex` Objects_
+### Creating `Complex` Objects
 
 Create a class called `Complex` whose objects will be instantiated and behave as follows:
 
@@ -64,9 +79,9 @@ number's real and imaginary parts.
 
 <sub>**Optional**: Give both `real` and `imaginary` a default value of `0.0`.</sub>
 
----
+<a id="1-2"></a>
 
-#### _Printing `Complex` Objects_
+### Printing `Complex` Objects
 
 Add functionality to your `Complex` objects by having them look like this when printed:
 
@@ -108,9 +123,9 @@ Output:
 0.0 + 0.0i
 ```
 
----
+<a id="1-3"></a>
 
-#### _Performing Arithmetic on `Complex` Objects_
+### Performing Arithmetic on `Complex` Objects
 
 Define three methods for your `Complex` class:
 
@@ -143,7 +158,9 @@ Difference: 41.5 + 102.0i
 Product: 1946.0 - 1088.5i
 ```
 
-### Part 2: _Special / Dunder Methods_
+<a id="2"></a>
+
+## Special / "Dunder" Methods
 
 Last class, we learned how to make our objects look nice as a string using `__str__()`. There's actually a whole suite
 of these methods that provide more refined functionality to your classes.
@@ -154,12 +171,12 @@ equating, etc.) They include **d**ouble **under**score syntax (`"__"`), and so a
 
 Some of the more common special methods are the following:
 
-- `__str__()`: “Informal” or nicely printable string representation of an object. The return value must be a string 
+- `__str__()`: "Informal" or nicely printable string representation of an object. The return value must be a string 
 object.
-- `__repr__()`: “Official” string representation of an object. If at all possible, this should look like a valid Python
+- `__repr__()`: "Official" string representation of an object. If at all possible, this should look like a valid Python
 expression that could be used to recreate an object with the same value. If this is not possible, a string of the form 
 `<...some useful description...>` should be returned. The return value must be a string object. If a class defines 
-`__repr__()` but not `__str__()`, then `__repr__()` is also used when an “informal” string representation of instances 
+`__repr__()` but not `__str__()`, then `__repr__()` is also used when an "informal" string representation of instances 
 of that class is required. This is typically used for debugging, so it is important that the representation is 
 information-rich and unambiguous.
 - `__len__()`: "Length" of the object. The return value must be an integer.
@@ -196,8 +213,14 @@ class Complex:
         return product
 
     def __str__(self):
-        return f"{self.real} {"+" if self.imaginary >= 0.0 else "-"} {self.imaginary if self.imaginary >= 0 else abs(self.imaginary)}i")
+        sign = "+" if self.imaginary >= 0.0 else "-"
+        magnitude = abs(self.imaginary)
+        return f"{self.real} {sign} {magnitude}i"
 ```
+
+<sub>**Note**: the version of this shown live in lecture used a nested f-string (`f"... {"+" if ... else "-"} ..."`), 
+which is invalid syntax before Python 3.12. The version above—pulling `sign` and `magnitude` out into their own 
+variables first—works on every version of Python 3.</sub>
 
 If we do this, we can go ahead and use the `+`, `-`, and `*` operators for more "natural" arithmetic:
 
@@ -269,8 +292,6 @@ Output:
 
 We can keep going in this fashion until we have covered all comparison operators, but it is actually quite simple once
 you have defined `__eq__()` and `__gt__()` since we can use _those_ in the remaining ones:
-
-
 
 ```python
 class Complex:

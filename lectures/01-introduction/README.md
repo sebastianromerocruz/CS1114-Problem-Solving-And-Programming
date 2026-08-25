@@ -2,27 +2,37 @@
 
 <h1 align=center>Introduction</h1>
 
-<h3 align=center>3 Pluviôse, Year CCXXXI</h3>
+<h3 align=center>16 Fructidor, Year CCXXXIV</h3>
 
-***Song of the day***: _[**theme / cinema paradiso [live]**](https://youtu.be/JzTjgLrqi2g) by kurayamisaka (2023)._
+<p align=center><strong><em>Song of the day</strong>: <a href="https://youtu.be/JzTjgLrqi2g"><strong><u>theme / cinema paradiso [live]</u></strong></a> by kurayamisaka (2023)</em></p>
 
 ---
 
-### Part 1: _Character Stats_
+## Sections
+
+1. [**Character Stats**](#1)
+2. [**How to Succeed in This Course**](#2)
+
+---
+
+<a id="1"></a>
+
+## Character Stats
 
 Hey, my name is Sebastián, and my last names are Romero Cruz. I teach about programming for a living.
 
-I have been teaching at the Tandon since January 2020, making this my seventh semester as an instructor (if you count
-the summer). I also happen to have gotten my bachelor of science degree here, in chemical and biomolecular engineering,
-and my master's in computer science. So, you know, I've been here a while.
+I have been teaching at Tandon since January 2020. I also happen to have gotten my bachelor of science degree here, in
+chemical and biomolecular engineering (2017), and my master's in computer science (2020). So, you know, I've been here
+a while. These days I also teach Computer Architecture & Organization (CS-UY 2214) and Intro to Game Programming
+(CS-UY 3113), if any of that sounds interesting to you down the line.
 
 Here's how you can reach me if you have any questions:
 
-| **Email**                              | **Office Hours**                                                      |
-|----------------------------------------|-----------------------------------------------------------------------|
-| [**src402@nyu.edu**](src402@nyu.edu) | [**calendly.com/profromerocruz**](http://calendly.com/profromerocruz)   |
+| **Email**                            | **Office Hours**                                                                    | **GitHub**                                                              |
+|---------------------------------------|---------------------------------------------------------------------------------------|--------------------------------------------------------------------------|
+| [**src402@nyu.edu**](mailto:src402@nyu.edu) | [**calendly.com/profromerocruz**](https://calendly.com/profromerocruz/office-hours) | [**@sebastianromerocruz**](https://github.com/sebastianromerocruz) |
 
-<sub>_**Figure 1**: Prof. Romero Cruz's contact information._</sub>
+<sub>**Figure 1**: Prof. Romero Cruz's contact information.</sub>
 
 Unless you have a super trivial question, **I much prefer you scheduling office hours with me to ask me questions about
 the course**. Even if we only spend 5 minutes on a Zoom call, it is a lot easier for me to keep track of my calendar 
@@ -35,10 +45,12 @@ Anyway, other things I enjoy are:
 - **Literature**: my current favourite is [***Territory of Light***](https://us.macmillan.com/books/9780374273217).
 - **Playing music**: I play a [**Rickenbacker 4001C64**](http://www.rickenbacker.com/model.asp?model=4001C64).
 
-That's all I want to flex at the present moment. basically spent the rest of the class talking about the syllabus, so
+That's all I want to flex at the present moment. I basically spent the rest of the class talking about the syllabus, so
 please refer to it in the [**Brightspace page**](https://brightspace.nyu.edu/d2l/le/lessons/218479/units/7496633).
 
-### Part 2: _How to succeed in this course._
+<a id="2"></a>
+
+## How to Succeed in This Course
 
 I'm sure that at least some of you have heard rumours about this course—about how it's not an easy one. There's a weird
 misconception that, just because this course is listed as introductory, it's supposed to be easy. I, honestly, think
@@ -60,4 +72,4 @@ at it. My recommendations, thus, are as follows:
 
 ---
 
-<sub>**Next: [Programming Fundamentals 1](/lectures/fundamentals_1)**</sub>
+<sub>**Next: [Programming Fundamentals 1](/lectures/02-programming-fundamentals-1)**</sub>

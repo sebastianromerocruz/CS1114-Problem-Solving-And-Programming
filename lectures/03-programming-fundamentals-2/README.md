@@ -2,78 +2,29 @@
 
 <h1 align=center>Programming Fundamentals: Operators, Expressions, and Program Output</h1>
 
-<h3 align=center>10 Pluviôse, Year CCXXXI</h3>
+<h3 align=center>23 Fructidor, Year CCXXXIV</h3>
 
-***Song of the day***: _[**Dark Entries**](https://youtu.be/bF-fGRJxmig) by Bauhaus (1980)._
-
----
-
-### Sections
-
-<!-- 0. [**Problem Solving Exercise**](#part-0-problem-solving-exercise) -->
-1. [**Expressions**](#part-1-expressions)
-2. [**Re-Assigning Values**](#part-2-reassigning-variables)
-3. [**Boolean Expressions**](#part-3-boolean-expressions)
-4. [**Program Output**](#part-4-program-output)
-5. [**Program Input**](#part-5-program-input)
-
-<!-- ### Part 0: _Problem Solving Exercise_
-
-Throughout the semester, us professors have decided to throw in a couple of brain teaser problems to get you to start thinking in different ways. Programming, inherently a problem-solving field, can be approached in a myriad of different ways, and training your brain to think and solve problems from different angles will go a long way in your computer science career.
-
-This first question comes to us from an interview for a software engineering position at [**Cisco**](https://en.wikipedia.org/wiki/Cisco):
-
-Let's say you have a square room with no roof:
-
-```
-+————————————+
-|            |  
-|            |
-|            |
-|            |
-+————————————+
-```
-
-<sub>**Figure 1**: Bird's eye view of this roof-less room.</sub>
-
-You are also given _four metal flagpoles_. The task is to **plant the flagpoles in such a way that each flagpole is touching two walls _at the same time_**. What would be your approach?
+<p align=center><strong><em>Song of the day</strong>: <a href="https://youtu.be/bF-fGRJxmig"><strong><u>Dark Entries</u></strong></a> by Bauhaus (1980)</em></p>
 
 ---
 
-There is no real "correct" solution here; what interviewers look for when they ask brain-teasing questions is your _approach to solving the problem_. For example, the most obvious solution to many of you might have been to plant each flagpole at the corner of each room. Thus, they touch two walls:
+## Sections
 
-```
-+————————————+
-|•          •|  
-|            |
-|            |
-|•          •|
-+————————————+
-```
+1. [**Expressions**](#1)
+2. [**Re-Assigning Values**](#2)
+3. [**Boolean Expressions**](#3)
+    1. [**Comparison Operators**](#3-1)
+    2. [**The `not` Operator**](#3-2)
+    3. [**The `and` Operator**](#3-3)
+    4. [**The `or` Operator**](#3-4)
+4. [**Program Output**](#4)
+5. [**Program Input**](#5)
 
-</sub>**Figure 2**: A first solution, where the character `•` represents a flagpole. Notice that, for this to work, the space between the pole and the corner would have to be non-existent. If you want to look at this from a purist's point of view, then this is not exactly possible.</sub>
+---
 
-Another way of thinking about this is by realising that nowhere in the problem statement does it say that we are bound to the inside of the room—that is, we can imagine this problem from the perspective of someone standing _outside of the room_. In this case, one could also use the flagpole to pierce two walls horizontally, as such:
+<a id="1"></a>
 
-
-```
-     /          \
-  +—/————————————\—+
-  |/              \|
-  /                \  
-\/|                |\/
-/\|                |/\
-  \                /
-  |\              /|
-  +—\————————————/—+
-     \          /
-```
-
-</sub>**Figure 3**: An alternative solution. Physically speaking, this one makes a little more sense, actually.</sub>
-
-Being aware of these two solutions, I bet that you can come up with others by "bending the situation" a little. -->
-
-### Part 1: _Expressions_
+## Expressions
 
 So, last time, we left off with the idea that we can store a piece of data (e.g. a number, a word, etc.) inside Python
 using variables. This allows us to keep that information safe and organized so that we can use it in our programs later.
@@ -101,7 +52,7 @@ This is all well and good, but the formula for the volume of a cone is as follow
 
 ![volume_of_cone.png](assets/volume_of_cone.png)
 
-<sub>**Figure 4**: Formula for the volume of a cone, `V`, of base radius `r` and height `h`.</sub>
+<sub>**Figure 1**: Formula for the volume of a cone, `V`, of base radius `r` and height `h`.</sub>
 
 Clearly, there's more to calculating the volume than just defining three variables. We need to actually operate on them.
 For this, in programming, we construct what is called an ***expression***.
@@ -112,10 +63,10 @@ For this, in programming, we construct what is called an ***expression***.
 We saw last time that Python can do simple mathematical operations—namely, add:
 
 ```python
->>> current_year = 2022
+>>> current_year = 2026
 >>> university_years = 4
 >>> current_year + university_years
-2026
+2030
 ```
 
 In this case, `current_year` and `university_years` are the **operands** of the expression, and `+` is the **operator**
@@ -128,7 +79,7 @@ of the expression (the "plus" or "addition" operator).
 The great thing about expressions that we can save their result, whatever that result may be, inside a variable:
 
 ```python
->>> current_year = 2022
+>>> current_year = 2026
 >>> university_years = 4
 >>> graduation_year = current_year + university_years
 ```
@@ -155,7 +106,7 @@ volume_of_cone = pi * (base_radius * base_radius) * (height / 2)  # evaluates to
 <sub>**Code Block 1**: Calculating the volume of a cone and storing it in the variable `volume_of_cone`.</sub>
 
 The variable `volume_of_cone` is now holding the value of an **expression**. The difference between this and a simple
-value is that the value of an expression is dependent on the values of its contents. In code block 2, `volume_of_cone`
+value is that the value of an expression is dependent on the values of its contents. In code block 1, `volume_of_cone`
 happens to evaluate to `346.35699`, but if I changed the values of `pi`, `base_radius`, and/or `height`, the value of
 `volume_of_cone` would also change:
 
@@ -181,7 +132,7 @@ Here's a table of the arithmetic operators available to us in Python:
 | `//`         | Integer Division | `93.4323 // 5` (evaluates to float value `18.0`)                                                         | Evaluates to whole number resulting from removing decimal component of floating-point division result; while integer division will always result in a whole number, the type will still be a `float` |
 | `%`          | Modulus          | `63 % 10` evaluates to integer value `3`; 63 divides 6 even times into 10, leaving a remainder of 3      | Evaluates to the remainder from dividing two integers; returns an `int` value                                                                                                                        |
 
-<sub>**Figure 5**: Python's arithmetic operators.</sub>
+<sub>**Figure 2**: Python's arithmetic operators.</sub>
 
 The precedence of these operators are basically the same as the mathematical acronym P.E.M.D.A.S., except we could 
 expand it to include negation (negative numbers) : P.E.N.M.D.A.S. (very catchy):
@@ -207,7 +158,9 @@ For example:
 11
 ```
 
-### Part 2: _Reassigning Variables_
+<a id="2"></a>
+
+## Re-Assigning Values
 
 You've probably guessed by now that the reason why variables are given that name is because their value can vary. That
 is, a variable is not restricted to holding a single value throughout the course of a program.
@@ -230,10 +183,12 @@ In terms of namespace and object space, this is what this process looks like:
 
 ![reassignment](assets/reassignment.png)
 
-<sub>**Figure 6**: Variable value reassignment. Note that while the object in the object space changes from `7` to `8`, it 
+<sub>**Figure 3**: Variable value reassignment. Note that while the object in the object space changes from `7` to `8`, it 
 does not change location in memory.</sub>
 
-### Part 3: _Boolean Expressions_
+<a id="3"></a>
+
+## Boolean Expressions
 
 We're pretty well acquainted with how boolean expressions function at this point. They either evaluate to `True` or they
 evaluate to `False`. We also learned about some of their respective operators: `not`, `and`, and `or`. Given our 
@@ -242,7 +197,9 @@ newfound knowledge of variables, we can expand our current definition to somethi
 > **Boolean expression**: Code that evaluates to a combination of operators and operands that, when evaluated, results 
 > in `True` or `False`.
 
-#### _Comparison Operators_
+<a id="3-1"></a>
+
+### Comparison Operators
 
 Moreover, just like in mathematics, we have the ability to compare two values to figure out their equality. These are 
 called ***comparison, or relational, operators***:
@@ -256,12 +213,14 @@ called ***comparison, or relational, operators***:
 | `<`          | _"Is A less in value than B?"_                | `10 < 150` (evaluates to bool value `True`)           |
 | `<=`         | _"Is A less than or equal in value to B?"_    | `93.4323 <= 93.4324` (evaluates to bool value `True`) |
 
-<sub>**Figure 7**: Comparison (relational) operators in Python, where both A and B are comparable values.</sub>
+<sub>**Figure 4**: Comparison (relational) operators in Python, where both A and B are comparable values.</sub>
 
 > **Comparable value**: Values that can be compared using a boolean operator. (E.g. `4` and `7.6` are comparable values,
 > but `"lol I'm so tired."` and `True` aren't.)
 
-#### _The `not` Operator_
+<a id="3-2"></a>
+
+### The `not` Operator
 
 We can represent the effects of the `not` operator by using a _truth table_:
 
@@ -270,22 +229,24 @@ We can represent the effects of the `not` operator by using a _truth table_:
 | `True`    | `False`      | If **`a`** evaluates to `True`, **`not a`** evaluates to `False`  |
 | `False`   | `True`       | If **`a`** evaluates to `False`, **`not a`** evaluates to `True`  |
 
-<sub>**Figure 8**: Truth table for the `not` operator, where `a` is any given boolean expression.</sub>
+<sub>**Figure 5**: Truth table for the `not` operator, where `a` is any given boolean expression.</sub>
 
 To give linguistically relatable examples:
 
-- "The year is 2023" evaluates to `True`
+- "The year is 2026" evaluates to `True`
 - `not` "NYU is in New York" evaluates to `False`
 
 `not` is a pretty nice operator because it only involves the use of only one boolean expression (the technical term for
 this is a unary boolean operator).
 
-#### _The `and` Operator_
+<a id="3-3"></a>
 
-Oftentimes, though, we need multiple conditions to be true in order for something execute. For instance, NYU's daily 
-screener probably allows you to come into the building by applying the following logic:
+### The `and` Operator
 
-> ***If*** this student is vaccinated ***and*** is not experiencing any COVID-19 symptoms, they can go into any NYU 
+Oftentimes, though, we need multiple conditions to be true in order for something execute. For instance, a building 
+screener might allow you in by applying the following logic:
+
+> ***If*** this student has a valid ID ***and*** is on the building's access list, they can go into any NYU 
 > building.
 
 In this case, we have **two** conditions that need to be true for a certain action to get executed. The operator used 
@@ -298,18 +259,20 @@ here would be the word "and". Conveniently, that corresponds exactly to Python's
 | `False` | `True`  | `False`     | If **a** evaluates to `False`, and **b** evaluates to `True`, then **a and b** evaluates to `False`  |
 | `False` | `False` | `False`     | If **a** evaluates to `False`, and **b** evaluates to `False`, then **a and b** evaluates to `False` |
 
-<sub>**Figure 9**: Truth table for the `and` operator, where `a` and `b` are any given boolean expressions.</sub>
+<sub>**Figure 6**: Truth table for the `and` operator, where `a` and `b` are any given boolean expressions.</sub>
 
 Let's look at some non-programming examples:
 
-- "The year is 2023 and NYU is in New York" evaluates to `True`
+- "The year is 2026 and NYU is in New York" evaluates to `True`
 - "The year is 2018 and NYU is in New York" evaluates to `False`
-- "The year is 2023 and `not` NYU is in New York" evaluates to `False`
+- "The year is 2026 and `not` NYU is in New York" evaluates to `False`
 - "The year is 2018 and NYU is in the city of York" evaluates to `False`
 
 By the way, since `and` requires two boolean expressions to operate, it is sometimes called a _binary_ boolean operator. 
 
-#### _The `or` Operator_
+<a id="3-4"></a>
+
+### The `or` Operator
 
 Another situation one often encounters in programming is when an instructions gets executed if either of two conditions
 evaluates to true. For example, in order to attend the [**Met Gala**](https://en.wikipedia.org/wiki/Met_Gala), you 
@@ -324,13 +287,13 @@ probably guessed by now) we would instead use the `or` operator.
 | `False` | `True`  | `True`     | If **a** evaluates to `False` or **b** evaluates to `True`, then **a or b** evaluates to `True`       |
 | `False` | `False` | `False`    | If **a** evaluates to `False` or **b** evaluates to `False`, then **a or b** evaluates to `False`     |
 
-<sub>**Figure 10**: Truth table for the `or` operator, where `a` and `b` are any given boolean expressions.</sub>
+<sub>**Figure 7**: Truth table for the `or` operator, where `a` and `b` are any given boolean expressions.</sub>
 
 This one is a little more difficult to think about, so let's look at some examples:
 
-- "The year is 2023 or NYU is in New York" evaluates to `True`
+- "The year is 2026 or NYU is in New York" evaluates to `True`
 - "The year is 2018 or NYU is in New York" evaluates to `True`
-- "The year is 2023 or `not` NYU is in New York" evaluates to `True`
+- "The year is 2026 or `not` NYU is in New York" evaluates to `True`
 - "The year is 2018 or NYU is in the city of York" evaluates to `False`
 - "You didn't get a special invitation to the Met Gala, or you didn't donate $30,000.00 to the Met's Anna Wintour 
 Costume Center" evaluates to `False`
@@ -390,7 +353,9 @@ True
 As you can see, as long as we follow these rules, we can slowly and carefully evaluate any expression, regardless of
 how long and complex it may be.
 
-### Part 4: _Program Output_
+<a id="4"></a>
+
+## Program Output
 
 Recall our program for calculating the volume of a cone:
 
@@ -439,12 +404,14 @@ absolute fact into your brain:
 
 > ***`print()` statements are your best friends. Use them.***
 
-### Part 5: _Program Input_
+<a id="5"></a>
 
-In Monday's class we learned that we can display the values of variables and expressions by means of the `print()`
+## Program Input
+
+Last class we learned that we can display the values of variables and expressions by means of the `print()`
 function:
 
-```python3
+```python
 lecture_id = 8
 print(lecture_id)
 
@@ -482,13 +449,13 @@ If we run this program, you will see that our shell window will pause, and wait 
 
 ![waiting_for_input](assets/waiting_for_input.png)
 
-_**Figure 7**: Our shell prompting us for input._
+<sub>**Figure 8**: Our shell prompting us for input.</sub>
 
 If we type something in—say, the course number for this class—and press "enter", you will see the following behavior:
 
 ![displaying_input](assets/displaying_input.png)
 
-_**Figure 8**: Our shell displaying our input._
+<sub>**Figure 9**: Our shell displaying our input.</sub>
 
 This works just fine. But typically speaking, we want our programs to be as intuitive and user-friendly as possible—to
 have good [**UI**](https://en.wikipedia.org/wiki/User_interface) and 
@@ -505,13 +472,13 @@ If we ran this, our shell would prompt us the following way:
 
 ![priompting_input](assets/prompting_input.png)
 
-_**Figure 9**: Our shell prompting us for this class's course number._
+<sub>**Figure 10**: Our shell prompting us for this class's course number.</sub>
 
 Once we enter our desired input and press the "enter" key, we will see the following:
 
 ![displaying_prompted_input](assets/displaying_prompted_input.png)
 
-_**Figure 10**: Our shell displaying this class's course number._
+<sub>**Figure 11**: Our shell displaying this class's course number.</sub>
 
 These two programs, effectively, do the same exact thing (i.e. accepting user input and displaying), but in the first
 one, we are barely even aware that we're being prompted for input—and we have no idea what input is supposed to even
@@ -524,11 +491,11 @@ see that the variable `course_number` is a `str` object:
 
 ![input_type](assets/input_type.png)
 
-_**Figure 11**: PyCharm's console displaying the type of `course_number` on the right._
+<sub>**Figure 12**: PyCharm's console displaying the type of `course_number` on the right.</sub>
 
 There is essentially no way of changing this behavior. Python, by design, received all input in string form. It's up to
 us, the programmers, to parse that input into a usable form.
 
 ---
 
-<sub>**Previous: [Programming Fundamentals 1](/lectures/fundamentals_1)** || **Next: [Number Systems and Python Modules](/lectures/number_systems)**</sub>
+<sub>**Previous: [Programming Fundamentals 1](/lectures/02-programming-fundamentals-1)** || **Next: [Number Systems and Python Modules](/lectures/number_systems)**</sub>

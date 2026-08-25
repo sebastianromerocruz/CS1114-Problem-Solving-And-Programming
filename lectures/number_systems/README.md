@@ -493,4 +493,4 @@ Here's the `random` module's [**documentation**](https://docs.python.org/3/libra
 
 ---
 
-<sub>**Previous: [Programming Fundamentals 2](/lectures/fundamentals_2)** || **Next: [Selection Statements: `if`, `elif`, `else`, and Common Mistakes](/lectures/selection_statements)**</sub>
+<sub>**Previous: [Programming Fundamentals 2](/lectures/03-programming-fundamentals-2)** || **Next: [Selection Statements: `if`, `elif`, `else`, and Common Mistakes](/lectures/selection_statements)**</sub>
