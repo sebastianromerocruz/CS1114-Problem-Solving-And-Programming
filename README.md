@@ -18,28 +18,34 @@ resource, send me an [**email**](mailto:src402@nyu.edu) about it with the subjec
 
 <!-- Released on a rolling basis as the semester progresses. To release a lecture,
 un-ignore its folder in .gitignore, `git add` it, and un-comment its entry here.
+
+Renumbered against the Fall 2026 syllabus (16-week schedule). Gaps below are reserved
+for lectures not yet written: 04 (needs number-systems content stripped, math/random kept),
+08 (nested loops — no existing content), 14 (Exam 1 review), 17-19 (tuples/2D lists —
+partial content lives in 16-memory-maps, needs expansion), 22 (Exam 2 review),
+27 (recursion — no existing content).
+
 2. [**Programming Fundamentals 1**](lectures/02-programming-fundamentals-1/)
 3. [**Programming Fundamentals 2**](lectures/03-programming-fundamentals-2/)
-4. [**Number Systems and Python Modules**](lectures/04-number-systems-and-python-modules/)
 5. [**Selection Statements: `if`, and `else`**](lectures/05-selection-statements/)
 6. [**Selection Statements: `elif` and Common Mistakes**](lectures/05-selection-statements#part-3-elif-statements)
-7. [**Control-Flow Structures: The `while`-Loop**](lectures/07-while-loop/)
-8. [**Control-Flow Structures: The `for`-Loop**](lectures/08-for-loop/)
+6. [**Control-Flow Structures: The `while`-Loop**](lectures/06-while-loop/)
+7. [**Control-Flow Structures: The `for`-Loop**](lectures/07-for-loop/)
 9. [**Loops Review and Strings as Sequences**](lectures/09-loops-review-and-strings/)
 10. [**Manipulating Strings**](lectures/10-manipulating-strings/)
 11. [**Functions: Parameters**](lectures/11-functions-parameters/)
 12. [**Functions: `return`**](lectures/12-functions-return/)
 13. [**File Input**](lectures/13-file-input/)
-14. [**File Output and Exceptions**](lectures/14-file-output-and-exceptions/)
-15. [**Python Lists**](lectures/15-lists/)
+15. [**File Output and Exceptions**](lectures/14-file-output-and-exceptions/)
+16. [**Python Lists**](lectures/15-lists/)
 16. [**Memory Maps**](lectures/16-memory-maps/)
-17. [**Python Dictionaries**](lectures/17-dictionaries/)
-18. [**Dictionary Methods and Iteration**](lectures/18-dictionary-methods-and-iteration/)
-19. [**Comprehensions**](lectures/19-comprehensions/)
-20. [**Intro to Object-Oriented Programming**](lectures/20-oop-introduction/)
-21. [**Intro to Object-Oriented Programming: Methods and the `__str__()` Method**](lectures/21-oop-methods-and-str/)
-22. [**Intro to Object-Oriented Programming: Dunder / "Magic" Methods**](lectures/22-oop-dunder-methods/)
-23. [**Final Exam Review**](lectures/23-final-exam-review/) -->
+20. [**Python Dictionaries**](lectures/20-dictionaries/)
+21. [**Dictionary Methods and Iteration**](lectures/21-dictionary-methods-and-iteration/)
+23. [**Comprehensions**](lectures/23-comprehensions/)
+24. [**Intro to Object-Oriented Programming**](lectures/24-oop-introduction/)
+25. [**Intro to Object-Oriented Programming: Methods and the `__str__()` Method**](lectures/25-oop-methods-and-str/)
+26. [**Intro to Object-Oriented Programming: Dunder / "Magic" Methods**](lectures/26-oop-dunder-methods/)
+28. [**Final Exam Review**](lectures/28-final-exam-review/) -->
 
 ### How To Use This Repository
 
@@ -54,13 +60,13 @@ The general structure of the repo is as follows:
 │
 └── lectures
     │
-    ├── lecture_topic_a
+    ├── 01-lecture_topic_a
     │   │
     │   ├── README.md    (lecture notes)
     │   │
     │   └── example.py   (any python files related to lecture)
     │
-    └── lecture_topic_b
+    └── 02-lecture_topic_b
         │
         ├── README.md
         │
