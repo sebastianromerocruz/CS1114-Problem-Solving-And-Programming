@@ -21,9 +21,9 @@ un-ignore its folder in .gitignore, `git add` it, and un-comment its entry here.
 
 Renumbered against the Fall 2026 syllabus (16-week schedule). Gaps below are reserved
 for lectures not yet written: 04 (needs number-systems content stripped, math/random kept),
-08 (nested loops — no existing content), 14 (Exam 1 review), 17-19 (tuples/2D lists —
+08 (nested loops—no existing content), 14 (Exam 1 review), 17-19 (tuples/2D lists—
 partial content lives in 16-memory-maps, needs expansion), 22 (Exam 2 review),
-27 (recursion — no existing content).
+27 (recursion—no existing content).
 
 2. [**Programming Fundamentals 1**](lectures/02-programming-fundamentals-1/)
 3. [**Programming Fundamentals 2**](lectures/03-programming-fundamentals-2/)
