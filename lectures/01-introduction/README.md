@@ -24,8 +24,8 @@ Hey, my name is Sebastián, and my last names are Romero Cruz. I teach about pro
 
 I have been teaching at Tandon since January 2020. I also happen to have gotten my bachelor of science degree here, in
 chemical and biomolecular engineering (2017), and my master's in computer science (2020). So, you know, I've been here
-a while. These days I also teach Computer Architecture & Organization (CS-UY 2214) and Intro to Game Programming
-(CS-UY 3113), if any of that sounds interesting to you down the line.
+a while. These days I also teach Data Structures & Algorithms (CS-UY 1134), Computer Architecture & Organization (CS-UY 2214), and Intro to Game Programming
+(CS-UY 3113), if any of that sounds interesting to you down the line. (If you're CS, you actually don't have a choice)
 
 Here's how you can reach me if you have any questions:
 
@@ -68,7 +68,7 @@ at it. My recommendations, thus, are as follows:
 
 ## The Syllabus, In Brief
 
-The full syllabus lives on [**Brightspace**](https://brightspace.nyu.edu/d2l/le/lessons/218479/units/7496633) and
+The full syllabus lives on [**Brightspace**](https://brightspace.nyu.edu/d2l/le/lessons/627019/units/13739496) and
 is the source of truth if anything here ever looks out of date, but here's the shape of the course so you're not
 walking in blind:
 
