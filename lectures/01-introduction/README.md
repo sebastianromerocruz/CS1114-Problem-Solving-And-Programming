@@ -1,4 +1,4 @@
-<h2 align=center>Lecture 01</h2>
+<h2 align=center>Lecture I</h2>
 
 <h1 align=center>Introduction</h1>
 
