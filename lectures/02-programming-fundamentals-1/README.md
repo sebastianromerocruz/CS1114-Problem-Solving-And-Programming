@@ -396,17 +396,35 @@ user_input = input()
 print(user_input)
 ```
 
-If we run this program, you will see that our shell window will pause, and wait for an action from us:
+If we run this program, you will see that our window will pause, and wait for an action from us:
 
-![waiting_for_input](assets/waiting_for_input.png)
+<a id="fg-13"></a> 
 
-<sub>**Figure 13**: Our shell prompting us for input.</sub>
+<p align=center>
+    <img src="assets/input-1.png">
+    </img>
+</p>
+
+<p align=center>
+    <sub>
+        <strong>Figure 13</strong>: The app prompting us for input.
+    </sub>
+</p>
 
 If we type something in—say, the course number for this class—and press "enter", you will see the following behavior:
 
-![displaying_input](assets/displaying_input.png)
+<a id="fg-14"></a> 
 
-<sub>**Figure 14**: Our shell displaying our input.</sub>
+<p align=center>
+    <img src="assets/input-2.png">
+    </img>
+</p>
+
+<p align=center>
+    <sub>
+        <strong>Figure 14</strong>: The app displaying our input.
+    </sub>
+</p>
 
 This works just fine. But typically speaking, we want our programs to be as intuitive and user-friendly as possible—to
 have good [**UI**](https://en.wikipedia.org/wiki/User_interface) and 
@@ -419,17 +437,35 @@ course_number = input("What is this class's course number? ")
 print(course_number)
 ```
 
-If we ran this, our shell would prompt us the following way:
+If we ran this, our program would prompt us the following way:
 
-![priompting_input](assets/prompting_input.png)
+<a id="fg-15"></a> 
 
-<sub>**Figure 15**: Our shell prompting us for this class's course number.</sub>
+<p align=center>
+    <img src="assets/input-3.png">
+    </img>
+</p>
+
+<p align=center>
+    <sub>
+        <strong>Figure 15</strong>: Our program prompting us for this class's course number.
+    </sub>
+</p>
 
 Once we enter our desired input and press the "enter" key, we will see the following:
 
-![displaying_prompted_input](assets/displaying_prompted_input.png)
+<a id="fg-16"></a> 
 
-<sub>**Figure 16**: Our shell displaying this class's course number.</sub>
+<p align=center>
+    <img src="assets/input-4.png">
+    </img>
+</p>
+
+<p align=center>
+    <sub>
+        <strong>Figure 16</strong>: Our program displaying this class's course number.
+    </sub>
+</p>
 
 These two programs, effectively, do the same exact thing (i.e. accepting user input and displaying), but in the first
 one, we are barely even aware that we're being prompted for input—and we have no idea what input is supposed to even
@@ -437,12 +473,21 @@ _be_. The second example, by contrast, at the very least gives us a clear idea o
 It won't stop any user from entering the wrong thing, but at least we can say that we gave them some hints.
 
 Now, interestingly, **Python saves all input in `str` form**, meaning that our input of "1114" is not saved as an 
-integer, as one might expect, but as a string. Sure enough, if we run the same code on our console, we can very clearly
+integer, as one might expect, but as a string. Sure enough, the following code, we can very clearly
 see that the variable `course_number` is a `str` object:
 
-![input_type](assets/input_type.png)
+<a id="fg-17"></a> 
 
-<sub>**Figure 17**: PyCharm's console displaying the type of `course_number` on the right.</sub>
+<p align=center>
+    <img src="assets/input-5.png">
+    </img>
+</p>
+
+<p align=center>
+    <sub>
+        <strong>Figure 17</strong>: The <code>type</code> function, as the name implies, tells the type of an object.
+    </sub>
+</p>
 
 There is essentially no way of changing this behavior. Python, by design, received all input in string form. It's up to
 us, the programmers, to parse that input into a usable form.
