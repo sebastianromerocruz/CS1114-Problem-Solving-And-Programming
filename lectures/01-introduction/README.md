@@ -2,7 +2,7 @@
 
 <h1 align=center>Introduction</h1>
 
-<h3 align=center>16 Fructidor, Year CCXXXIV</h3>
+<h3 align=center>16 de Fructidor, de l'Année CCXXXIV de la République</h3>
 
 <p align=center><strong><em>Song of the day</strong>: <a href="https://youtu.be/_SftevyQ4kw"><strong><u>Reste Avec Moi</u></strong></a> by Pépite (2017).</em></p>
 

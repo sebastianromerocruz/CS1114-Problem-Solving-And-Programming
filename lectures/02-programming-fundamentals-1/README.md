@@ -2,7 +2,7 @@
 
 <h1 align=center>Programming Fundamentals: Values, Types, and Variables</h1>
 
-<h3 align=center>21 Fructidor, Year CCXXXIV</h3>
+<h3 align=center>23 de Fructidor, de l'Année CCXXXIV de la République</h3>
 
 <p align=center><strong><em>Song of the day</strong>: <a href="https://youtu.be/jc5VCu0ECSI"><strong><u>Chloroform</u></strong></a> by Phoenix (2013)</em></p>
 
