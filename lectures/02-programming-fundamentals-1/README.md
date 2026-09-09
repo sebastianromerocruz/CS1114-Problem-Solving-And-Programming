@@ -14,6 +14,7 @@
 2. [**Parts of a Program**](#2)
 3. [**Values and Types**](#3)
 4. [**Variables**](#4)
+5. [**Program Input**](#5)
 
 ---
 
@@ -351,6 +352,100 @@ points taken off:
 course, means that variables are case-sensitive (i.e. `hello_world` and `HELLO_WORLD` are two different, completely
 unrelated variable names).
 4. They cannot be a Python keyword (`if`, `def`, `while`, etc.).
+
+---
+
+<a id="5"></a>
+
+## Program Input
+
+Earlier, we saw that we can display the values of variables and expressions by means of the `print()`
+function:
+
+```python
+lecture_id = 8
+print(lecture_id)
+
+message = "オマエはもう死んでいる。"
+print(message)
+
+obvious_fact = 5 != "5"
+print(obvious_fact)
+```
+Output:
+```text
+8
+オマエはもう死んでいる。
+True
+```
+
+That's a great thing to be able to do, and we'll be making ample use of this faculty. However, what kind of programs
+would we realistically be writing if we weren't able to interact with our user? After all, almost every program that
+is useful to us in some way gets our input; your phone registers your touch as an input, your laptop registers every
+key stroke as an input, a camera registers light as input. Input, input, input.
+
+It stands to reason, then, that this should be the next thing we need to focus on.
+
+The most basic form of user interaction in Python is done through a very succinctly named built-in function—`input()`.
+
+At its most basic level, it functions as follows:
+
+```python
+user_input = input()
+
+print(user_input)
+```
+
+If we run this program, you will see that our shell window will pause, and wait for an action from us:
+
+![waiting_for_input](assets/waiting_for_input.png)
+
+<sub>**Figure 13**: Our shell prompting us for input.</sub>
+
+If we type something in—say, the course number for this class—and press "enter", you will see the following behavior:
+
+![displaying_input](assets/displaying_input.png)
+
+<sub>**Figure 14**: Our shell displaying our input.</sub>
+
+This works just fine. But typically speaking, we want our programs to be as intuitive and user-friendly as possible—to
+have good [**UI**](https://en.wikipedia.org/wiki/User_interface) and 
+[**UX**](https://en.wikipedia.org/wiki/User_experience), in other words. The `input()` function allows us to give the 
+user a "prompt" message by putting it, ***in string form***, inside the `input()` function's parentheses:
+
+```python
+course_number = input("What is this class's course number? ")
+
+print(course_number)
+```
+
+If we ran this, our shell would prompt us the following way:
+
+![priompting_input](assets/prompting_input.png)
+
+<sub>**Figure 15**: Our shell prompting us for this class's course number.</sub>
+
+Once we enter our desired input and press the "enter" key, we will see the following:
+
+![displaying_prompted_input](assets/displaying_prompted_input.png)
+
+<sub>**Figure 16**: Our shell displaying this class's course number.</sub>
+
+These two programs, effectively, do the same exact thing (i.e. accepting user input and displaying), but in the first
+one, we are barely even aware that we're being prompted for input—and we have no idea what input is supposed to even
+_be_. The second example, by contrast, at the very least gives us a clear idea of the type and nature of our input.
+It won't stop any user from entering the wrong thing, but at least we can say that we gave them some hints.
+
+Now, interestingly, **Python saves all input in `str` form**, meaning that our input of "1114" is not saved as an 
+integer, as one might expect, but as a string. Sure enough, if we run the same code on our console, we can very clearly
+see that the variable `course_number` is a `str` object:
+
+![input_type](assets/input_type.png)
+
+<sub>**Figure 17**: PyCharm's console displaying the type of `course_number` on the right.</sub>
+
+There is essentially no way of changing this behavior. Python, by design, received all input in string form. It's up to
+us, the programmers, to parse that input into a usable form.
 
 ---
 
