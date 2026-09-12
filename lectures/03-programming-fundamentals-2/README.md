@@ -48,7 +48,7 @@ Note again that the `=` does **not** represent equality, but rather is the **ass
 
 This is all well and good, but the formula for the volume of a cone is as follows:
 
-![volume_of_cone.png](assets/volume_of_cone.png)
+![volume_of_cone.svg](assets/volume_of_cone.svg)
 
 <sub>**Figure 1**: Formula for the volume of a cone, `V`, of base radius `r` and height `h`.</sub>
 

@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 340" width="400" height="340">
+  <defs>
+    <style>
+      .ink   { fill: #171715; }
+      .accent{ fill: #C1272D; }
+      .line  { stroke: #171715; stroke-width: 2; fill: none; stroke-linecap: round; }
+      .dashed{ stroke: #171715; stroke-width: 2; fill: none; stroke-linecap: round; stroke-dasharray: 5 5; }
+      .measure{ stroke: #C1272D; stroke-width: 2; fill: none; stroke-linecap: round; stroke-dasharray: 4 4; }
+      .tick  { stroke: #C1272D; stroke-width: 2; stroke-linecap: round; }
+      text   { font-family: -apple-system, "Helvetica Neue", Arial, sans-serif; }
+      .var   { font-style: italic; }
+      .num   { font-style: normal; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="400" height="340" fill="#F7F7F4" />
+
+  <!-- cone -->
+  <!-- back (hidden) half of the base ellipse -->
+  <path class="dashed" d="M 110 220 A 90 24 0 0 1 290 220" />
+  <!-- slant sides -->
+  <path class="line" d="M 200 60 L 110 220" />
+  <path class="line" d="M 200 60 L 290 220" />
+  <!-- front (visible) half of the base ellipse -->
+  <path class="line" d="M 110 220 A 90 24 0 0 0 290 220" />
+
+  <!-- height measurement: apex to base centre -->
+  <path class="measure" d="M 200 60 L 200 220" />
+  <line class="tick" x1="190" y1="60" x2="210" y2="60" />
+  <line class="tick" x1="190" y1="220" x2="210" y2="220" />
+  <text class="accent var" x="212" y="145" font-size="22">h</text>
+
+  <!-- radius measurement: base centre to base edge -->
+  <path class="measure" d="M 200 220 L 290 220" />
+  <line class="tick" x1="200" y1="210" x2="200" y2="230" />
+  <line class="tick" x1="290" y1="210" x2="290" y2="230" />
+  <text class="accent var" x="235" y="212" font-size="22">r</text>
+
+  <!-- apex and centre reference dots -->
+  <circle cx="200" cy="220" r="3" class="ink" />
+
+  <!-- formula: V = pi r^2 (h / 3) -->
+  <g class="ink" font-size="30">
+    <text class="var" x="90"  y="300">V</text>
+    <text class="num" x="115" y="300">=</text>
+    <text class="var" x="145" y="300">&#960;</text>
+    <text class="var" x="172" y="300">r</text>
+    <text class="num" x="188" y="286" font-size="18">2</text>
+    <text class="num" x="205" y="300" font-size="40">(</text>
+    <text class="var" x="240" y="291" font-size="24" text-anchor="middle">h</text>
+    <line x1="223" y1="298" x2="257" y2="298" stroke="#171715" stroke-width="2" />
+    <text class="num" x="240" y="317" font-size="24" text-anchor="middle">3</text>
+    <text class="num" x="262" y="300" font-size="40">)</text>
+  </g>
+</svg>
