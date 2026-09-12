@@ -48,9 +48,18 @@ Note again that the `=` does **not** represent equality, but rather is the **ass
 
 This is all well and good, but the formula for the volume of a cone is as follows:
 
-![volume_of_cone.svg](assets/volume_of_cone.svg)
+<a id="fg-1"></a>
 
-<sub>**Figure 1**: Formula for the volume of a cone, `V`, of base radius `r` and height `h`.</sub>
+<p align=center>
+    <img src="assets/volume_of_cone.svg">
+    </img>
+</p>
+
+<p align=center>
+    <sub>
+        <strong>Figure 1</strong>: Formula for the volume of a cone, <code>V</code>, of base radius <code>r</code> and height <code>h</code>.
+    </sub>
+</p>
 
 Clearly, there's more to calculating the volume than just defining three variables. We need to actually operate on them.
 For this, in programming, we construct what is called an ***expression***.
@@ -130,7 +139,11 @@ Here's a table of the arithmetic operators available to us in Python:
 | `//`         | Integer Division | `93.4323 // 5` (evaluates to float value `18.0`)                                                         | Evaluates to whole number resulting from removing decimal component of floating-point division result; while integer division will always result in a whole number, the type will still be a `float` |
 | `%`          | Modulus          | `63 % 10` evaluates to integer value `3`; 63 divides 6 even times into 10, leaving a remainder of 3      | Evaluates to the remainder from dividing two integers; returns an `int` value                                                                                                                        |
 
-<sub>**Figure 2**: Python's arithmetic operators.</sub>
+<p align=center>
+    <sub>
+        <strong>Figure 2</strong>: Python's arithmetic operators.
+    </sub>
+</p>
 
 The precedence of these operators are basically the same as the mathematical acronym P.E.M.D.A.S., except we could 
 expand it to include negation (negative numbers) : P.E.N.M.D.A.S. (very catchy):
@@ -184,7 +197,11 @@ called ***comparison, or relational, operators***:
 | `<`          | _"Is A less in value than B?"_                | `10 < 150` (evaluates to bool value `True`)           |
 | `<=`         | _"Is A less than or equal in value to B?"_    | `93.4323 <= 93.4324` (evaluates to bool value `True`) |
 
-<sub>**Figure 3**: Comparison (relational) operators in Python, where both A and B are comparable values.</sub>
+<p align=center>
+    <sub>
+        <strong>Figure 3</strong>: Comparison (relational) operators in Python, where both A and B are comparable values.
+    </sub>
+</p>
 
 > **Comparable value**: Values that can be compared using a boolean operator. (E.g. `4` and `7.6` are comparable values,
 > but `"lol I'm so tired."` and `True` aren't.)
@@ -200,7 +217,11 @@ We can represent the effects of the `not` operator by using a _truth table_:
 | `True`    | `False`      | If **`a`** evaluates to `True`, **`not a`** evaluates to `False`  |
 | `False`   | `True`       | If **`a`** evaluates to `False`, **`not a`** evaluates to `True`  |
 
-<sub>**Figure 4**: Truth table for the `not` operator, where `a` is any given boolean expression.</sub>
+<p align=center>
+    <sub>
+        <strong>Figure 4</strong>: Truth table for the <code>not</code> operator, where <code>a</code> is any given boolean expression.
+    </sub>
+</p>
 
 To give linguistically relatable examples:
 
@@ -230,7 +251,11 @@ here would be the word "and". Conveniently, that corresponds exactly to Python's
 | `False` | `True`  | `False`     | If **a** evaluates to `False`, and **b** evaluates to `True`, then **a and b** evaluates to `False`  |
 | `False` | `False` | `False`     | If **a** evaluates to `False`, and **b** evaluates to `False`, then **a and b** evaluates to `False` |
 
-<sub>**Figure 5**: Truth table for the `and` operator, where `a` and `b` are any given boolean expressions.</sub>
+<p align=center>
+    <sub>
+        <strong>Figure 5</strong>: Truth table for the <code>and</code> operator, where <code>a</code> and <code>b</code> are any given boolean expressions.
+    </sub>
+</p>
 
 Let's look at some non-programming examples:
 
@@ -258,7 +283,11 @@ probably guessed by now) we would instead use the `or` operator.
 | `False` | `True`  | `True`     | If **a** evaluates to `False` or **b** evaluates to `True`, then **a or b** evaluates to `True`       |
 | `False` | `False` | `False`    | If **a** evaluates to `False` or **b** evaluates to `False`, then **a or b** evaluates to `False`     |
 
-<sub>**Figure 6**: Truth table for the `or` operator, where `a` and `b` are any given boolean expressions.</sub>
+<p align=center>
+    <sub>
+        <strong>Figure 6</strong>: Truth table for the <code>or</code> operator, where <code>a</code> and <code>b</code> are any given boolean expressions.
+    </sub>
+</p>
 
 This one is a little more difficult to think about, so let's look at some examples:
 
