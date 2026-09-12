@@ -432,4 +432,4 @@ absolute fact into your brain:
 
 ---
 
-<sub>**Previous: [Programming Fundamentals 1](/lectures/02-programming-fundamentals-1)** || **Next: [Number Systems and Python Modules](/lectures/04-number-systems-and-python-modules)**</sub>
+<sub>**Previous: [Programming Fundamentals 1](/lectures/02-programming-fundamentals-1)** || **Next: [Python Modules: `math` and `random`](/lectures/04-math-and-random-modules)**</sub>
