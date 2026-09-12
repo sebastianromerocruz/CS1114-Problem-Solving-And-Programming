@@ -283,5 +283,8 @@ cython_debug/
 # then `git add lectures/NN-topic/` and un-comment its entry in the root README.
 lectures/*
 !lectures/01-introduction/
+!lectures/02-programming-fundamentals-1
+!lectures/03-programming-fundamentals-2
 
 # End of https://www.toptal.com/developers/gitignore/api/python,pycharm+all,macos
+admin/

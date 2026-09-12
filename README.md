@@ -16,6 +16,7 @@ resource, send me an [**email**](mailto:src402@nyu.edu) about it with the subjec
 
 1. [**Introduction**](lectures/01-introduction/)
 2. [**Programming Fundamentals 1**](lectures/02-programming-fundamentals-1/)
+3. [**Programming Fundamentals 2**](lectures/03-programming-fundamentals-2/)
 
 <!-- Released on a rolling basis as the semester progresses. To release a lecture,
 un-ignore its folder in .gitignore, `git add` it, and un-comment its entry here.
@@ -26,7 +27,6 @@ for lectures not yet written: 04 (needs number-systems content stripped, math/ra
 partial content lives in 16-memory-maps, needs expansion), 22 (Exam 2 review),
 27 (recursion—no existing content).
 
-3. [**Programming Fundamentals 2**](lectures/03-programming-fundamentals-2/)
 5. [**Selection Statements: `if`, and `else`**](lectures/05-selection-statements/)
 6. [**Selection Statements: `elif` and Common Mistakes**](lectures/05-selection-statements#part-3-elif-statements)
 6. [**Control-Flow Structures: The `while`-Loop**](lectures/06-while-loop/)
