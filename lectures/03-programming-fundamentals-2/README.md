@@ -11,13 +11,12 @@
 ## Sections
 
 1. [**Expressions**](#1)
-2. [**Re-Assigning Values**](#2)
-3. [**Boolean Expressions**](#3)
-    1. [**Comparison Operators**](#3-1)
-    2. [**The `not` Operator**](#3-2)
-    3. [**The `and` Operator**](#3-3)
-    4. [**The `or` Operator**](#3-4)
-4. [**Program Output**](#4)
+2. [**Boolean Expressions**](#2)
+    1. [**Comparison Operators**](#2-1)
+    2. [**The `not` Operator**](#2-2)
+    3. [**The `and` Operator**](#2-3)
+    4. [**The `or` Operator**](#2-4)
+3. [**Program Output**](#3)
 
 ---
 
@@ -136,10 +135,11 @@ Here's a table of the arithmetic operators available to us in Python:
 The precedence of these operators are basically the same as the mathematical acronym P.E.M.D.A.S., except we could 
 expand it to include negation (negative numbers) : P.E.N.M.D.A.S. (very catchy):
 
-1. **P**: Parentheses `()`
-2. **E**: Exponentiation `**`
-3. **N**: Negation `-`
-4. **M**: Multiplication `*`; **D**: Division `/`; **I**: Integer division `//`; **M**: Modulus `%`; **A**: Addition `+`; **S**: Substraction `-`
+1. Parentheses `()`
+2. Exponentiation `**`
+3. Negation `-`
+4. Multiplication `*`, Division `/`, Floor Division `//`, Modulo `%`
+5. Addition `+`, Subtraction `-`
 
 For example:
 
@@ -159,34 +159,6 @@ For example:
 
 <a id="2"></a>
 
-## Re-Assigning Values
-
-You've probably guessed by now that the reason why variables are given that name is because their value can vary. That
-is, a variable is not restricted to holding a single value throughout the course of a program.
-
-Technically speaking, a variable is simply a reference to an object (an `int`, `bool`, etc.) in memory, and since memory
-can be updated, the variable will always reference that same location in memory, regardless of what its value is.
-
-For example, if we defined the following variable, and then changed its value:
-
-```python
-num_orders = 7
-num_orders = num_orders + 1  # evaluates to the arithmetic expression 7 + 1, or integer value 8
-```
-
-Here, the variable `num_orders` is referencing an `int` object with the value of `7` stored in location A in memory.
-When we reassign the value of `num_orders + 1` to `num_orders`, its actually the value inside location A in memory that
-is changing. `num_orders` remains simply a reference to location A.
-
-In terms of namespace and object space, this is what this process looks like:
-
-![reassignment](assets/reassignment.png)
-
-<sub>**Figure 3**: Variable value reassignment. Note that while the object in the object space changes from `7` to `8`, it 
-does not change location in memory.</sub>
-
-<a id="3"></a>
-
 ## Boolean Expressions
 
 We're pretty well acquainted with how boolean expressions function at this point. They either evaluate to `True` or they
@@ -196,7 +168,7 @@ newfound knowledge of variables, we can expand our current definition to somethi
 > **Boolean expression**: Code that evaluates to a combination of operators and operands that, when evaluated, results 
 > in `True` or `False`.
 
-<a id="3-1"></a>
+<a id="2-1"></a>
 
 ### Comparison Operators
 
@@ -212,12 +184,12 @@ called ***comparison, or relational, operators***:
 | `<`          | _"Is A less in value than B?"_                | `10 < 150` (evaluates to bool value `True`)           |
 | `<=`         | _"Is A less than or equal in value to B?"_    | `93.4323 <= 93.4324` (evaluates to bool value `True`) |
 
-<sub>**Figure 4**: Comparison (relational) operators in Python, where both A and B are comparable values.</sub>
+<sub>**Figure 3**: Comparison (relational) operators in Python, where both A and B are comparable values.</sub>
 
 > **Comparable value**: Values that can be compared using a boolean operator. (E.g. `4` and `7.6` are comparable values,
 > but `"lol I'm so tired."` and `True` aren't.)
 
-<a id="3-2"></a>
+<a id="2-2"></a>
 
 ### The `not` Operator
 
@@ -228,7 +200,7 @@ We can represent the effects of the `not` operator by using a _truth table_:
 | `True`    | `False`      | If **`a`** evaluates to `True`, **`not a`** evaluates to `False`  |
 | `False`   | `True`       | If **`a`** evaluates to `False`, **`not a`** evaluates to `True`  |
 
-<sub>**Figure 5**: Truth table for the `not` operator, where `a` is any given boolean expression.</sub>
+<sub>**Figure 4**: Truth table for the `not` operator, where `a` is any given boolean expression.</sub>
 
 To give linguistically relatable examples:
 
@@ -238,7 +210,7 @@ To give linguistically relatable examples:
 `not` is a pretty nice operator because it only involves the use of only one boolean expression (the technical term for
 this is a unary boolean operator).
 
-<a id="3-3"></a>
+<a id="2-3"></a>
 
 ### The `and` Operator
 
@@ -258,7 +230,7 @@ here would be the word "and". Conveniently, that corresponds exactly to Python's
 | `False` | `True`  | `False`     | If **a** evaluates to `False`, and **b** evaluates to `True`, then **a and b** evaluates to `False`  |
 | `False` | `False` | `False`     | If **a** evaluates to `False`, and **b** evaluates to `False`, then **a and b** evaluates to `False` |
 
-<sub>**Figure 6**: Truth table for the `and` operator, where `a` and `b` are any given boolean expressions.</sub>
+<sub>**Figure 5**: Truth table for the `and` operator, where `a` and `b` are any given boolean expressions.</sub>
 
 Let's look at some non-programming examples:
 
@@ -269,7 +241,7 @@ Let's look at some non-programming examples:
 
 By the way, since `and` requires two boolean expressions to operate, it is sometimes called a _binary_ boolean operator. 
 
-<a id="3-4"></a>
+<a id="2-4"></a>
 
 ### The `or` Operator
 
@@ -286,7 +258,7 @@ probably guessed by now) we would instead use the `or` operator.
 | `False` | `True`  | `True`     | If **a** evaluates to `False` or **b** evaluates to `True`, then **a or b** evaluates to `True`       |
 | `False` | `False` | `False`    | If **a** evaluates to `False` or **b** evaluates to `False`, then **a or b** evaluates to `False`     |
 
-<sub>**Figure 7**: Truth table for the `or` operator, where `a` and `b` are any given boolean expressions.</sub>
+<sub>**Figure 6**: Truth table for the `or` operator, where `a` and `b` are any given boolean expressions.</sub>
 
 This one is a little more difficult to think about, so let's look at some examples:
 
@@ -352,7 +324,7 @@ True
 As you can see, as long as we follow these rules, we can slowly and carefully evaluate any expression, regardless of
 how long and complex it may be.
 
-<a id="4"></a>
+<a id="3"></a>
 
 ## Program Output
 
