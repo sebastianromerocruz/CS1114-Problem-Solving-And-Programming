@@ -348,7 +348,7 @@ points taken off:
 1. Make sure your variables have useful names (i.e. favor `acceleration_of_gravity = 9.81` over `aog = 9.81`).
 2. Do not, and I repeat, do ***not*** give your variables single-letter variable names. This will always be penalised
    (with a single exception that we won't get into for a while).
-3. Follow either snake-case (`sound_euphonium_2`), or camel-case (`soundEuphonium2`); this, of
+3. Follow either snake-case (`fire_emblem_3_houses`), or camel-case (`fireEmblem3Houses`); this, of
 course, means that variables are case-sensitive (i.e. `hello_world` and `HELLO_WORLD` are two different, completely
 unrelated variable names).
 4. They cannot be a Python keyword (`if`, `def`, `while`, etc.).
