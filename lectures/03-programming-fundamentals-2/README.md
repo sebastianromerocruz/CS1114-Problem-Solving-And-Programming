@@ -4,7 +4,7 @@
 
 <h3 align=center>28 de Fructidor, de l'Année CCXXXIV de la République</h3>
 
-<p align=center><strong><em>Song of the day</strong>: <a href="https://youtu.be/bF-fGRJxmig"><strong><u>Dark Entries</u></strong></a> by Bauhaus (1980)</em></p>
+<p align=center><strong><em>Song of the day</strong>: <a href="https://youtu.be/USNIttGEGVw"><strong><u>Novembre</u></strong></a> by Adèle Castillon (2023)</em></p>
 
 ---
 
@@ -145,7 +145,7 @@ Here's a table of the arithmetic operators available to us in Python:
     </sub>
 </p>
 
-The precedence of these operators are basically the same as the mathematical acronym P.E.M.D.A.S., except we could 
+The precedence of these operators is basically the same as the mathematical acronym P.E.M.D.A.S., except we could 
 expand it to include negation (negative numbers) : P.E.N.M.D.A.S. (very catchy):
 
 1. Parentheses `()`
@@ -175,8 +175,9 @@ For example:
 ## Boolean Expressions
 
 We're pretty well acquainted with how boolean expressions function at this point. They either evaluate to `True` or they
-evaluate to `False`. We also learned about some of their respective operators: `not`, `and`, and `or`. Given our 
-newfound knowledge of variables, we can expand our current definition to something a little more nuanced:
+evaluate to `False`. What we haven't covered yet are their respective operators—`not`, `and`, and `or`—which is exactly
+what the rest of this section is for. Given our newfound knowledge of variables, we can expand our current definition
+to something a little more nuanced:
 
 > **Boolean expression**: Code that evaluates to a combination of operators and operands that, when evaluated, results 
 > in `True` or `False`.
@@ -235,7 +236,7 @@ this is a unary boolean operator).
 
 ### The `and` Operator
 
-Oftentimes, though, we need multiple conditions to be true in order for something execute. For instance, a building 
+Oftentimes, though, we need multiple conditions to be true in order for something to execute. For instance, a building 
 screener might allow you in by applying the following logic:
 
 > ***If*** this student has a valid ID ***and*** is on the building's access list, they can go into any NYU 
@@ -270,7 +271,7 @@ By the way, since `and` requires two boolean expressions to operate, it is somet
 
 ### The `or` Operator
 
-Another situation one often encounters in programming is when an instructions gets executed if either of two conditions
+Another situation one often encounters in programming is when an instruction gets executed if either of two conditions
 evaluates to true. For example, in order to attend the [**Met Gala**](https://en.wikipedia.org/wiki/Met_Gala), you 
 either need to get a special invitation, or donate $30,000.00 to the museum, in order to secure your seat. This is 
 different from the `and` operator because `and` requires **both** conditions to be true. In this case (as you've 
@@ -308,9 +309,9 @@ These operators also have a place in our precedence hierarchy, which is now too 
 1. Parentheses `()`
 2. Exponentiation `**`
 3. Negation `-`
-4. Multiplication `*`, division `/`, integer division `//`, modulus `%`
+4. Multiplication `*`, Division `/`, Floor Division `//`, Modulo `%`
 5. Addition `+`
-6. Substraction `-`
+6. Subtraction `-`
 7. Comparison operators (`==`, `!=`, `<=`, `>=`, `>`, `<`)
 8. Not `not`
 9. And `and`
