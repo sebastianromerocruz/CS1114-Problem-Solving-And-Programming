@@ -136,7 +136,7 @@ Here's a table of the arithmetic operators available to us in Python:
 | `*`          | Multiplication   | `0.15 * 0.045` (evaluates to float value `0.00675`)                                                      |                                                                                                                                                                                                      |
 | `**`         | Exponentiation   | `25 ** 0.5` (equivalent to saying "25 to the power of 0.5; evaluates to float value `5.0`)               |                                                                                                                                                                                                      |
 | `/`          | Division         | `10 / 150` (evaluates to float value `0.06666666666666667` in my computer; exact approximation may vary) | Also known as floating-point division                                                                                                                                                                |
-| `//`         | Integer Division | `93.4323 // 5` (evaluates to float value `18.0`)                                                         | Evaluates to whole number resulting from removing decimal component of floating-point division result; while integer division will always result in a whole number, the type will still be a `float` |
+| `//`         | Floor Division | `93.4323 // 5` (evaluates to float value `18.0`)                                                         | Evaluates to whole number resulting from removing decimal component of floating-point division result; while floor division will always result in a whole number, the type will still be a `float` |
 | `%`          | Modulus          | `63 % 10` evaluates to integer value `3`; 63 divides 6 even times into 10, leaving a remainder of 3      | Evaluates to the remainder from dividing two integers; returns an `int` value                                                                                                                        |
 
 <p align=center>
@@ -310,12 +310,11 @@ These operators also have a place in our precedence hierarchy, which is now too 
 2. Exponentiation `**`
 3. Negation `-`
 4. Multiplication `*`, Division `/`, Floor Division `//`, Modulo `%`
-5. Addition `+`
-6. Subtraction `-`
-7. Comparison operators (`==`, `!=`, `<=`, `>=`, `>`, `<`)
-8. Not `not`
-9. And `and`
-10. Or `or`
+5. Addition `+`, Subtraction `-`
+6. Comparison operators (`==`, `!=`, `<=`, `>=`, `>`, `<`)
+7. Not `not`
+8. And `and`
+9. Or `or`
 
 For example:
 
