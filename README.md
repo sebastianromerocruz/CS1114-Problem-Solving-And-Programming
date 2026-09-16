@@ -17,15 +17,15 @@ resource, send me an [**email**](mailto:src402@nyu.edu) about it with the subjec
 1. [**Introduction**](lectures/01-introduction/)
 2. [**Programming Fundamentals 1**](lectures/02-programming-fundamentals-1/)
 3. [**Programming Fundamentals 2**](lectures/03-programming-fundamentals-2/)
+4. [**Python Modules: `math` and `random`**](lectures/04-math-and-random-modules/)
 
 <!-- Released on a rolling basis as the semester progresses. To release a lecture,
 un-ignore its folder in .gitignore, `git add` it, and un-comment its entry here.
 
 Renumbered against the Fall 2026 syllabus (16-week schedule). Gaps below are reserved
-for lectures not yet written: 04 (number systems dropped from the syllabus; math/random
-modules only), 08 (nested loops—no existing content), 14 (Exam 1 review), 17-19 (tuples/2D lists—
-partial content lives in 16-memory-maps, needs expansion), 22 (Exam 2 review),
-27 (recursion—no existing content).
+for lectures not yet written: 08 (nested loops—no existing content), 14 (Exam 1 review),
+17-19 (tuples/2D lists—partial content lives in 16-memory-maps, needs expansion),
+22 (Exam 2 review), 27 (recursion—no existing content).
 
 5. [**Selection Statements: `if`, and `else`**](lectures/05-selection-statements/)
 6. [**Selection Statements: `elif` and Common Mistakes**](lectures/05-selection-statements#part-3-elif-statements)

@@ -285,6 +285,8 @@ lectures/*
 !lectures/01-introduction/
 !lectures/02-programming-fundamentals-1
 !lectures/03-programming-fundamentals-2
+!lectures/04-math-and-random-modules
 
 # End of https://www.toptal.com/developers/gitignore/api/python,pycharm+all,macos
 admin/
+lectures/03-programming-fundamentals-2/Lecture III - Programming Fundamentals 2.pdf
