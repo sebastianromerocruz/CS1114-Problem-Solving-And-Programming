@@ -4,7 +4,7 @@
 
 <h3 align=center>30 de Fructidor, de l'Année CCXXXIV de la République</h3>
 
-***Song of the day***: _[**Undulate**](https://youtu.be/SQZv5Q3TjmE?t=1329) by For Tracy Hyde (2023)._
+***Song of the day***: _[**Surfin' Boy (Flamingosis Remix)**](https://youtu.be/tbxXSIBL8S4) by Red Velvet (2026)._
 
 ### Sections:
 
