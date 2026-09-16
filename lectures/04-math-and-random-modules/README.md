@@ -8,67 +8,43 @@
 
 ### Sections:
 
-0. [**Review**](#part-0-review)
+0. [**Constants**](#part-0-constants)
 1. [**The `math` Module**](#part-1-the-math-module)
 2. [**The `random` Module**](#part-2-the-random-module)
 
-### Part 0: _Review_
+### Part 0: _Constants_
 
-Let's start with a quick review problem. Let's pretend we have two classroom sizes: one that fits 35 students and one 
-that fits 15. Write a program that does the following:
+So far, we've only ever used variables the way their name suggests: as things that *vary*. We define them, we
+reassign them, we watch their values change as our program runs. But every so often, we want to define a value that,
+semantically, should never change once we've set it—think of things like the number of days in a week, or the speed
+of light, or the value of pi.
 
-1. Ask the user how large the student body is (i.e. how many students there are).
-2. Determine how many 35-student classrooms we can form with this many students.
-3. Determine how many 15-student classrooms we can form with the remaining students.
-4. Display the results of steps 2 and 3, along with how many students remain leftover.
+We call these ***constants***.
 
-Number 1 is an easy one; we use the `input()` and `int()` functions. I'm also going to define two variables to store the
-sizes of our classrooms, so that I can keep track of them and change them at any point if I so wish:
+> **Constant**: A variable whose value is not meant to change over the course of a program's execution.
 
-```python
-class_size_a = 35
-class_size_b = 15
-
-num_of_students = int(input("How large is the student body? "))
-```
-
-Now, for step 2, I'm going to use the same technique we used when we wanted to see how many quarters we could form with
-a specific amount of pennies. This time, though, it's not pennies but students, and it's not 25-cent groups, but 
-35-student groups. For this, we use the `//` operator:
+Python, unlike some other programming languages, doesn't actually have a built-in way of *enforcing* this. There's no
+special keyword that will throw an error if you try to reassign one. Instead, we rely on ***convention***: constants
+are conventionally named using **ALL CAPS**, with underscores separating words, like so:
 
 ```python
-num_size_a = num_of_students // class_size_a
+DAYS_IN_A_WEEK = 7
+SPEED_OF_LIGHT = 299792458  # meters per second, approximately
 ```
 
-How can we determine how many students remain after this operation? The `%` operator, which gives us the remainder after
-a division, should do the trick:
+Nothing is technically stopping you from writing `DAYS_IN_A_WEEK = 8` somewhere later in your program—Python won't
+complain. But doing so would be a huge red flag to any programmer reading your code (including future you!) that
+something has gone very wrong. In other words, all-caps naming is a signal to other programmers, not a lock.
 
-```python
-num_of_students = num_of_students % class_size_a
-```
-
-Using this amount of remaining students, we can see how many 15-student classrooms we can form by literally repeating 
-the same process using `class_size_b` instead of `class_size_a`:
-
-```python
-num_size_b = num_of_students // class_size_b
-num_of_students = num_of_students % class_size_b  # this is the number of leftover students
-```
-
-Finally, step 3 just requires a quick `print()` statement:
-
-```python
-print("We formed " + str(num_size_a) + " 35-student classroom(s), " + str(num_size_b) +
-      " 15-student classrooms, and have " + str(num_of_students) + " leftover students.")
-```
-
-[**Here's**](student_body.py) the full solution.
+Why bring this up now? Because, as you're about to see, Python ships with entire modules full of extremely precise,
+pre-defined constants—so that you never have to define (and, worse, approximate) commonly used values like pi
+yourself ever again.
 
 ### Part 1: _The `math` Module_
 
 You know how, in a previous lecture, I asked you to calculate the volume of a cone? For many mathematical operations, we
-need to use certain, pre-defined constants, such as **pi**. In our case, I asked you to define a variable that would 
-hold your best estimation of this value:
+need to use certain constants—like the ones we just talked about—such as **pi**. In our case, I asked you to define a
+variable that would hold your best estimation of this value:
 
 ```python
 pi = 3.14156  # for example
@@ -76,7 +52,7 @@ pi = 3.14156  # for example
 
 It might not come as too much of a surprise that approximating such common and important constants is very bad practice.
 This is especially the case because programming is often used in engineering applications where precision is of
-paramount importance. In other words, you are not going to tell your boss and NASA that you programmed a rover by "sort
+paramount importance. In other words, you are not going to tell your boss at NASA that you programmed a rover by "sort
 of guessing the value of pi." The great thing is that you really don't have to at all!
 
 One of the great things about Python is that it has a ***huge*** community that constantly releases their code to the 
@@ -117,8 +93,10 @@ Output:
 3
 ```
 
-As you can see, we need to explicitly import the module for Python to be able to use it (`import math`). Note the format
-of module function calls:
+As you can see, we need to explicitly import the module for Python to be able to use it (`import math`). You'll also
+notice that `math.pi` and `math.e` aren't written in `ALL_CAPS`—that's simply a naming choice made by the people who
+wrote the `math` module, not a rule you need to follow yourself. They're still constants in every sense that matters:
+their values never change, no matter how many times you use them. Note the format of module function calls:
 
 <a id="fg-1"></a>
 
