@@ -27,9 +27,8 @@ for lectures not yet written: 08 (nested loops—no existing content), 14 (Exam 
 17-19 (tuples/2D lists—partial content lives in 16-memory-maps, needs expansion),
 22 (Exam 2 review), 27 (recursion—no existing content).
 
-5. [**Selection Statements: `if`, and `else`**](lectures/05-selection-statements/)
-6. [**Selection Statements: `elif` and Common Mistakes**](lectures/05-selection-statements#part-3-elif-statements)
-6. [**Control-Flow Structures: The `while`-Loop**](lectures/06-while-loop/)
+5. [**Selection Statements: `if` and `else`**](lectures/05-selection-statements/)
+6. [**Selection Statements: `elif`, and Intro to `while`-Loops**](lectures/06-while-loop/)
 7. [**Control-Flow Structures: The `for`-Loop**](lectures/07-for-loop/)
 9. [**Loops Review and Strings as Sequences**](lectures/09-loops-review-and-strings/)
 10. [**Manipulating Strings**](lectures/10-manipulating-strings/)
