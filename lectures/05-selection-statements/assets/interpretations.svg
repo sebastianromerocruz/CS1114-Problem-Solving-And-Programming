@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 350" width="640" height="350">
+  <defs>
+    <marker id="ink-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#171715" />
+    </marker>
+    <marker id="red-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#C1272D" />
+    </marker>
+    <style>
+      text { font-family: -apple-system, "Helvetica Neue", Arial, sans-serif; fill: #171715; }
+      .mono { font-family: "SF Mono", "Courier New", monospace; }
+      .head { font-size: 11px; letter-spacing: 0.14em; fill: #9A9A92; text-transform: uppercase; }
+      .num  { font-family: "SF Mono", "Courier New", monospace; font-size: 13px; font-weight: 700; fill: #C1272D; }
+      .box  { fill: none; stroke: #171715; stroke-width: 1.8; }
+      .lbl  { font-size: 14px; }
+      .note { font-size: 12px; fill: #6E6E68; font-style: italic; }
+      .flow { stroke: #171715; stroke-width: 1.8; fill: none; }
+      .fork { stroke: #C1272D; stroke-width: 2; fill: none; }
+    </style>
+  </defs>
+
+  <rect width="640" height="350" fill="#F7F7F4" />
+
+  <!-- divider -->
+  <line x1="320" y1="24" x2="320" y2="326" stroke="#DEDDD5" stroke-width="1" />
+
+  <!-- Interpretation 1 -->
+  <text class="head" x="160" y="36" text-anchor="middle"><tspan class="num">01</tspan>  Interpretation</text>
+
+  <rect class="box" x="60" y="78" width="200" height="46" rx="3" />
+  <text class="lbl" x="160" y="106" text-anchor="middle">boolean expression result</text>
+
+  <line class="flow" x1="160" y1="124" x2="160" y2="212" marker-end="url(#ink-arrow)" />
+
+  <rect class="box" x="110" y="214" width="100" height="44" rx="3" />
+  <text class="lbl mono" x="160" y="241" text-anchor="middle">print</text>
+
+  <text class="note" x="160" y="298" text-anchor="middle">the result is simply printed</text>
+
+  <!-- Interpretation 2 -->
+  <text class="head" x="480" y="36" text-anchor="middle"><tspan class="num">02</tspan>  Interpretation</text>
+
+  <rect class="box" x="380" y="78" width="200" height="46" rx="3" />
+  <text class="lbl" x="480" y="106" text-anchor="middle">boolean expression result</text>
+
+  <line class="fork" x1="440" y1="124" x2="400" y2="152" marker-end="url(#red-arrow)" />
+  <line class="fork" x1="520" y1="124" x2="560" y2="152" marker-end="url(#red-arrow)" />
+
+  <rect class="box" x="365" y="154" width="70" height="32" rx="16" />
+  <text class="lbl mono" x="400" y="175" text-anchor="middle">True?</text>
+  <rect class="box" x="525" y="154" width="70" height="32" rx="16" />
+  <text class="lbl mono" x="560" y="175" text-anchor="middle">False?</text>
+
+  <line class="flow" x1="400" y1="186" x2="400" y2="212" marker-end="url(#ink-arrow)" />
+  <line class="flow" x1="560" y1="186" x2="560" y2="212" marker-end="url(#ink-arrow)" />
+
+  <rect class="box" x="335" y="214" width="130" height="44" rx="3" />
+  <text class="lbl mono" x="400" y="241" text-anchor="middle">print "True"</text>
+  <rect class="box" x="495" y="214" width="130" height="44" rx="3" />
+  <text class="lbl mono" x="560" y="241" text-anchor="middle">print "False"</text>
+
+  <text class="note" x="480" y="298" text-anchor="middle">the result chooses one of two paths</text>
+</svg>

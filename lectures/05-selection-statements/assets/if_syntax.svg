@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 260" width="640" height="260">
+  <defs>
+    <marker id="red-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#C1272D" />
+    </marker>
+    <style>
+      text { font-family: -apple-system, "Helvetica Neue", Arial, sans-serif; fill: #171715; }
+      .mono { font-family: "SF Mono", "Courier New", monospace; }
+      .code { font-size: 28px; }
+      .comment { font-size: 22px; fill: #9A9A92; }
+    </style>
+  </defs>
+
+  <rect width="640" height="260" fill="#F7F7F4" />
+
+  <!-- label for the condition slot -->
+  <text x="270" y="30" font-size="17" font-weight="700" text-anchor="middle">condition</text>
+  <text x="270" y="50" font-size="13" font-style="italic" fill="#6E6E68" text-anchor="middle" style="fill:#6E6E68">(boolean expression)</text>
+  <line x1="270" y1="58" x2="270" y2="98" stroke="#C1272D" stroke-width="2.2" stroke-linecap="round" marker-end="url(#red-arrow)" />
+
+  <!-- code panel -->
+  <rect x="40" y="76" width="560" height="102" rx="4" fill="none" stroke="#171715" stroke-width="1.8" />
+  <text class="mono code" x="70" y="128" font-weight="700">if</text>
+  <line x1="116" y1="134" x2="424" y2="134" stroke="#C1272D" stroke-width="3" stroke-linecap="round" />
+  <text class="mono code" x="432" y="128" font-weight="700">:</text>
+  <text class="mono comment" x="106" y="164"># perform these instructions</text>
+
+  <!-- definition -->
+  <line x1="40" y1="208" x2="600" y2="208" stroke="#DEDDD5" stroke-width="1" />
+  <text x="40" y="238" font-size="17">
+    <tspan font-weight="700">boolean expression:</tspan>
+    <tspan> code that evaluates to </tspan>
+    <tspan class="mono" font-weight="700">True</tspan>
+    <tspan> or </tspan>
+    <tspan class="mono" font-weight="700">False</tspan>
+  </text>
+</svg>
