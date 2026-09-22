@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 190" width="640" height="190">
+  <defs>
+    <marker id="red-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#C1272D" />
+    </marker>
+    <style>
+      text { font-family: -apple-system, "Helvetica Neue", Arial, sans-serif; fill: #171715; }
+      .mono { font-family: "SF Mono", "Courier New", monospace; }
+      .code { font-size: 28px; }
+      .comment { font-size: 22px; fill: #9A9A92; }
+    </style>
+  </defs>
+
+  <rect width="640" height="190" fill="#F7F7F4" />
+
+  <!-- label for the condition slot -->
+  <text x="290" y="30" font-size="17" font-weight="700" text-anchor="middle">condition</text>
+  <line x1="290" y1="40" x2="290" y2="84" stroke="#C1272D" stroke-width="2.2" stroke-linecap="round" marker-end="url(#red-arrow)" />
+
+  <!-- code panel -->
+  <rect x="40" y="62" width="560" height="102" rx="4" fill="none" stroke="#171715" stroke-width="1.8" />
+  <text class="mono code" x="70" y="114" font-weight="700">while</text>
+  <line x1="170" y1="120" x2="464" y2="120" stroke="#C1272D" stroke-width="3" stroke-linecap="round" />
+  <text class="mono code" x="472" y="114" font-weight="700">:</text>
+  <text class="mono comment" x="106" y="150"># perform these instructions</text>
+</svg>
