@@ -286,6 +286,9 @@ lectures/*
 !lectures/02-programming-fundamentals-1
 !lectures/03-programming-fundamentals-2
 !lectures/04-math-and-random-modules
+!lectures/05-selection-statements
+!lectures/06-while-loop
+!lectures/07-for-loop
 
 # End of https://www.toptal.com/developers/gitignore/api/python,pycharm+all,macos
 admin/

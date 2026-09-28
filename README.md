@@ -19,7 +19,8 @@ resource, send me an [**email**](mailto:src402@nyu.edu) about it with the subjec
 3. [**Programming Fundamentals 2**](lectures/03-programming-fundamentals-2/)
 4. [**Python Modules: `math` and `random`**](lectures/04-math-and-random-modules/)
 5. [**Selection Statements: `if` and `else`**](lectures/05-selection-statements)
-6. [**`elif` and `while`-Loops**](lectures/05-selection-statements)
+6. [**`elif` and `while`-Loops**](lectures/06-while-loop)
+7. [**Control-Flow Structures: The `for`-Loop**](lectures/07-for-loop)
 
 <!-- Released on a rolling basis as the semester progresses. To release a lecture,
 un-ignore its folder in .gitignore, `git add` it, and un-comment its entry here.
@@ -29,9 +30,6 @@ for lectures not yet written: 08 (nested loops—no existing content), 14 (Exam 
 17-19 (tuples/2D lists—partial content lives in 16-memory-maps, needs expansion),
 22 (Exam 2 review), 27 (recursion—no existing content).
 
-5. [**Selection Statements: `if` and `else`**](lectures/05-selection-statements/)
-6. [**Selection Statements: `elif`, and Intro to `while`-Loops**](lectures/06-while-loop/)
-7. [**Control-Flow Structures: The `for`-Loop**](lectures/07-for-loop/)
 9. [**Loops Review and Strings as Sequences**](lectures/09-loops-review-and-strings/)
 10. [**Manipulating Strings**](lectures/10-manipulating-strings/)
 11. [**Functions: Parameters**](lectures/11-functions-parameters/)
