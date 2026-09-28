@@ -21,6 +21,7 @@ resource, send me an [**email**](mailto:src402@nyu.edu) about it with the subjec
 5. [**Selection Statements: `if` and `else`**](lectures/05-selection-statements)
 6. [**`elif` and `while`-Loops**](lectures/06-while-loop)
 7. [**Control-Flow Structures: The `for`-Loop**](lectures/07-for-loop)
+8. [**Control-Flow Structures: Nested Loops**](lectures/08-nested-loops)
 
 <!-- Released on a rolling basis as the semester progresses. To release a lecture,
 un-ignore its folder in .gitignore, `git add` it, and un-comment its entry here.
