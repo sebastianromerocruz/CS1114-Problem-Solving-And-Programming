@@ -218,4 +218,4 @@ more* even digits than odd ones.
 
 ---
 
-<sub>**Previous: [Control-Flow Structures: The `for`-Loop](/lectures/07-for-loop)** || **Next: [Loop Review and Strings as Sequences](/lectures/09-loops-review-and-strings)**</sub>
+<sub>**Previous: [Control-Flow Structures: The `for`-Loop](/lectures/07-for-loop)** || **Next: [Strings as Sequences](/lectures/09-loops-review-and-strings)**</sub>
