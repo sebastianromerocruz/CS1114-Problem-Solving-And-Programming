@@ -4,7 +4,7 @@
 
 <h3 align=center>13 de Vendémiaire, de l'Année CCXXXV de la République</h3>
 
-***Song of the day***: _[**Ocean Road**](https://youtu.be/9dMl6PtuikI) by Melody's Echo Chamber (2022)._
+<p align=center><strong><em>Song of the day</strong>: <a href="https://youtu.be/GZb_mqH2zJY"><strong><u>Grand Theft Autumn/Where Is Your Boy</u></strong></a> by Fall Out Boy (2006).</em></p>
 
 0. [**Strings As Sequences**](#part-0-strings-as-sequences)
 1. [**String Comparison**](#part-1-string-comparison)

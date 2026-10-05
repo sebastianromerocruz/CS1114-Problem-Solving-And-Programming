@@ -23,6 +23,7 @@ resource, send me an [**email**](mailto:src402@nyu.edu) about it with the subjec
 7. [**Control-Flow Structures: The `for`-Loop**](lectures/07-for-loop)
 8. [**Control-Flow Structures: Nested Loops**](lectures/08-nested-loops)
 9. [**Strings as Sequences**](lectures/09-loops-review-and-strings)
+10. [**Strings Methods, Slicing, & Formatting**](lectures/10-manipulating-strings)
 
 <!-- Released on a rolling basis as the semester progresses. To release a lecture,
 un-ignore its folder in .gitignore, `git add` it, and un-comment its entry here.
