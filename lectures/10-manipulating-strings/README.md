@@ -363,6 +363,24 @@ And here, we start at index `2` and take every second character until the end of
 'mdJml'
 ```
 
+You can also leave out `start` and/or `stop`, in which case they default to the beginning and the end of the string.
+Negative indices count backwards from the end (`-1` is the last character), and a negative `step` walks the string
+backwards:
+
+```python
+>>> jazz_musician[:5]
+'Ahmad'
+
+>>> jazz_musician[6:]
+'Jamal'
+
+>>> jazz_musician[-5:]
+'Jamal'
+
+>>> jazz_musician[::-1]
+'lamaJ damhA'
+```
+
 ---
 
 ### Part 4: _String Formatting_
@@ -764,7 +782,67 @@ And, as with any width, a string that is longer than the width is left untouched
 
 ### Part 5: _Practice Problems_
 
-**Problem 1: Receipt Formatter**
+**Problem 1: Slice It Up**
+
+Given the string below, what does each of the following expressions evaluate to? Work them out by hand first, then
+check them in the interpreter.
+
+```python
+title = "Hokusai's Great Wave"
+```
+
+1. `title[0:7]`
+2. `title[10:15]`
+3. `title[::2]`
+4. `title[-4:]`
+5. `title[::-1]`
+
+**Problem 2: Phone Number**
+
+Ask the user to enter a 10-digit phone number, with no spaces or dashes, and print it in the standard US format. You can
+assume that the user will always enter exactly ten digits.
+
+```text
+Enter a 10-digit phone number: 2125551234
+(212) 555-1234
+```
+
+**Problem 3: Middle Character**
+
+Ask the user to enter a word, and print its middle character. If the word has an even number of characters, there is no
+single middle, so print the **two** middle characters instead.
+
+```text
+Enter a word: Monet
+n
+```
+
+```text
+Enter a word: Pissarro
+sa
+```
+
+**Problem 4: Palindrome**
+
+A **palindrome** is a word that reads the same forwards and backwards. Ask the user to enter a word, and tell them
+whether it is a palindrome. You can assume that the word will be entirely in lowercase, with no spaces.
+
+```text
+Enter a word: racecar
+racecar is a palindrome
+```
+
+```text
+Enter a word: paris
+paris is not a palindrome
+```
+
+You can find the full solutions [**here**](solutions/phone_number.py), [**here**](solutions/middle_character.py), and
+[**here**](solutions/palindrome.py) (in the [**`solutions`**](solutions) sub-folder).
+
+---
+
+**Problem 5: Receipt Formatter**
 
 You're building a simple receipt printer for a small store. Given the following variables (already defined for you),
 use `f`-strings with formatting grammar to print a receipt that matches the expected output **exactly**.
@@ -809,7 +887,7 @@ Tax (8.00%)         $    0.58
 Total               $    7.83
 ```
 
-**Problem 2: Stock Portfolio Table**
+**Problem 6: Stock Portfolio Table**
 
 You are given four stocks, each with a ticker, a number of shares, and a price per share (all defined for you below).
 Use `f`-strings with formatting grammar to print a formatted portfolio table and a summary line—**without using lists
