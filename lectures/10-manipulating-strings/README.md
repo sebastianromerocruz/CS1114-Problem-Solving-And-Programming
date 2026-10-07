@@ -4,7 +4,7 @@
 
 <h3 align=center>15 de Vendémiaire, de l'Année CCXXXV de la République</h3>
 
-<p align=center><strong><em>Song of the day</strong>: <a href="https://youtu.be/GZb_mqH2zJY"><strong><u>Grand Theft Autumn/Where Is Your Boy</u></strong></a> by Fall Out Boy (2006).</em></p>
+<p align=center><strong><em>Song of the day</strong>: <a href="https://youtu.be/hZOUXO0pMN4"><strong><u>Red</u></strong></a> by Bob Junior X Hot Flash Heat Wave (2025).</em></p>
 
 0. [**Character Representation (Continued)**](#part-0-character-representation-continued)
 1. [**String Traversal (Continued)**](#part-1-string-traversal-continued)
