@@ -24,6 +24,7 @@ resource, send me an [**email**](mailto:src402@nyu.edu) about it with the subjec
 8. [**Control-Flow Structures: Nested Loops**](lectures/08-nested-loops)
 9. [**Strings as Sequences**](lectures/09-loops-review-and-strings)
 10. [**Strings Methods, Slicing, & Formatting**](lectures/10-manipulating-strings)
+11. [**Functions: Parameters**](lectures/11-functions-parameters)
 
 <!-- Released on a rolling basis as the semester progresses. To release a lecture,
 un-ignore its folder in .gitignore, `git add` it, and un-comment its entry here.
@@ -33,8 +34,6 @@ for lectures not yet written: 14 (Exam 1 review),
 17-19 (tuples/2D lists—partial content lives in 16-memory-maps, needs expansion),
 22 (Exam 2 review), 27 (recursion—no existing content).
 
-10. [**Manipulating Strings and String Formatting**](lectures/10-manipulating-strings/)
-11. [**Functions: Parameters**](lectures/11-functions-parameters/)
 12. [**Functions: `return`**](lectures/12-functions-return/)
 13. [**File Input**](lectures/13-file-input/)
 15. [**File Output and Exceptions**](lectures/14-file-output-and-exceptions/)
