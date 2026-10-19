@@ -6,92 +6,29 @@
 
 ***Song of the day:*** _[**愛の讃歌 (Hymn to Love)**](https://youtu.be/pJXAJMcom0s) by UlulU (2022)._
 
-0. [**Simply Having A Functional Christmas Time**](#part-0-simply-having-a-functional-christmas-time)
+0. [**Functions Practice**](#part-0-simply-having-a-functional-christmas-time)
 1. [**Revisiting `print()` and Default Parameters**](#part-1-revisiting-print-and-default-parameters)
 2. [**The `return` Statement**](#part-2-the-return-statement)
 
-### Part 0: _Simply Having A Functional Christmas Time_
+### Part 0: _Functions Practice_
 
-Write a program that prints a "pine tree". This pine tree will consist of triangles of increasing sizes, drawn 
-with a user-inputted character (e.g. `*`, `+`, `$`, etc.). Your program **must** consist of the following three 
-functions:
+Write a function called `print_temps` that:
+- Accepts 1 parameter, `temp_fahr`, which represents a temperature in Fahrenheit units.
+- Calculates the equivalent temperatures in:
+    - Celcius (°C = °F * 9/5 + 32)
+    - Kelvin (°K = °C + 273.15)
+    - Rankine (°R = °F + 459.67)
+- Prints a report including all units, rounded to two decimal units.
 
-- `print_shifted_triangle(height, margin, symbol)`: This function will print a `height`-line triangle, filled with
-`symbol` characters, shifted to the right by a `margin` number of spaces. For example, check out the following function
-call and its respective expected output:
+Once you write your function, generate a random Fahrenheit value between 0.0°F and 100.0°F and use it as an argument to call your `print_temps` function.
 
-```python
-print_shifted_triangle(3, 4, '+')
-```
+**Optional**: Using `f`-strings/`.format`, format the output to look exactly like it does in my example. (I'm using a tab and a width of 10)
 
-```text
-      +
-     +++
-    +++++
-```
+<p align=center>
+    <img src="assets/temperature.png" width=700>
+</p>
 
-![sample_output 1.1](assets/sample_output_1_1.png)
-
-<sub>**Figure 1**: A screenshot of what your output should look like if the line `print_shifted_triangle(3, 4, '+')` is
-run. Note that only the `'+'` characters should be visible. The dotted lines, arrows, and labels are only there for
-your clarity.</sub>
-
-- _(Optional)_ `print_pine_tree(levels, symbol)`: This function will print a sequence of `levels` number of triangles of increasing
-sizes, forming a "pine tree". The triangles will be drawn using the `symbol` character. You must naturally make use of 
-the `print_shifted_triangle()` function we wrote above. For example, check out the following function call and its 
-respective expected output:
-
-```python
-print_pine_tree(3, '#')
-```
-
-```text
-   #
-  ###
-   #
-  ###
- #####
-   #
-  ###
- #####
-#######
-```
-
-![sample_output 1.2](assets/sample_output_1_2.png)
-
-<sub>**Figure 2**: A screenshot of what your output should look like if the line `print_pine_tree(3, '#')` is run. Note,
-again, that only the `'#'` characters should be visible. The dotted lines, arrows, and labels are only there for your 
-clarity.</sub>
-
-- `main()`: This driver function will interact with the user and ask them to enter a **valid** character to use for our
-output, and a **positive** integer for the number of levels that our tree will have. 
-  - Your program must continue asking
-  the user to input a valid character in the case that they enter an invalid character, and for a non-zero positive 
-  integer in such case that the user enters zero or a negative number. 
-  - Valid characters are limited to **non-alphanumeric, 
-  [**non-whitespace**](https://docs.python.org/3/library/stdtypes.html#str.isspace) characters**. You may assume that 
-  the user will always enter integers and valid strings.
-
-```text
-Enter a positive, non-zero, integer: 4
-Enter a non-whitespace, non-alphanumeric character: /
-    /
-   ///
-    /
-   ///
-  /////
-    /
-   ///
-  /////
- ///////
-    /
-   ///
-  /////
- ///////
-/////////
-```
-
-<!--[**Here's**](solution/christmastime.py) the full solution.
+[**Here's**](solution/christmastime.py) the full solution.
 
 ### Part 1: _Revisiting `print()` and Default Parameters_
 
@@ -313,4 +250,4 @@ def main():
 main()
 ```
 
-<sub>**Previous: [Functions: Parameters](/lectures/11-functions-parameters/)** | **Next: [File Input](/lectures/13-file-input/)**</sub>-->
+<sub>**Previous: [Functions: Parameters](/lectures/11-functions-parameters/)** | **Next: [File Input](/lectures/13-file-input/)**</sub>
