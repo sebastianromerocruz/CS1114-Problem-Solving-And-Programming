@@ -28,8 +28,6 @@ Once you write your function, generate a random Fahrenheit value between 0.0°F 
     <img src="assets/temperature.png" width=700>
 </p>
 
-[**Here's**](solution/christmastime.py) the full solution.
-
 ### Part 1: _Revisiting `print()` and Default Parameters_
 
 Speaking of parameters, you have actually been using some of them since the beginning of the semester. We've already
