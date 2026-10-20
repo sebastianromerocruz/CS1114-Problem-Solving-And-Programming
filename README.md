@@ -26,6 +26,7 @@ resource, send me an [**email**](mailto:src402@nyu.edu) about it with the subjec
 10. [**Strings Methods, Slicing, & Formatting**](lectures/10-manipulating-strings)
 11. [**Functions: Parameters**](lectures/11-functions-parameters)
 12. [**Functions: `return`**](lectures/12-functions-return)
+13. [**Files: Input**](lectures/13-file-input)
 
 <!-- Released on a rolling basis as the semester progresses. To release a lecture,
 un-ignore its folder in .gitignore, `git add` it, and un-comment its entry here.
