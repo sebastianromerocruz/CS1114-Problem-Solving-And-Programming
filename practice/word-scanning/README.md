@@ -4,8 +4,7 @@
 
 [***Solutions***](SOLUTIONS.md)
 
-All four problems below share one idea: **walk through a string one character at a time, and decide what each
-character means based on the characters around it**. For these problems, do not use `split()`.
+For these problems, do not use `split()`.
 
 For all of them, a **letter** is any of `a`-`z` or `A`-`Z`, and a **word** is a run of consecutive letters. Words are
 separated by one or more non-letters (spaces, digits, punctuation—anything). The input may start or end with
