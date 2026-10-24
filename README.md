@@ -48,6 +48,12 @@ for lectures not yet written: 14 (Exam 1 review),
 26. [**Intro to Object-Oriented Programming: Dunder / "Magic" Methods**](lectures/26-oop-dunder-methods/)
 28. [**Final Exam Review**](lectures/28-final-exam-review/) -->
 
+### Reviews
+
+1. **Midterm 1**
+    - [**Non-Programming**](practice/midterm-review)
+    - [**Programming**](practice/midterm-review/word-scanning)
+
 ### How To Use This Repository
 
 The general structure of the repo is as follows:
