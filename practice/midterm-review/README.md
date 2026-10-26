@@ -2,7 +2,7 @@
 
 <h1 align=center>Midterm 1: Expressions, Tracing, Strings, and Functions</h1>
 
-[***Solutions***](SOLUTIONS.md)
+<!--[***Solutions***](SOLUTIONS.md)-->
 
 These problems are in the same format as the written part of the midterm: you evaluate or trace the code **by hand**,
 and write down what it produces. Don't run the code until you have written down your answer.
