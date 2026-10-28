@@ -3,24 +3,21 @@ from math import pi
 def get_cylinder_volume(radius=0.0, height=0.0, data_filepath=None):
     if data_filepath:
         # Open your file
-        file = open(data_filepath, 'r')
+        with open(data_filepath, 'r') as file:
+            # header
+            file.readline()
 
-        # header
-        file.readline()
-        
-        # radius
-        radius = file.readline()
-        radius = radius.strip()
-        comma_loc = radius.find(',')
-        radius = float(radius[comma_loc + 1:])  
+            # radius
+            radius = file.readline()
+            radius = radius.strip()
+            comma_loc = radius.find(',')
+            radius = float(radius[comma_loc + 1:])
 
-        # height
-        height = file.readline()
-        height = height.strip()
-        comma_loc = height.find(',')
-        height = float(height[comma_loc + 1:])  
-
-        file.close()
+            # height
+            height = file.readline()
+            height = height.strip()
+            comma_loc = height.find(',')
+            height = float(height[comma_loc + 1:])
 
         area_of_base = pi * radius ** 2
         volume = area_of_base * height

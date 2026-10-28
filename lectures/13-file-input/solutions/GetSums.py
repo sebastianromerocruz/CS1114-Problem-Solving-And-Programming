@@ -55,20 +55,17 @@ def get_file_sums(filepath):
     :param filepath: A string containing the path of a text file
     :return: A list of tuples
     """
-    file_obj = open(filepath, READ_MODE)
-
     sums = []
 
-    for string in file_obj:
-        string = string.split()
-        student_id = string[ID_IDX]
-        grades = string[GRADES_IDX]
+    with open(filepath, READ_MODE) as file_obj:
+        for string in file_obj:
+            string = string.split()
+            student_id = string[ID_IDX]
+            grades = string[GRADES_IDX]
 
-        summation = get_line_sum(grades, FILE_SEPARATOR)
-        student_info = (student_id, round(summation, DECIMAL_PRECISION))
-        sums.append(student_info)
-
-    file_obj.close()
+            summation = get_line_sum(grades, FILE_SEPARATOR)
+            student_info = (student_id, round(summation, DECIMAL_PRECISION))
+            sums.append(student_info)
 
     return sums
 

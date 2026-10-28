@@ -95,10 +95,11 @@ def display_temperatures(filepath):
     pass
 ```
 
-The first step is, of course, to open our file up:
+The first step is, of course, to open our file up. In Python, we do this using a `with` statement:
 
 ```python
-file_obj = open(filepath, 'r')
+with open(filepath, 'r') as file_obj:
+    # everything that uses the file goes here, indented
 ```
 
 So, what's going on here? The `open()` function (as far as this course is concerned) accepts two arguments:
@@ -106,12 +107,13 @@ So, what's going on here? The `open()` function (as far as this course is concer
 1. The **path of the file** you want to open, in `str` form. Since `data.csv` exists in the same directory (folder) as our current file, we don't have to give the full filepath, but I certainly could do so (`/Users/sebastianromerocruz/Documents/NYU_Adjunct/CS1114-material/lectures/13-file-input/data.csv`, in my case) and it would work just the same.
 2. The **mode that you want to open the file with**. In order to read the contents of a file, we use `'r'`, which stands for "read mode".
 
-Notice that it's not enough to just make a call to `open()`—we also have to save its returned value into a variable (in this case, the variable `file_obj`).
+The `as file_obj` part gives the opened file a name (here, the variable `file_obj`) that we can use to work with it. Just like with an `if`-statement or a loop, everything that is **indented** under the `with` line is part of its block, and the file is only open while the block is running. As soon as the block ends, Python closes the file for us (more on that in Step 4).
 
 ```python
 def display_temperatures(filepath):
     # STEP 1: Open the file in read mode
-    file_obj = open(filepath, 'r')
+    with open(filepath, 'r') as file_obj:
+        pass
 ```
 
 #### **Step 2**: _Reading from the file_
@@ -130,10 +132,10 @@ So how does Python know when a new line starts? For us, it is easy to tell by vi
 
 ```python
 file_path = "data.csv"
-file_obj = open(file_path, 'r')
 
-first_line = file_obj.readline()
-print(repr(first_line))  # repr() shows us the string exactly as Python sees it, hidden characters included
+with open(file_path, 'r') as file_obj:
+    first_line = file_obj.readline()
+    print(repr(first_line))  # repr() shows us the string exactly as Python sees it, hidden characters included
 ```
 
 Output:
@@ -168,8 +170,9 @@ Something about file objects in Python that is _extremely_ convenient for us is 
 Well, if our file has 1,000,000 lines, we would have to call `readline()` 1,000,000 times. Of course, this is possible with a `for`-loop, but there is a much neater way of doing this:
 
 ```python
-for line in file_obj:
-    print(line)
+with open("data.csv", 'r') as file_obj:
+    for line in file_obj:
+        print(line)
 ```
 
 Output:
@@ -194,21 +197,20 @@ So, let's throw this into our function. I'm going to use the `find()` string met
 
 ```python
 def display_temperatures(filepath):
-    # STEP 1: Open the file
-    temp_file = open(filepath, 'r')  # opening filepath in read mode ('r')
+    # STEP 1: Open the file (in read mode, 'r')
+    with open(filepath, 'r') as temp_file:
+        # STEP 2: Extract data from file
+        for line in temp_file:
+            # Convert to celsius
+            line = line.strip()                      # get rid of potential new lines
+            comma_idx = line.find(',')               # find location of the separating comma
+            city_name = line[:comma_idx]             # isolate the city name
+            temperature = line[comma_idx + 1:]       # isolate the temperature
+            temperature = float(temperature)         # cast temperature str into float
+            celsius_temp = get_celsius(temperature)  # get celsius equivalent
 
-    # STEP 2: Extract data from file
-    for line in temp_file:
-        # Convert to celsius
-        line = line.strip()                      # get rid of potential new lines
-        comma_idx = line.find(',')               # find location of the separating comma
-        city_name = line[:comma_idx]             # isolate the city name
-        temperature = line[comma_idx + 1:]       # isolate the temperature
-        temperature = float(temperature)         # cast temperature str into float
-        celsius_temp = get_celsius(temperature)  # get celsius equivalent
-
-        # Print result
-        print(f"The temperature in {city_name} is {round(celsius_temp, 2)}°C.")
+            # Print result
+            print(f"The temperature in {city_name} is {round(celsius_temp, 2)}°C.")
 ```
 
 Running this, we get the following:
@@ -230,24 +232,23 @@ Using `readline()`, this is not a problem:
 
 ```python
 def display_temperatures(filepath):
-    # STEP 1: Open the file
-    temp_file = open(filepath, 'r')  # opening filepath in read mode ('r')
+    # STEP 1: Open the file (in read mode, 'r')
+    with open(filepath, 'r') as temp_file:
+        # STEP 1.5: Skip the header
+        temp_file.readline()  # can skip saving to variable if you don't actually need the header
 
-    # STEP 1.5: Skip the header
-    temp_file.readline()  # can skip saving to variable if you don't actually need the header
+        # STEP 2: Extract data from file
+        for line in temp_file:
+            # Convert to celsius
+            line = line.strip()                      # get rid of potential new lines
+            comma_idx = line.find(',')               # find location of the separating comma
+            city_name = line[:comma_idx]             # isolate the city name
+            temperature = line[comma_idx + 1:]       # isolate the temperature
+            temperature = float(temperature)         # cast temperature str into float
+            celsius_temp = get_celsius(temperature)  # get celsius equivalent
 
-    # STEP 2: Extract data from file
-    for line in temp_file:
-        # Convert to celsius
-        line = line.strip()                      # get rid of potential new lines
-        comma_idx = line.find(',')               # find location of the separating comma
-        city_name = line[:comma_idx]             # isolate the city name
-        temperature = line[comma_idx + 1:]       # isolate the temperature
-        temperature = float(temperature)         # cast temperature str into float
-        celsius_temp = get_celsius(temperature)  # get celsius equivalent
-
-        # Print result
-        print(f"The temperature in {city_name} is {round(celsius_temp, 2)}°C.")
+            # Print result
+            print(f"The temperature in {city_name} is {round(celsius_temp, 2)}°C.")
 ```
 
 The reason why this works is because, every time Python reads a line (either via `readline()` or via a `for`-loop), it instantly moves to the following line in the file, and cannot go back. Therefore, if we call `readline()` once before the `for`-loop, the first line that the loop will see is:
@@ -272,28 +273,28 @@ So we're done here. Or are we?
 
 #### **Step 4**: _Closing your file_
 
-We have to do one last step, and that is to ***close our file***:
+There is one last thing that we have to do whenever we work with a file, and that is to ***close it***. Closing your file is a very important step later down the line in your computer science career. If you don't close the file that you are working on, any other function, process, and/or app that wants to make use of this file will not be able to, causing the whole operation to fail.
+
+Here's the good news: **we have already done it**. That is the whole point of the `with` statement. The moment that the indented block under `with` ends, Python closes the file for us, even if something goes wrong inside the block:
 
 ```python
 def display_temperatures(filepath):
-    temp_file = open(filepath, 'r') 
+    with open(filepath, 'r') as temp_file:
+        temp_file.readline()
 
-    temp_file.readline() 
+        for line in temp_file:
+            line = line.strip()
+            comma_idx = line.find(',')
+            city_name = line[:comma_idx]
+            temperature = line[comma_idx + 1:]
+            temperature = float(temperature)
+            celsius_temp = get_celsius(temperature)
 
-    for line in temp_file:
-        line = line.strip()                      
-        comma_idx = line.find(',')              
-        city_name = line[:comma_idx]           
-        temperature = line[comma_idx + 1:]   
-        temperature = float(temperature)      
-        celsius_temp = get_celsius(temperature) 
-
-        print(f"The temperature in {city_name} is {round(celsius_temp, 2)}°C.")
-    
-    temp_file.close()  # right here!
+            print(f"The temperature in {city_name} is {round(celsius_temp, 2)}°C.")
+    # the file is closed automatically as soon as we get here
 ```
 
-Closing your file, while not required in this class, is a very important step later down the line in your computer science career. If you don't close the file that you are working on, any other function, process, and/or app that wants to make use of this file will not be able to, causing the whole operation to fail.
+This also means that **you must do all of your reading inside of the `with` block**; once the block is over, the file is closed, and trying to read from it will cause an error. For this class, we will always open files using `with`.
 
 <sub>**Previous: [Functions: `return`](/lectures/12-functions-return/)** | **Next: [File Output and Exceptions](/lectures/14-file-output-and-exceptions/)**</sub>
 

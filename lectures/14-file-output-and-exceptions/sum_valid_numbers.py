@@ -3,20 +3,17 @@ def sum_valid_numbers(filepath):
     skipped = 0
 
     try:
-        file = open(filepath, 'r')
+        with open(filepath, 'r') as file:
+            for line in file:
+                try:
+                    number = float(line.strip())
+                except ValueError:
+                    skipped += 1
+                else:
+                    total += number
     except FileNotFoundError:
         print(f"WARNING: There is no file called '{filepath}'.")
         return None
-
-    for line in file:
-        try:
-            number = float(line.strip())
-        except ValueError:
-            skipped += 1
-        else:
-            total += number
-
-    file.close()
 
     print(f"Skipped {skipped} invalid line(s).")
     return total

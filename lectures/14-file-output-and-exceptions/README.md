@@ -58,11 +58,8 @@ You can read `sys.stdout` as your "operating systems standard output" which—su
 We can, however, tell it to put this data somewhere else using the `file` parameter. Say, for example, that I wanted to create a `txt` file that contained only my name. We would do the following:
 
 ```python
-name_file = open("name.txt", 'w')
-
-print("Sebastián Romero Cruz", file=name_file)
-
-name_file.close()
+with open("name.txt", 'w') as name_file:
+    print("Sebastián Romero Cruz", file=name_file)
 ```
 
 File:
@@ -72,7 +69,7 @@ Sebastián Romero Cruz
 
 ```
 
-Aaaand that's it. That's all there is to it, pretty much. Notice, of course that we are opening the file in **write-mode** this time (`'w'`).
+Aaaand that's it. That's all there is to it, pretty much. Notice, of course that we are opening the file in **write-mode** this time (`'w'`). We are still using `with`, so the file is closed automatically as soon as the indented block ends.
 
 You can also write CSV lines by taking advantage of the `sep` parameter:
 
@@ -81,11 +78,8 @@ midterm_one = 89.0
 midterm_two = 93.5
 final = 80.75
 
-grades_file = open('grades.csv', 'w')
-
-print(midterm_one, midterm_two, final, sep=',', file=grades_file)
-
-grades_file.close()
+with open('grades.csv', 'w') as grades_file:
+    print(midterm_one, midterm_two, final, sep=',', file=grades_file)
 ```
 
 File:
@@ -281,20 +275,17 @@ def sum_valid_numbers(filepath):
     skipped = 0
 
     try:
-        file = open(filepath, 'r')
+        with open(filepath, 'r') as file:
+            for line in file:
+                try:
+                    number = float(line.strip())
+                except ValueError:
+                    skipped += 1
+                else:
+                    total += number
     except FileNotFoundError:
         print(f"WARNING: There is no file called '{filepath}'.")
         return None
-
-    for line in file:
-        try:
-            number = float(line.strip())
-        except ValueError:
-            skipped += 1
-        else:
-            total += number
-
-    file.close()
 
     print(f"Skipped {skipped} invalid line(s).")
     return total
