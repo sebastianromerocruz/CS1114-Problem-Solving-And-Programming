@@ -28,6 +28,7 @@ resource, send me an [**email**](mailto:src402@nyu.edu) about it with the subjec
 12. [**Functions: `return`**](lectures/12-functions-return)
 13. [**Files: Input**](lectures/13-file-input)
 14. [**Exceptions and File Output**](lectures/14-file-output-and-exceptions)
+15. [**Python Lists**](lectures/15-lists)
 
 <!-- Released on a rolling basis as the semester progresses. To release a lecture,
 un-ignore its folder in .gitignore, `git add` it, and un-comment its entry here.
@@ -36,7 +37,6 @@ Renumbered against the Fall 2026 syllabus (16-week schedule). Gaps below are res
 for lectures not yet written: 17-19 (tuples/2D lists—partial content lives in 16-memory-maps, needs expansion),
 22 (Exam 2 review), 27 (recursion—no existing content).
 
-16. [**Python Lists**](lectures/15-lists/)
 16. [**Memory Maps**](lectures/16-memory-maps/)
 20. [**Python Dictionaries**](lectures/20-dictionaries/)
 21. [**Dictionary Methods and Iteration**](lectures/21-dictionary-methods-and-iteration/)
