@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 300" width="880" height="300">
+<rect width="880" height="300" rx="14" fill="#f7f7f4"/>
+<line x1="90" y1="40" x2="90" y2="170" stroke="#171715" stroke-width="4" stroke-linecap="round"/>
+<line x1="200" y1="40" x2="200" y2="170" stroke="#171715" stroke-width="4" stroke-linecap="round"/>
+<line x1="90" y1="60" x2="200" y2="60" stroke="#171715" stroke-width="4" stroke-linecap="round"/>
+<line x1="90" y1="150" x2="200" y2="150" stroke="#171715" stroke-width="4" stroke-linecap="round"/>
+<text x="78" y="115.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="28" font-weight="400" fill="#9a9a9a" text-anchor="end" font-style="italic">lst</text>
+<text x="145.0" y="113.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" font-weight="700" fill="#0b4a8f" text-anchor="middle">id31</text>
+<rect x="290" y="50" width="80" height="90" rx="0" fill="#fff" stroke="#7b1f8f" stroke-width="4" opacity="1"/>
+<line x1="290" y1="86" x2="370" y2="86" stroke="#7b1f8f" stroke-width="4" stroke-linecap="round"/>
+<text x="330" y="78" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="24" font-weight="700" fill="#7b1f8f" text-anchor="middle">list</text>
+<polyline points="200,105.0 245,105.0 245,67 290,67" fill="none" stroke="#171715" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" opacity="1"/>
+<polygon points="290.0,67.0 276.0,75.0 276.0,59.0" fill="#171715" opacity="1"/>
+<polyline points="370,112 410,112 410,80 468,80" fill="none" stroke="#7b1f8f" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" opacity="1"/>
+<polygon points="468.0,80.0 454.0,88.0 454.0,72.0" fill="#7b1f8f" opacity="1"/>
+<rect x="470" y="60" width="66" height="40" rx="0" fill="#ead9e6" stroke="#7b1f8f" stroke-width="4" opacity="1"/>
+<rect x="477" y="170" width="52" height="44" rx="0" fill="#fff" stroke="#0a7a52" stroke-width="3" opacity="1"/>
+<line x1="477" y1="188" x2="529" y2="188" stroke="#0a7a52" stroke-width="3" stroke-linecap="round"/>
+<text x="503" y="183" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#0a7a52" text-anchor="middle">int</text>
+<text x="503" y="208" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" font-weight="700" fill="#0a7a52" text-anchor="middle">1</text>
+<polyline points="503,100 503,168" fill="none" stroke="#0a7a52" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" opacity="1"/>
+<polygon points="503.0,168.0 495.0,154.0 511.0,154.0" fill="#0a7a52" opacity="1"/>
+<rect x="536" y="60" width="66" height="40" rx="0" fill="#ead9e6" stroke="#7b1f8f" stroke-width="4" opacity="1"/>
+<rect x="543" y="170" width="52" height="44" rx="0" fill="#fff" stroke="#0a7a52" stroke-width="3" opacity="1"/>
+<line x1="543" y1="188" x2="595" y2="188" stroke="#0a7a52" stroke-width="3" stroke-linecap="round"/>
+<text x="569" y="183" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#0a7a52" text-anchor="middle">int</text>
+<text x="569" y="208" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" font-weight="700" fill="#0a7a52" text-anchor="middle">2</text>
+<polyline points="569,100 569,168" fill="none" stroke="#0a7a52" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" opacity="1"/>
+<polygon points="569.0,168.0 561.0,154.0 577.0,154.0" fill="#0a7a52" opacity="1"/>
+<rect x="602" y="60" width="66" height="40" rx="0" fill="#ead9e6" stroke="#7b1f8f" stroke-width="4" opacity="1"/>
+<rect x="609" y="170" width="52" height="44" rx="0" fill="#fff" stroke="#0a7a52" stroke-width="3" opacity="1"/>
+<line x1="609" y1="188" x2="661" y2="188" stroke="#0a7a52" stroke-width="3" stroke-linecap="round"/>
+<text x="635" y="183" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#0a7a52" text-anchor="middle">int</text>
+<text x="635" y="208" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" font-weight="700" fill="#0a7a52" text-anchor="middle">3</text>
+<polyline points="635,100 635,168" fill="none" stroke="#0a7a52" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" opacity="1"/>
+<polygon points="635.0,168.0 627.0,154.0 643.0,154.0" fill="#0a7a52" opacity="1"/>
+</svg>

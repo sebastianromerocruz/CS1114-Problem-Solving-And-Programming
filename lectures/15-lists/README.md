@@ -433,4 +433,4 @@ never needs to hold the entire file in memory. But `readlines()` is handy when y
 
 ---
 
-<sub>**Previous: [Exceptions and File Output](/lectures/14-file-output-and-exceptions/)** | **Next: [Memory Maps](/lectures/16-memory-maps/)**</sub>
+<sub>**Previous: [Exceptions and File Output](/lectures/14-file-output-and-exceptions/)** | **Next: [List Methods, Tuples, and Memory Maps](/lectures/16-list-methods-tuples-memory/)**</sub>
