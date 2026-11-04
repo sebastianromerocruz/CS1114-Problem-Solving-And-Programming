@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 440" width="880" height="440">
+<rect width="880" height="440" rx="14" fill="#f7f7f4"/>
+<line x1="90" y1="100" x2="90" y2="232" stroke="#171715" stroke-width="4" stroke-linecap="round"/>
+<line x1="200" y1="100" x2="200" y2="232" stroke="#171715" stroke-width="4" stroke-linecap="round"/>
+<line x1="90" y1="120" x2="200" y2="120" stroke="#171715" stroke-width="4" stroke-linecap="round"/>
+<line x1="90" y1="166" x2="200" y2="166" stroke="#171715" stroke-width="4" stroke-linecap="round"/>
+<line x1="90" y1="212" x2="200" y2="212" stroke="#171715" stroke-width="4" stroke-linecap="round"/>
+<text x="78" y="153.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="28" font-weight="400" fill="#9a9a9a" text-anchor="end" font-style="italic">lst</text>
+<text x="145.0" y="151.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" font-weight="700" fill="#0b4a8f" text-anchor="middle">id31</text>
+<text x="78" y="199.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="28" font-weight="400" fill="#9a9a9a" text-anchor="end" font-style="italic">part</text>
+<text x="145.0" y="197.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" font-weight="700" fill="#0b4a8f" text-anchor="middle">id58</text>
+<rect x="290" y="30" width="80" height="90" rx="0" fill="#fff" stroke="#7b1f8f" stroke-width="4" opacity="1"/>
+<line x1="290" y1="66" x2="370" y2="66" stroke="#7b1f8f" stroke-width="4" stroke-linecap="round"/>
+<text x="330" y="58" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="24" font-weight="700" fill="#7b1f8f" text-anchor="middle">list</text>
+<rect x="290" y="250" width="80" height="90" rx="0" fill="#fff" stroke="#7b1f8f" stroke-width="4" opacity="1"/>
+<line x1="290" y1="286" x2="370" y2="286" stroke="#7b1f8f" stroke-width="4" stroke-linecap="round"/>
+<text x="330" y="278" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="24" font-weight="700" fill="#7b1f8f" text-anchor="middle">list</text>
+<polyline points="200,143.0 245,143.0 245,47 290,47" fill="none" stroke="#171715" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" opacity="1"/>
+<polygon points="290.0,47.0 276.0,55.0 276.0,39.0" fill="#171715" opacity="1"/>
+<polyline points="200,189.0 258,189.0 258,267 290,267" fill="none" stroke="#171715" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" opacity="1"/>
+<polygon points="290.0,267.0 276.0,275.0 276.0,259.0" fill="#171715" opacity="1"/>
+<polyline points="370,92 400,92 400,60 428,60" fill="none" stroke="#7b1f8f" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" opacity="1"/>
+<polygon points="428.0,60.0 414.0,68.0 414.0,52.0" fill="#7b1f8f" opacity="1"/>
+<polyline points="370,312 400,312 400,270 428,270" fill="none" stroke="#7b1f8f" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" opacity="1"/>
+<polygon points="428.0,270.0 414.0,278.0 414.0,262.0" fill="#7b1f8f" opacity="1"/>
+<rect x="437" y="160" width="52" height="44" rx="0" fill="#fff" stroke="#0a7a52" stroke-width="3" opacity="1"/>
+<line x1="437" y1="178" x2="489" y2="178" stroke="#0a7a52" stroke-width="3" stroke-linecap="round"/>
+<text x="463" y="173" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#0a7a52" text-anchor="middle">int</text>
+<text x="463" y="198" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" font-weight="700" fill="#0a7a52" text-anchor="middle">1</text>
+<rect x="503" y="160" width="52" height="44" rx="0" fill="#fff" stroke="#0a7a52" stroke-width="3" opacity="1"/>
+<line x1="503" y1="178" x2="555" y2="178" stroke="#0a7a52" stroke-width="3" stroke-linecap="round"/>
+<text x="529" y="173" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#0a7a52" text-anchor="middle">int</text>
+<text x="529" y="198" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" font-weight="700" fill="#0a7a52" text-anchor="middle">2</text>
+<rect x="569" y="160" width="52" height="44" rx="0" fill="#fff" stroke="#0a7a52" stroke-width="3" opacity="1"/>
+<line x1="569" y1="178" x2="621" y2="178" stroke="#0a7a52" stroke-width="3" stroke-linecap="round"/>
+<text x="595" y="173" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#0a7a52" text-anchor="middle">int</text>
+<text x="595" y="198" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" font-weight="700" fill="#0a7a52" text-anchor="middle">3</text>
+<rect x="635" y="160" width="52" height="44" rx="0" fill="#fff" stroke="#9a9a9a" stroke-width="3" opacity="0.6"/>
+<line x1="635" y1="178" x2="687" y2="178" stroke="#9a9a9a" stroke-width="3" stroke-linecap="round"/>
+<text x="661" y="173" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#9a9a9a" text-anchor="middle">int</text>
+<text x="661" y="198" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" font-weight="700" fill="#9a9a9a" text-anchor="middle">4</text>
+<text x="661" y="232" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#6d6d6d" text-anchor="middle" font-style="italic">no longer referenced</text>
+<rect x="430" y="40" width="66" height="40" rx="0" fill="#ead9e6" stroke="#7b1f8f" stroke-width="4" opacity="1"/>
+<polyline points="463,80 463,158" fill="none" stroke="#0a7a52" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" opacity="1"/>
+<polygon points="463.0,158.0 455.0,144.0 471.0,144.0" fill="#0a7a52" opacity="1"/>
+<rect x="496" y="40" width="66" height="40" rx="0" fill="#ead9e6" stroke="#7b1f8f" stroke-width="4" opacity="1"/>
+<polyline points="529,80 529,158" fill="none" stroke="#0a7a52" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" opacity="1"/>
+<polygon points="529.0,158.0 521.0,144.0 537.0,144.0" fill="#0a7a52" opacity="1"/>
+<rect x="562" y="40" width="66" height="40" rx="0" fill="#ead9e6" stroke="#7b1f8f" stroke-width="4" opacity="1"/>
+<polyline points="595,80 595,158" fill="none" stroke="#0a7a52" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" opacity="1"/>
+<polygon points="595.0,158.0 587.0,144.0 603.0,144.0" fill="#0a7a52" opacity="1"/>
+<rect x="430" y="250" width="66" height="40" rx="0" fill="#ead9e6" stroke="#7b1f8f" stroke-width="4" opacity="1"/>
+<polyline points="463,250 529,206" fill="none" stroke="#0a7a52" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" opacity="1"/>
+<polygon points="529.0,206.0 521.8,220.4 512.9,207.1" fill="#0a7a52" opacity="1"/>
+<rect x="496" y="250" width="66" height="40" rx="0" fill="#ead9e6" stroke="#7b1f8f" stroke-width="4" opacity="1"/>
+<polyline points="529,250 595,206" fill="none" stroke="#0a7a52" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" opacity="1"/>
+<polygon points="595.0,206.0 587.8,220.4 578.9,207.1" fill="#0a7a52" opacity="1"/>
+</svg>

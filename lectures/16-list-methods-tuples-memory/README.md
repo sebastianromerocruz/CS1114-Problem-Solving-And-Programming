@@ -6,17 +6,133 @@
 
 ***Song of the day:*** _[**Piledriver Waltz**](https://youtu.be/GmOxB-gXhs4) Alex Turner (2015)._
 
-0. [**Adding To Lists**](#part-0-adding-to-lists)
-1. [**Deleting From Lists**](#part-1-deleting-from-lists)
-2. [**Other List Methods**](#part-2-other-list-methods)
-3. [**Tuples**](#part-3-tuples)
+0. [**Tuples**](#part-0-tuples)
+1. [**Adding To Lists**](#part-1-adding-to-lists)
+2. [**Deleting From Lists**](#part-2-deleting-from-lists)
+3. [**Other List Methods**](#part-3-other-list-methods)
 4. [**A First Look At Memory Maps**](#part-4-a-first-look-at-memory-maps)
 
-### Part 0: _Adding To Lists_
+### Part 0: _Tuples_
 
-Last lecture, we looked at a table of list methods and promised to come back to it. Today we do. Most of the methods in
-that table fall into three groups: methods that **add** to a list, methods that **delete** from a list, and everything
-else. Let's start with the first group.
+Last lecture, we learned that a list is a sequence of objects that we can index, slice, and iterate through. Today we
+start with a close cousin of the list that, at first glance, will look awfully familiar: the **tuple**. A tuple looks as
+follows ([**`tuples.py`**](tuples.py)):
+
+```python
+dubrovnik = ("Croatia", "Dubrovnik-Neretva", 21.35, 3, "UTC+1", "Saint Blaise")
+print(dubrovnik)
+```
+
+Output:
+
+```text
+('Croatia', 'Dubrovnik-Neretva', 21.35, 3, 'UTC+1', 'Saint Blaise')
+```
+
+So far, it basically just looks like a list. We can even index it and iterate through it as if it were a list:
+
+```python
+for element in dubrovnik:
+    print(element)
+
+for index in range(len(dubrovnik)):
+    print(f"Element #{index}: {dubrovnik[index]}")
+```
+
+Output:
+
+```text
+Croatia
+Dubrovnik-Neretva
+21.35
+3
+UTC+1
+Saint Blaise
+Element #0: Croatia
+Element #1: Dubrovnik-Neretva
+Element #2: 21.35
+Element #3: 3
+Element #4: UTC+1
+Element #5: Saint Blaise
+```
+
+So why the need for tuples at all? Their main difference (from where all of its other differences derive from) is that
+**tuples are immutable**:
+
+```python
+azuna = ("Ayumu", "Setsuna", "Shizuku")
+azuna[0] = "Shioriko"
+```
+
+Output:
+
+```text
+Traceback (most recent call last):
+  File "<input>", line 1, in <module>
+TypeError: 'tuple' object does not support item assignment
+```
+
+That error's last line tells us all we need to know. Naturally, then, the list of tuple methods is much shorter than the
+list object's:
+
+![tuple_methods](assets/tuples_methods.png)
+
+<sub>**Figure 1**: PyCharm suggesting tuple attributes and methods. We basically only have `index()` and `count()`
+available for free use. </sub>
+
+While tuples may seem restrictive and almost useless given the flexibility of lists, their ability to hold data and
+guarantee its immutability is an extremely helpful power to have in computer science. Examples include, let's say, a
+city's coordinates or the red, green, and blue values of a colour:
+
+```python
+kyoto_coordinates = (35.0116, 135.7681)
+brand_colour = (193, 39, 45)
+```
+
+We know that neither of these values will **ever** change throughout the duration of our program (at least, I sure
+_hope_ they don't). So the ability to store them in an immutable collection acts as a safeguard from your program or
+teammate accidentally editing them by mistake.
+
+Tuples are also what Python uses when a function **returns more than one value**, and they allow us to define multiple
+variables at once:
+
+```python
+def get_min_and_max(values):
+    return min(values), max(values)
+
+
+lowest, highest = get_min_and_max([4, 9, 2])
+print(lowest, highest)
+```
+
+Output:
+
+```text
+2 9
+```
+
+One small detail: a tuple with a single element needs a trailing comma, otherwise Python reads the parentheses as
+regular grouping parentheses:
+
+```python
+print(type((5,)), type((5)))
+```
+
+Output:
+
+```text
+<class 'tuple'> <class 'int'>
+```
+
+So a tuple is, in a way, a list that promises never to change. Which raises the question for the rest of today's lecture:
+how do lists **change**? That is what most of the methods in last lecture's table are for, so let's go through them.
+
+### Part 1: _Adding To Lists_
+
+Lists, unlike tuples, can change, and Python gives us a whole set of methods to do it. Last lecture, we looked at a
+table of them and promised to come back to it. Today we do. Most of the methods in that table fall into three groups:
+methods that **add** to a list, methods that **delete** from a list, and everything else. Let's start with the first
+group.
 
 The simplest way of adding an element to a list is the `append()` method, which adds a single element to the **end**:
 
@@ -120,7 +236,7 @@ The `append()` call worked perfectly well: `3` was added to the list. But then w
 whatever `append()` returned, which is `None`, and we lost our list. When you call a method that changes a list, just
 call it; don't save the result.
 
-### Part 1: _Deleting From Lists_
+### Part 2: _Deleting From Lists_
 
 The opposite of `append()` is `pop()`. It removes an element from the list **and returns it**, so that you can use it.
 Without any arguments, it removes the **last** element. If you give it an index, it removes the element at that index
@@ -233,7 +349,7 @@ Output:
 [1, 3]
 ```
 
-### Part 2: _Other List Methods_
+### Part 3: _Other List Methods_
 
 The remaining methods from last lecture's table don't add or delete anything. Two of them look for things
 ([**`other_methods.py`**](other_methods.py)):
@@ -314,125 +430,16 @@ Output:
 ```
 
 The one method from the table that we haven't talked about is `copy()`. For that, we first need to understand what a list
-actually _is_ in memory, so we'll leave it for next lecture. The last part of today's lecture is a first look at that.
-
-### Part 3: _Tuples_
-
-Before that, let's introduce a topic that, at first glance, will look awfully familiar. Another important way to store
-data in Python is by way of a **tuple**. A tuple looks as follows ([**`tuples.py`**](tuples.py)):
-
-```python
-dubrovnik = ("Croatia", "Dubrovnik-Neretva", 21.35, 3, "UTC+1", "Saint Blaise")
-print(dubrovnik)
-```
-
-Output:
-
-```text
-('Croatia', 'Dubrovnik-Neretva', 21.35, 3, 'UTC+1', 'Saint Blaise')
-```
-
-So far, it basically just looks like a list. We can even index it and iterate through it as if it were a list:
-
-```python
-for element in dubrovnik:
-    print(element)
-
-for index in range(len(dubrovnik)):
-    print(f"Element #{index}: {dubrovnik[index]}")
-```
-
-Output:
-
-```text
-Croatia
-Dubrovnik-Neretva
-21.35
-3
-UTC+1
-Saint Blaise
-Element #0: Croatia
-Element #1: Dubrovnik-Neretva
-Element #2: 21.35
-Element #3: 3
-Element #4: UTC+1
-Element #5: Saint Blaise
-```
-
-So why the need for tuples at all? Their main difference (from where all of its other differences derive from) is that
-**tuples are immutable**:
-
-```python
-azuna = ("Ayumu", "Setsuna", "Shizuku")
-azuna[0] = "Shioriko"
-```
-
-Output:
-
-```text
-Traceback (most recent call last):
-  File "<input>", line 1, in <module>
-TypeError: 'tuple' object does not support item assignment
-```
-
-That error's last line tells us all we need to know. Naturally, then, the list of tuple methods is much shorter than the
-list object's:
-
-![tuple_methods](assets/tuples_methods.png)
-
-<sub>**Figure 1**: PyCharm suggesting tuple attributes and methods. We basically only have `index()` and `count()`
-available for free use. </sub>
-
-While tuples may seem restrictive and almost useless given the flexibility of lists, their ability to hold data and
-guarantee its immutability is an extremely helpful power to have in computer science. Examples include, let's say, a
-city's coordinates or the red, green, and blue values of a colour:
-
-```python
-kyoto_coordinates = (35.0116, 135.7681)
-brand_colour = (193, 39, 45)
-```
-
-We know that neither of these values will **ever** change throughout the duration of our program (at least, I sure
-_hope_ they don't). So the ability to store them in an immutable collection acts as a safeguard from your program or
-teammate accidentally editing them by mistake.
-
-Tuples are also what Python uses when a function **returns more than one value**, and they allow us to define multiple
-variables at once:
-
-```python
-def get_min_and_max(values):
-    return min(values), max(values)
-
-
-lowest, highest = get_min_and_max([4, 9, 2])
-print(lowest, highest)
-```
-
-Output:
-
-```text
-2 9
-```
-
-One small detail: a tuple with a single element needs a trailing comma, otherwise Python reads the parentheses as
-regular grouping parentheses:
-
-```python
-print(type((5,)), type((5)))
-```
-
-Output:
-
-```text
-<class 'tuple'> <class 'int'>
-```
+actually _is_ in memory, so we'll leave it for next lecture. The last part of today's lecture is a first look at exactly
+that.
 
 ### Part 4: _A First Look At Memory Maps_
 
-Everything we have done today has quietly relied on a question that we haven't answered yet: what actually **is** a
+Everything we have done today has relied on a question that we haven't answered yet: what actually **is** a
 variable? So far we have thought of a variable as a box with a value inside of it. That is a perfectly good model for
 numbers and strings, but it falls apart the moment we start _changing_ lists with `append()`, `insert()`, and `pop()`.
-Let's replace it with a more accurate model.
+It is also what separates the two kinds of sequence that we met today: a list can be changed in place, and a tuple
+can't. Let's replace our model with a more accurate one.
 
 #### _Variables and objects_
 
@@ -462,7 +469,7 @@ it. The old `int` object is no longer referenced by anything.</sub>
 
 #### _Lists in memory_
 
-Lists are objects too, but with a twist. A list does not hold its elements directly; it holds a **reference to each
+Lists are objects too, but they work a little differently. A list does not hold its elements directly; it holds a **reference to each
 one of them**:
 
 ```python
@@ -532,7 +539,60 @@ This is also the reason that `append()` returns `None`: it doesn't build a new l
 exists, and every name that refers to it sees the change.
 
 This is called **aliasing**, and it's behind a whole category of bugs where a "copy" of a list (like a backup) changes
-when the original does. How do we make a real, separate copy of a list? That's the topic of the next lecture.
+when the original does.
+
+#### _Slices_
+
+So is _everything_ that looks like a copy an alias? Not at all. Let's see what happens with a **slice**
+([**`slices.py`**](slices.py)):
+
+```python
+lst = [1, 2, 3, 4]
+part = lst[1:3]
+
+print(id(lst) == id(part))
+print(lst, part)
+```
+
+Output:
+
+```text
+False
+[1, 2, 3, 4] [2, 3]
+```
+
+Slicing builds a **brand new list object**, and that new list's cells reference the same `int` objects that the original
+list's cells did (here, `2` and `3`):
+
+![memory_slice](assets/memory_slice.svg)
+
+<sub>**Figure 7**: `lst` and `part` are two different lists. Only the `int` objects are shared.</sub>
+
+Now let's remove the last element of the **original** list, and see what happens to the slice:
+
+```python
+lst.pop()
+
+print(lst, part)
+```
+
+Output:
+
+```text
+[1, 2, 3] [2, 3]
+```
+
+![memory_slice_pop](assets/memory_slice_pop.svg)
+
+<sub>**Figure 8**: `pop()` removed the last **cell** of `lst`. The `int` object `4` is still in memory, but it is
+"free-floating" now: nothing references it any more (`pop()` handed us back a copy of that reference as its return
+value, but we didn't save it). The slice `part` is untouched, and `2` and `3` are still referenced by both lists.</sub>
+
+This is the opposite of what happened with `lst1` and `lst2`. There, two names referred to **one** list, so a change made
+through one name showed up in the other. Here, there are **two** lists, so a change to one has no effect on the other.
+
+How do we make a real, separate copy of a whole list, then? A slice is one way (`lst[:]` slices the entire list), but
+there is a method made for it, and it has a catch or two. That's the topic of the next lecture.
 
 ---
 
