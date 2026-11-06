@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 470" width="920" height="470">
+<rect width="920" height="470" rx="14" fill="#f7f7f4"/>
+<line x1="270" y1="50" x2="270" y2="228" stroke="#171715" stroke-width="4" stroke-linecap="round"/>
+<line x1="380" y1="50" x2="380" y2="228" stroke="#171715" stroke-width="4" stroke-linecap="round"/>
+<line x1="270" y1="70" x2="380" y2="70" stroke="#171715" stroke-width="4" stroke-linecap="round"/>
+<line x1="270" y1="116" x2="380" y2="116" stroke="#171715" stroke-width="4" stroke-linecap="round"/>
+<line x1="270" y1="162" x2="380" y2="162" stroke="#171715" stroke-width="4" stroke-linecap="round"/>
+<line x1="270" y1="208" x2="380" y2="208" stroke="#171715" stroke-width="4" stroke-linecap="round"/>
+<text x="258" y="101.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" font-weight="400" fill="#9a9a9a" text-anchor="end" font-style="italic">grades_original</text>
+<text x="325.0" y="101.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#0b4a8f" text-anchor="middle">id31</text>
+<text x="258" y="147.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" font-weight="400" fill="#9a9a9a" text-anchor="end" font-style="italic">grades_copied</text>
+<text x="325.0" y="147.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#0b4a8f" text-anchor="middle">id31</text>
+<text x="258" y="193.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" font-weight="400" fill="#9a9a9a" text-anchor="end" font-style="italic">grades_separate</text>
+<text x="325.0" y="193.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#0b4a8f" text-anchor="middle">id47</text>
+<rect x="440" y="40" width="70" height="82" rx="0" fill="#fff" stroke="#7b1f8f" stroke-width="4" opacity="1"/>
+<line x1="440" y1="72" x2="510" y2="72" stroke="#7b1f8f" stroke-width="4" stroke-linecap="round"/>
+<text x="475" y="65" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" font-weight="700" fill="#7b1f8f" text-anchor="middle">list</text>
+<polyline points="380,93.0 410,93.0 410,57 440,57" fill="none" stroke="#171715" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="440.0,57.0 426.0,65.0 426.0,49.0" fill="#171715"/>
+<polyline points="380,139.0 410,139.0 410,57 440,57" fill="none" stroke="#171715" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="440.0,57.0 426.0,65.0 426.0,49.0" fill="#171715"/>
+<polyline points="510,106 540,106 540,78 588,78" fill="none" stroke="#7b1f8f" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="588.0,78.0 574.0,86.0 574.0,70.0" fill="#7b1f8f"/>
+<rect x="590" y="60" width="66" height="36" rx="0" fill="#ead9e6" stroke="#7b1f8f" stroke-width="4" opacity="1"/>
+<polyline points="623,96 623,188" fill="none" stroke="#0a7a52" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="623.0,188.0 615.0,174.0 631.0,174.0" fill="#0a7a52"/>
+<rect x="591" y="190" width="64" height="46" rx="0" fill="#fff" stroke="#0a7a52" stroke-width="3" opacity="1"/>
+<line x1="591" y1="208" x2="655" y2="208" stroke="#0a7a52" stroke-width="3" stroke-linecap="round"/>
+<text x="623" y="204" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#0a7a52" text-anchor="middle">float</text>
+<text x="623" y="228" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="19" font-weight="700" fill="#0a7a52" text-anchor="middle">87.0</text>
+<rect x="656" y="60" width="66" height="36" rx="0" fill="#ead9e6" stroke="#7b1f8f" stroke-width="4" opacity="1"/>
+<polyline points="689,96 689,188" fill="none" stroke="#0a7a52" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="689.0,188.0 681.0,174.0 697.0,174.0" fill="#0a7a52"/>
+<rect x="657" y="190" width="64" height="46" rx="0" fill="#fff" stroke="#0a7a52" stroke-width="3" opacity="1"/>
+<line x1="657" y1="208" x2="721" y2="208" stroke="#0a7a52" stroke-width="3" stroke-linecap="round"/>
+<text x="689" y="204" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#0a7a52" text-anchor="middle">float</text>
+<text x="689" y="228" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="19" font-weight="700" fill="#0a7a52" text-anchor="middle">56.0</text>
+<rect x="722" y="60" width="66" height="36" rx="0" fill="#ead9e6" stroke="#7b1f8f" stroke-width="4" opacity="1"/>
+<polyline points="755,96 755,188" fill="none" stroke="#0a7a52" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="755.0,188.0 747.0,174.0 763.0,174.0" fill="#0a7a52"/>
+<rect x="723" y="190" width="64" height="46" rx="0" fill="#fff" stroke="#0a7a52" stroke-width="3" opacity="1"/>
+<line x1="723" y1="208" x2="787" y2="208" stroke="#0a7a52" stroke-width="3" stroke-linecap="round"/>
+<text x="755" y="204" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#0a7a52" text-anchor="middle">float</text>
+<text x="755" y="228" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="19" font-weight="700" fill="#0a7a52" text-anchor="middle">100.0</text>
+<rect x="440" y="290" width="70" height="82" rx="0" fill="#fff" stroke="#7b1f8f" stroke-width="4" opacity="1"/>
+<line x1="440" y1="322" x2="510" y2="322" stroke="#7b1f8f" stroke-width="4" stroke-linecap="round"/>
+<text x="475" y="315" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" font-weight="700" fill="#7b1f8f" text-anchor="middle">list</text>
+<polyline points="380,185.0 395,185.0 395,307 440,307" fill="none" stroke="#171715" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="440.0,307.0 426.0,315.0 426.0,299.0" fill="#171715"/>
+<polyline points="510,356 540,356 540,328 588,328" fill="none" stroke="#7b1f8f" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="588.0,328.0 574.0,336.0 574.0,320.0" fill="#7b1f8f"/>
+<rect x="590" y="310" width="66" height="36" rx="0" fill="#ead9e6" stroke="#7b1f8f" stroke-width="4" opacity="1"/>
+<polyline points="623,310 623,238" fill="none" stroke="#0a7a52" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="623.0,238.0 631.0,252.0 615.0,252.0" fill="#0a7a52"/>
+<rect x="656" y="310" width="66" height="36" rx="0" fill="#ead9e6" stroke="#7b1f8f" stroke-width="4" opacity="1"/>
+<polyline points="689,310 689,238" fill="none" stroke="#0a7a52" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="689.0,238.0 697.0,252.0 681.0,252.0" fill="#0a7a52"/>
+<rect x="722" y="310" width="66" height="36" rx="0" fill="#ead9e6" stroke="#7b1f8f" stroke-width="4" opacity="1"/>
+<polyline points="755,310 755,238" fill="none" stroke="#0a7a52" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="755.0,238.0 763.0,252.0 747.0,252.0" fill="#0a7a52"/>
+</svg>
