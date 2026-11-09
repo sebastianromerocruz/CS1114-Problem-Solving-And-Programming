@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>CS-UY 1114 | Copying Lists and Memory Maps | Animated</title>
+<style>
+  /* One deck for lecture 17, in the same house style and step engine as the other animated decks: arrow keys step,
+     shift + arrow jumps a section. Arrows slide to their new targets, objects fade in and out, the code builds line by line.
+     Open with #3.2 for section 3, step 2. */
+  :root { --ink:#171715; --red:#c1272d; --cream:#f7f7f4; --mute:#6d6d6d; --faint:#9f9f97; --rule:#d9d9d3; }
+  html, body { margin:0; height:100%; background:var(--cream); overflow:hidden; }
+  .slide { position:relative; width:1333px; height:750px; margin:0 auto; padding:40px 64px 76px; box-sizing:border-box; overflow:hidden;
+           font-family:"Helvetica Neue", Helvetica, Arial, sans-serif; color:var(--ink); }
+  .hint { position:absolute; top:20px; left:64px; display:flex; align-items:center; gap:8px; font-size:13px; letter-spacing:.06em; color:var(--mute); }
+  .hint::before { content:""; display:inline-block; width:10px; height:10px; background:var(--red); }
+  .step-indicator { position:absolute; top:20px; right:64px; font-size:13px; letter-spacing:.06em; color:var(--mute); }
+  .step-indicator .n { color:var(--red); font-weight:700; }
+  .stage { position:relative; margin-top:18px; border-bottom:2px solid var(--ink); padding-bottom:10px; display:flex; align-items:baseline; gap:14px; }
+  .stage .num { color:var(--red); font-weight:700; font-size:15px; letter-spacing:.04em; }
+  .stage h1 { margin:0; font-size:30px; font-weight:700; }
+  .subtitle { margin:8px 0 0; font-size:16px; font-style:italic; color:var(--mute); min-height:20px; }
+  .diagram-wrap { margin-top:10px; background:#eee6f3; border-radius:24px; padding:10px 20px; position:relative; }
+  .diagram-wrap .mark { position:absolute; top:20px; left:20px; width:14px; height:14px; background:#8900e1; }
+  svg text { font-family:"Helvetica Neue", Helvetica, Arial, sans-serif; }
+  svg * { transition: opacity .4s ease, fill .4s ease, stroke .4s ease; }
+  svg rect.hl { transition: y .4s ease, height .4s ease, opacity .3s ease; }
+  .slide-footer { position:absolute; bottom:24px; left:64px; right:64px; display:flex; justify-content:space-between; font-size:12px;
+                  color:var(--faint); border-top:1px solid var(--rule); padding-top:10px; }
+</style>
+</head>
+<body>
+<div class="slide">
+  <div class="hint">&larr; / &rarr; step &nbsp;&middot;&nbsp; shift + &larr; / &rarr; section</div>
+  <div class="step-indicator">SECTION <span class="n" id="sec-n">1</span> / <span id="sec-total">6</span> &nbsp;&middot;&nbsp; STEP <span class="n" id="step-n">1</span> / <span id="step-total">1</span></div>
+  <div class="stage"><span class="num" id="num"></span><h1 id="title"></h1></div>
+  <p class="subtitle" id="subtitle"></p>
+  <div class="diagram-wrap"><div class="mark"></div><svg id="stage" viewBox="0 0 1150 520" width="100%" height="520"></svg></div>
+  <div class="slide-footer"><span id="foot-left"></span><span>NYU Tandon | Fall 2026</span></div>
+</div>
+<script>
+(function () {
+  const NS = "http://www.w3.org/2000/svg";
+  const DONE = /[?&]done/.test(location.search);
+  if (DONE) { const st = document.createElement("style"); st.textContent = "svg *{transition:none !important}"; document.head.appendChild(st); }
+  const MONO = "'SF Mono', Menlo, Consolas, monospace";
+  const BLUE = "#0b4a8f", LIST = "#7b1f8f", LISTF = "#ead9e6", INTC = "#0a7a52", GREY = "#9a9a9a", INK = "#171715", RED = "#c1272d";
+
+  // ---------------------------------------------------------------- drawing helpers
+  function E(tag, attrs, parent, text) {
+    const e = document.createElementNS(NS, tag);
+    if (attrs) for (const k in attrs) e.setAttribute(k, attrs[k]);
+    if (text !== undefined) e.textContent = text;
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+  function rect(p, x, y, w, h, o) {
+    o = o || {};
+    return E("rect", { x, y, width: w, height: h, rx: o.rx || 0, fill: o.fill || "none", stroke: o.stroke || "none", "stroke-width": o.sw || 0 }, p);
+  }
+  function txt(p, x, y, s, o) {
+    o = o || {};
+    const t = E("text", { x, y, fill: o.fill || INK, "font-size": o.size || 18, "font-weight": o.weight || 400, "text-anchor": o.anchor || "start" }, p, s);
+    if (o.mono) t.style.fontFamily = MONO;
+    t.style.whiteSpace = "pre";
+    if (o.italic) t.setAttribute("font-style", "italic");
+    if (o.ls) t.setAttribute("letter-spacing", o.ls);
+    return t;
+  }
+  function ln(p, x1, y1, x2, y2, stroke, sw) { return E("line", { x1, y1, x2, y2, stroke: stroke || INK, "stroke-width": sw || 4, "stroke-linecap": "round" }, p); }
+  function head(a, x1, y1, x2, y2) {
+    const ang = Math.atan2(y2 - y1, x2 - x1), L = 14, W = 8, bx = x2 - L * Math.cos(ang), by = y2 - L * Math.sin(ang);
+    a.setAttribute("points", [x2, y2, bx - W * Math.sin(ang), by + W * Math.cos(ang), bx + W * Math.sin(ang), by - W * Math.cos(ang)].map((v) => v.toFixed(1)).join(","));
+  }
+  function polyline(p, pts, col, sw) {
+    const g = E("g", {}, p);
+    E("polyline", { points: pts.map((q) => q.join(",")).join(" "), fill: "none", stroke: col || INK, "stroke-width": sw || 4, "stroke-linejoin": "round", "stroke-linecap": "round" }, g);
+    const h = E("polygon", { fill: col || INK }, g), a = pts[pts.length - 2], b = pts[pts.length - 1];
+    head(h, a[0], a[1], b[0], b[1]);
+    return g;
+  }
+  const vis = (el, on) => { el.style.opacity = on ? 1 : 0; };
+
+  // a straight arrow whose end points can slide to a new target
+  class Arrow {
+    constructor(parent, col, sw) {
+      this.g = E("g", {}, parent);
+      this.l = E("line", { stroke: col, "stroke-width": sw, "stroke-linecap": "round" }, this.g);
+      this.h = E("polygon", { fill: col }, this.g);
+      this.raf = 0; this.p = null;
+    }
+    draw(p) { this.p = p; this.l.setAttribute("x1", p[0]); this.l.setAttribute("y1", p[1]); this.l.setAttribute("x2", p[2]); this.l.setAttribute("y2", p[3]); head(this.h, p[0], p[1], p[2], p[3]); }
+    moveTo(q, ms) {
+      cancelAnimationFrame(this.raf);
+      if (!this.p || DONE) { this.draw(q); return; }
+      const from = this.p.slice(), t0 = performance.now(), dur = ms || 800;
+      const step = (now) => {
+        const k = Math.min(1, (now - t0) / dur), e = k < .5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2;
+        this.draw(from.map((v, i) => v + (q[i] - v) * e));
+        if (k < 1) this.raf = requestAnimationFrame(step);
+      };
+      this.raf = requestAnimationFrame(step);
+    }
+  }
+
+  // code listing that grows line by line; the lines being run are highlighted
+  function codePanel(g, x, y, w, n, size, lh) {
+    const h = 16 + n * lh;
+    txt(g, x, y - 6, "CODE", { size: 12, weight: 700, fill: RED, ls: "2" });
+    rect(g, x, y, w, h, { rx: 10, fill: "#fff", stroke: "#bdbdb6", sw: 2 });
+    const hl = rect(g, x + 6, y + 8, w - 12, lh, { rx: 6, fill: "#fbeceb" }); hl.setAttribute("class", "hl");
+    const lines = [];
+    for (let k = 0; k < n; k++) lines.push(txt(g, x + 18, y + 8 + k * lh + lh - 7, "", { size, mono: true }));
+    return { h, set(codes, first, last, shown) {
+      const sh = shown === undefined ? last : shown;
+      lines.forEach((t, k) => { t.textContent = k <= sh ? codes[k] : ""; const on = k >= first && k <= last; t.setAttribute("fill", on ? "#000" : "#777"); t.setAttribute("font-weight", on ? 700 : 400); });
+      hl.style.y = (y + 8 + first * lh) + "px"; hl.style.height = ((last - first + 1) * lh) + "px"; hl.setAttribute("y", y + 8 + first * lh); hl.setAttribute("height", (last - first + 1) * lh);
+    } };
+  }
+  function outPanel(g, x, y, w, n, size, lh) {
+    const h = 16 + n * lh;
+    txt(g, x, y - 6, "OUTPUT", { size: 12, weight: 700, fill: RED, ls: "2" });
+    rect(g, x, y, w, h, { rx: 10, fill: "#fff", stroke: "#bdbdb6", sw: 2 });
+    const lines = [];
+    for (let k = 0; k < n; k++) lines.push(txt(g, x + 16, y + 8 + k * lh + lh - 7, "", { size, mono: true, weight: 700, fill: INTC }));
+    return { h, set(arr) { lines.forEach((t, k) => { const v = arr[k]; t.textContent = v || ""; t.style.opacity = v ? 1 : 0; }); } };
+  }
+  function namespace(g, x0, y0, names, rowH, size) {
+    const w = 110, h = 20 + rowH * names.length + 20, r = { ids: [], names: [], mids: [], right: x0 + w };
+    ln(g, x0, y0, x0, y0 + h); ln(g, x0 + w, y0, x0 + w, y0 + h);
+    for (let k = 0; k <= names.length; k++) ln(g, x0, y0 + 20 + k * rowH, x0 + w, y0 + 20 + k * rowH);
+    names.forEach((n, k) => {
+      const mid = y0 + 20 + k * rowH + rowH / 2;
+      r.names.push(txt(g, x0 - 12, mid + 8, n, { anchor: "end", size: size || 22, fill: GREY, italic: true }));
+      r.ids.push(txt(g, x0 + w / 2, mid + 8, "", { anchor: "middle", size: 20, fill: BLUE, weight: 700 }));
+      r.mids.push(mid);
+    });
+    r.setId = (k, v) => { r.ids[k].textContent = v || r.ids[k].textContent; vis(r.ids[k], !!v); };
+    return r;
+  }
+  function listBox(g, x, y) {
+    const gg = E("g", {}, g);
+    rect(gg, x, y, 70, 82, { fill: "#fff", stroke: LIST, sw: 4 }); ln(gg, x, y + 32, x + 70, y + 32, LIST, 4);
+    txt(gg, x + 35, y + 25, "list", { size: 22, weight: 700, fill: LIST, anchor: "middle" });
+    return gg;
+  }
+  function fobj(g, cx, y, val, type, idt) {
+    const gg = E("g", {}, g), box = rect(gg, cx - 31, y, 62, 46, { fill: "#fff", stroke: INTC, sw: 3 }), d = ln(gg, cx - 31, y + 18, cx + 31, y + 18, INTC, 3);
+    const t1 = txt(gg, cx, y + 14, type || "float", { size: 12, weight: 700, fill: INTC, anchor: "middle" }), t2 = txt(gg, cx, y + 38, val, { size: 18, weight: 700, fill: INTC, anchor: "middle" });
+    const t3 = idt ? txt(gg, cx, y + 62, idt, { size: 12, weight: 700, fill: BLUE, anchor: "middle" }) : null;
+    return { g: gg, setDead(dead) { const c = dead ? GREY : INTC; box.style.stroke = c; d.style.stroke = c; t1.style.fill = c; t2.style.fill = c; if (t3) t3.style.fill = dead ? GREY : BLUE; gg.style.opacity = dead ? 0.6 : 1; } };
+  }
+  function tabList(g, x, yc, vals) {
+    const gg = E("g", {}, g), cells = [];
+    rect(gg, x, yc - 18, 50, 36, { fill: "#fff", stroke: LIST, sw: 4 }); txt(gg, x + 25, yc + 6, "list", { size: 16, weight: 700, fill: LIST, anchor: "middle" });
+    vals.forEach((v, k) => { rect(gg, x + 54 + k * 66, yc - 18, 66, 36, { fill: LISTF, stroke: LIST, sw: 4 }); cells.push(txt(gg, x + 54 + k * 66 + 33, yc + 6, v, { size: 16, weight: 700, anchor: "middle", mono: true })); });
+    return { g: gg, cells };
+  }
+  function outerArray(g, x, yc) {
+    const gg = E("g", {}, g), pts = [];
+    txt(gg, x + 23, yc - 62, "list", { size: 16, weight: 700, fill: LIST, anchor: "middle" });
+    for (let k = 0; k < 3; k++) { const y = yc - 51 + k * 34; rect(gg, x, y, 46, 34, { fill: LISTF, stroke: LIST, sw: 4 }); pts.push([x + 46, y + 17]); }
+    return { g: gg, pts };
+  }
+
+  const scenes = [];
+
+  // ---------------------------------------------------------------- title cards
+  function card(g, kicker, title, tagline, small) {
+    rect(g, 95, 80, 960, 360, { rx: 28, fill: "#fff", stroke: "#57068c", sw: 6 });
+    txt(g, 575, 160, kicker, { anchor: "middle", size: 18, weight: 700, fill: RED, ls: "3" });
+    txt(g, 575, 255, title, { anchor: "middle", size: title.length > 29 ? 46 : 54, weight: 700 });
+    rect(g, 515, 285, 120, 6, { rx: 3, fill: "#8900e1" });
+    if (tagline) txt(g, 575, 345, tagline, { anchor: "middle", size: 28, italic: true, fill: "#6d6d6d" });
+    if (small) txt(g, 575, 400, small, { anchor: "middle", size: 17, fill: "#9f9f97" });
+  }
+  scenes.push({
+    num: "", title: "", noHead: true, footer: "CS-UY 1114 | Lecture XVII", subtitle: "", steps: [{}],
+    build(g) { card(g, "CS-UY 1114  |  LECTURE XVII", "Copying Lists and Memory Maps", "What is a copy, really?", "Introduction to Programming and Problem Solving"); return {}; },
+    render() {},
+  });
+
+  // ---------------------------------------------------------------- elements versus indices
+  const OBJS = [["3", "id7"], ["5", "id9"], ["8", "id11"], ["6", "id21"], ["10", "id23"], ["16", "id25"], ["0", "id2"], ["1", "id4"], ["2", "id6"]];
+  const LA = ["lst = [3, 5, 8]", "for elem in lst:", "    elem = elem * 2", "print(lst)"];
+  const LB = ["lst = [3, 5, 8]", "for i in range(len(lst)):", "    lst[i] = lst[i] * 2", "print(lst)"];
+  const all9 = [0, 1, 2, 3, 4, 5, 6, 7, 8], dead5 = [0, 1, 2, 6, 7];
+  const LS = [
+    { p: "A", cur: [0, 0], vis: [0, 1, 2], cell: [0, 1, 2], ptr: -1, dead: [], out: [] },
+    { p: "A", cur: [1, 1], vis: [0, 1, 2], cell: [0, 1, 2], ptr: 0, dead: [], out: [] },
+    { p: "A", cur: [2, 2], vis: [0, 1, 2, 3], cell: [0, 1, 2], ptr: 3, dead: [], out: [] },
+    { p: "A", cur: [1, 2], vis: [0, 1, 2, 3, 4, 5], cell: [0, 1, 2], ptr: 5, dead: [3, 4], out: [] },
+    { p: "A", cur: [3, 3], vis: [0, 1, 2, 3, 4, 5], cell: [0, 1, 2], ptr: 5, dead: [3, 4], out: ["[3, 5, 8]"] },
+    { p: "B", cur: [0, 0], vis: [0, 1, 2], cell: [0, 1, 2], ptr: -1, dead: [], out: [] },
+    { p: "B", cur: [1, 1], vis: [0, 1, 2, 6], cell: [0, 1, 2], ptr: 6, dead: [], out: [] },
+    { p: "B", cur: [2, 2], vis: [0, 1, 2, 3, 6], cell: [3, 1, 2], ptr: 6, dead: [0], out: [] },
+    { p: "B", cur: [1, 2], vis: all9, cell: [3, 4, 5], ptr: 8, dead: dead5, out: [] },
+    { p: "B", cur: [3, 3], vis: all9, cell: [3, 4, 5], ptr: 8, dead: dead5, out: ["[6, 10, 16]"] },
+  ];
+  scenes.push({
+    num: "I", title: "Elements Versus Indices", subtitle: "Why one loop changes the list and the other doesn't", steps: LS.map(() => ({})),
+    build(g) {
+      const r = {}, lh = 22, sx = (k) => 563 + 66 * k;
+      r.code = codePanel(g, 14, 24, 700, 4, 15, lh); r.out = outPanel(g, 730, 24, 406, 1, 14, lh);
+      const D = 24 + r.code.h + 24, fy = D + 110;
+      Object.assign(r, { sx, ytop: D, fy });
+      r.ns = namespace(g, 110, D, ["lst", "elem"], 46);
+      listBox(g, 380, D);
+      polyline(g, [[220, r.ns.mids[0]], [320, r.ns.mids[0]], [320, D + 17], [380, D + 17]]);
+      polyline(g, [[450, D + 66], [490, D + 66], [490, D + 34], [528, D + 34]], LIST);
+      for (let k = 0; k < 3; k++) rect(g, 530 + 66 * k, D + 16, 66, 36, { fill: LISTF, stroke: LIST, sw: 4 });
+      r.ca = [0, 1, 2].map((k) => new Arrow(g, INTC, 4));
+      r.objs = OBJS.map((o, k) => fobj(g, sx(k), fy, o[0], "int", o[1]));
+      r.ptr = OBJS.map((o, k) => polyline(g, [[220, r.ns.mids[1]], [250, r.ns.mids[1]], [250, fy + 88], [sx(k), fy + 88], [sx(k), fy + 70]]));
+      r.leg = txt(g, 1120, fy + 124, "grey: no longer referenced", { size: 14, fill: "#6d6d6d", anchor: "end", italic: true });
+      return r;
+    },
+    render(i, r) {
+      const s = LS[i];
+      r.code.set(s.p === "A" ? LA : LB, s.cur[0], s.cur[1]); r.out.set(s.out);
+      r.ns.setId(0, "id12"); r.ns.names[1].textContent = s.p === "A" ? "elem" : "i"; vis(r.ns.names[1], s.ptr >= 0); r.ns.setId(1, s.ptr >= 0 ? OBJS[s.ptr][1] : "");
+      r.objs.forEach((o, k) => { o.setDead(s.dead.includes(k)); if (!s.vis.includes(k)) o.g.style.opacity = 0; });
+      r.ptr.forEach((p, k) => vis(p, k === s.ptr));
+      r.ca.forEach((a, k) => a.moveTo([r.sx(k), r.ytop + 52, r.sx(s.cell[k]), r.fy - 2]));
+      vis(r.leg, s.dead.length > 0);
+    },
+  });
+
+
+  // ---------------------------------------------------------------- passing a list to a function
+  const FA = ["def double(n):", "    n = n * 2", "x = 5", "double(x)", "print(x)"];
+  const FB = ["def double_all(lst):", "    for i in range(len(lst)):", "        lst[i] = lst[i] * 2", "nums = [3, 5, 8]", "double_all(nums)", "print(nums)"];
+  const FOBJ = [["3", "id7"], ["5", "id9"], ["8", "id11"], ["6", "id21"], ["10", "id23"], ["16", "id25"]];
+  const FS = [
+    { p: "A", cur: [2, 2], main: 1, frame: false, fp: 0, vis: [1], dead: [], out: [] },
+    { p: "A", cur: [3, 3], main: 1, frame: true, fp: 1, vis: [1], dead: [], out: [] },
+    { p: "A", cur: [1, 1], main: 1, frame: true, fp: 4, vis: [1, 4], dead: [], out: [] },
+    { p: "A", cur: [3, 3], main: 1, frame: false, fp: 4, vis: [1, 4], dead: [4], out: [] },
+    { p: "A", cur: [4, 4], main: 1, frame: false, fp: 4, vis: [1, 4], dead: [4], out: ["5"] },
+    { p: "B", cur: [3, 3], frame: false, cell: [0, 1, 2], vis: [0, 1, 2], dead: [], out: [] },
+    { p: "B", cur: [4, 4], frame: true, cell: [0, 1, 2], vis: [0, 1, 2], dead: [], out: [] },
+    { p: "B", cur: [1, 2], frame: true, cell: [3, 1, 2], vis: [0, 1, 2, 3], dead: [0], out: [] },
+    { p: "B", cur: [1, 2], frame: true, cell: [3, 4, 5], vis: [0, 1, 2, 3, 4, 5], dead: [0, 1, 2], out: [] },
+    { p: "B", cur: [4, 4], frame: false, cell: [3, 4, 5], vis: [0, 1, 2, 3, 4, 5], dead: [0, 1, 2], out: [] },
+    { p: "B", cur: [5, 5], frame: false, cell: [3, 4, 5], vis: [0, 1, 2, 3, 4, 5], dead: [0, 1, 2], out: ["[6, 10, 16]"] },
+  ];
+  scenes.push({
+    num: "II", title: "Passing a List to a Function", subtitle: "A function can change a list but not an integer", steps: FS.map(() => ({})),
+    build(g) {
+      const r = {}, lh = 22, sx = (k) => 563 + 66 * k;
+      r.code = codePanel(g, 14, 24, 700, 6, 15, lh); r.out = outPanel(g, 730, 24, 406, 1, 14, lh);
+      const D = 24 + r.code.h + 24, fy = D + 110, y2 = D + 105;
+      Object.assign(r, { sx, ytop: D, fy });
+      r.ns = namespace(g, 110, D, ["x"], 46);
+      r.fg = E("g", {}, g);
+      r.fns = namespace(r.fg, 110, y2, ["n"], 46);
+      txt(g, 110, D - 6, "MAIN", { size: 12, weight: 700, fill: RED, ls: "2" });
+      r.ftitle = txt(r.fg, 110, y2 - 6, "DOUBLE", { size: 12, weight: 700, fill: RED, ls: "2" });
+      const m0 = r.ns.mids[0], m1 = r.fns.mids[0];
+      // part A: two int objects
+      r.A = E("g", {}, g);
+      r.ia = [["5", "id7", 420, D + 8], ["10", "id21", 560, D + 108]].map((o) => fobj(r.A, o[2], o[3], o[0], "int", o[1]));
+      r.xp = polyline(r.A, [[220, m0], [387, m0]]);
+      r.np0 = polyline(r.A, [[220, m1], [420, m1], [420, D + 78]]);
+      r.np1 = polyline(r.A, [[220, m1], [527, m1]]);
+      // part B: one list, six ints
+      r.B = E("g", {}, g);
+      listBox(r.B, 380, D);
+      polyline(r.B, [[220, m0], [320, m0], [320, D + 17], [380, D + 17]]);
+      polyline(r.B, [[450, D + 66], [490, D + 66], [490, D + 34], [528, D + 34]], LIST);
+      for (let k = 0; k < 3; k++) rect(r.B, 530 + 66 * k, D + 16, 66, 36, { fill: LISTF, stroke: LIST, sw: 4 });
+      r.lp = polyline(r.B, [[220, m1], [350, m1], [350, D + 60], [380, D + 60]]);
+      r.ca = [0, 1, 2].map(() => new Arrow(r.B, INTC, 4));
+      r.ib = FOBJ.map((o, k) => fobj(r.B, sx(k), fy, o[0], "int", o[1]));
+      r.leg = txt(g, 1120, fy + 124, "grey: no longer referenced", { size: 14, fill: "#6d6d6d", anchor: "end", italic: true });
+      return r;
+    },
+    render(i, r) {
+      const s = FS[i], A = s.p === "A";
+      r.code.set(A ? FA : FB, s.cur[0], s.cur[1], 99); r.out.set(s.out);
+      vis(r.A, A); vis(r.B, !A);
+      r.ns.names[0].textContent = A ? "x" : "nums"; r.ns.setId(0, A ? "id7" : "id12");
+      r.fns.names[0].textContent = A ? "n" : "lst"; r.fns.setId(0, s.frame ? (A ? (s.fp === 4 ? "id21" : "id7") : "id12") : "");
+      vis(r.fg, s.frame); r.ftitle.textContent = A ? "DOUBLE(X)" : "DOUBLE_ALL(NUMS)";
+      if (A) {
+        r.ia.forEach((o, k) => { const id = k === 0 ? 1 : 4; o.setDead(s.dead.includes(id)); if (!s.vis.includes(id)) o.g.style.opacity = 0; });
+        vis(r.np0, s.frame && s.fp === 1); vis(r.np1, s.frame && s.fp === 4);
+      } else {
+        r.ib.forEach((o, k) => { o.setDead(s.dead.includes(k)); if (!s.vis.includes(k)) o.g.style.opacity = 0; });
+        vis(r.lp, s.frame);
+        r.ca.forEach((a, k) => a.moveTo([r.sx(k), r.ytop + 52, r.sx(s.cell[k]), r.fy - 2]));
+      }
+      vis(r.leg, s.dead.length > 0);
+    },
+  });
+
+  // ---------------------------------------------------------------- flat lists: alias and copy
+  const OLD = ["87.0", "56.0", "100.0"], NEW = ["0.87", "0.56", "1.0"], L_OLD = "[87.0, 56.0, 100.0]", L_NEW = "[0.87, 0.56, 1.0]";
+  function flatScene(cfg) {
+    return {
+      num: cfg.num, title: cfg.title, subtitle: cfg.subtitle, steps: cfg.states.map(() => ({})),
+      build(g) {
+        const r = {}, lh = 22, n = cfg.code.length, ch = 16 + n * lh;
+        r.code = codePanel(g, 14, 24, 700, n, 15, lh);
+        r.out = outPanel(g, 730, 24, 406, cfg.outCount, 14, lh);
+        const D = 24 + ch + 24, names = cfg.names;
+        r.ns = namespace(g, 250, D, names, 46);
+        r.ns.names.forEach((t, k) => { if (k === 2) t.style.opacity = 0; });
+        const rx = r.ns.right, mids = r.ns.mids, ytop = D, fy = D + 96, yb = D + 190;
+        r.sx = (k) => 560 + 33 + 66 * k; r.ytop = ytop; r.fy = fy;
+        r.A = E("g", {}, g);
+        listBox(r.A, 410, ytop);
+        polyline(r.A, [[480, ytop + 66], [520, ytop + 66], [520, ytop + 34], [558, ytop + 34]], LIST);
+        for (let k = 0; k < 3; k++) rect(r.A, 560 + 66 * k, ytop + 16, 66, 36, { fill: LISTF, stroke: LIST, sw: 4 });
+        r.c0 = polyline(g, [[rx, mids[0]], [385, mids[0]], [385, ytop + 17], [410, ytop + 17]]);
+        r.c1 = polyline(g, [[rx, mids[1]], [385, mids[1]], [385, ytop + 17], [410, ytop + 17]]);
+        r.aA = [0, 1, 2].map((k) => { const a = new Arrow(g, INTC, 4); a.draw([r.sx(k), ytop + 52, r.sx(k), fy - 2]); return a; });
+        r.old = [0, 1, 2].map((k) => fobj(g, r.sx(k), fy, OLD[k]));
+        r.nw = [0, 1, 2].map((k) => fobj(g, r.sx(3 + k), fy, NEW[k]));
+        r.dead = txt(g, r.sx(1), fy + 70, "no longer referenced", { size: 14, fill: "#6d6d6d", anchor: "middle", italic: true });
+        if (names.length === 3) {
+          r.B = E("g", {}, g);
+          listBox(r.B, 410, yb);
+          polyline(r.B, [[rx, mids[2]], [375, mids[2]], [375, yb + 17], [410, yb + 17]]);
+          polyline(r.B, [[480, yb + 66], [520, yb + 66], [520, yb + 34], [558, yb + 34]], LIST);
+          for (let k = 0; k < 3; k++) { rect(r.B, 560 + 66 * k, yb + 16, 66, 36, { fill: LISTF, stroke: LIST, sw: 4 }); polyline(r.B, [[r.sx(k), yb + 16], [r.sx(k), fy + 48]], INTC); }
+        }
+        return r;
+      },
+      render(i, r) {
+        const s = cfg.states[i];
+        r.code.set(cfg.code, s.cur[0], s.cur[1]); r.out.set(s.out);
+        s.ids.forEach((v, k) => r.ns.setId(k, v));
+        if (r.ns.names[2]) vis(r.ns.names[2], !!s.ids[2]);
+        vis(r.c0, !!s.ids[0]); vis(r.c1, s.ids[1] === "id31");
+        s.arefs.forEach((ref, k) => r.aA[k].moveTo([r.sx(k), r.ytop + 52, r.sx(ref), r.fy - 2]));
+        r.nw.forEach((f, k) => vis(f.g, k < s.newFloats)); r.old.forEach((f, k) => f.setDead(k < s.oldDead)); vis(r.dead, s.oldDead > 1);
+        if (r.B) vis(r.B, !!s.bVisible);
+      },
+    };
+  }
+  const ALIAS_CODE = ["orig = [87.0, 56.0, 100.0]", "alias = orig", "for i in range(len(alias)):", "    alias[i] = alias[i] / 100.0", "print(orig, alias, sep='\\n')"];
+  scenes.push(flatScene({
+    num: "III", title: "A Copy That Isn't", subtitle: "Aliasing: two names, one list", names: ["orig", "alias"], code: ALIAS_CODE, outCount: 2,
+    states: [
+      { cur: [0, 0], ids: ["id31", ""], arefs: [0, 1, 2], newFloats: 0, oldDead: 0, out: [] },
+      { cur: [1, 1], ids: ["id31", "id31"], arefs: [0, 1, 2], newFloats: 0, oldDead: 0, out: [] },
+      { cur: [2, 3], ids: ["id31", "id31"], arefs: [3, 1, 2], newFloats: 1, oldDead: 1, out: [] },
+      { cur: [2, 3], ids: ["id31", "id31"], arefs: [3, 4, 2], newFloats: 2, oldDead: 2, out: [] },
+      { cur: [2, 3], ids: ["id31", "id31"], arefs: [3, 4, 5], newFloats: 3, oldDead: 3, out: [] },
+      { cur: [4, 4], ids: ["id31", "id31"], arefs: [3, 4, 5], newFloats: 3, oldDead: 3, out: [L_NEW, L_NEW] },
+    ],
+  }));
+  const COPY_CODE = ["orig = [87.0, 56.0, 100.0]", "alias = orig", "clone = alias.copy()", "for i in range(len(alias)):", "    alias[i] = alias[i] / 100.0",
+    'print(f"orig: {orig}")', 'print(f"alias: {alias}")', 'print(f"clone: {clone}")'];
+  const COPY_OUT = ["orig: " + L_NEW, "alias: " + L_NEW, "clone: " + L_OLD];
+  scenes.push(flatScene({
+    num: "IV", title: "The copy() Method", subtitle: "A separate list, with the same elements", names: ["orig", "alias", "clone"], code: COPY_CODE, outCount: 3,
+    states: [
+      { cur: [0, 1], ids: ["id31", "id31", ""], arefs: [0, 1, 2], newFloats: 0, oldDead: 0, bVisible: false, out: [] },
+      { cur: [2, 2], ids: ["id31", "id31", "id47"], arefs: [0, 1, 2], newFloats: 0, oldDead: 0, bVisible: true, out: [] },
+      { cur: [3, 4], ids: ["id31", "id31", "id47"], arefs: [3, 1, 2], newFloats: 1, oldDead: 0, bVisible: true, out: [] },
+      { cur: [3, 4], ids: ["id31", "id31", "id47"], arefs: [3, 4, 2], newFloats: 2, oldDead: 0, bVisible: true, out: [] },
+      { cur: [3, 4], ids: ["id31", "id31", "id47"], arefs: [3, 4, 5], newFloats: 3, oldDead: 0, bVisible: true, out: [] },
+      { cur: [5, 7], ids: ["id31", "id31", "id47"], arefs: [3, 4, 5], newFloats: 3, oldDead: 0, bVisible: true, out: COPY_OUT },
+    ],
+  }));
+
+  // ---------------------------------------------------------------- nested lists
+  const ROWS = [["87.0", "56.0", "100.0"], ["70.0", "95.0", "90.5"], ["80.0", "85.0", "89.0"]];
+  const INNER_X = 800, S_OLD = "[[87.0, 56.0, 100.0], [70.0, 95.0, 90.5], [80.0, 85.0, 89.0]]", S_NEW = "[[87.0, 56.0, 100.0], [70.0, 95.0, 90.5], [80.0, 85.0, 100.0]]";
+  function nestedCommon(g, cfg) {
+    const r = {}, n = cfg.code.length;
+    r.code = codePanel(g, 14, 24, 1122, n, 15, 20);
+    r.out = outPanel(g, 14, 24 + r.code.h + 18, 1122, 2, 14, 20);
+    r.base = 24 + r.code.h + 18 + r.out.h + 18;
+    txt(g, 1136, 512, "(the floats are drawn inside the cells; each cell references a float object)", { size: 12, fill: "#6d6d6d", anchor: "end", italic: true });
+    return r;
+  }
+  function edit(cell, on) { cell.textContent = on ? "100.0" : "89.0"; cell.style.fill = on ? RED : INK; }
+  const NC = ["FINAL = 2", "orig = [[87.0, 56.0, 100.0], [70.0, 95.0, 90.5], [80.0, 85.0, 89.0]]",
+    "shallow = orig.copy()", "shallow[2][FINAL] = 100.0", "print(orig, shallow, sep='\\n')"];
+  scenes.push({
+    num: "V", title: "Nested Lists And Shallow Copies", subtitle: "What copy() does not copy",
+    steps: [{}, {}, {}, {}],
+    states: [
+      { cur: 1, out: [], b: false, edit: false }, { cur: 2, out: [], b: true, edit: false },
+      { cur: 3, out: [], b: true, edit: true }, { cur: 4, out: [S_NEW, S_NEW], b: true, edit: true },
+    ],
+    build(g) {
+      const r = nestedCommon(g, { code: NC }), base = r.base;
+      const ys = [base + 28, base + 118, base + 208], ac = base + 62, bc = base + 205;
+      r.rows = ys.map((y, k) => tabList(g, INNER_X, y, ROWS[k]));
+      r.ns = namespace(g, 280, base + 80, ["orig", "shallow"], 44, 17);
+      r.A = E("g", {}, g); const oa = outerArray(r.A, 480, ac);
+      polyline(r.A, [[r.ns.right, r.ns.mids[0]], [440, r.ns.mids[0]], [440, ac], [478, ac]]);
+      oa.pts.forEach((p, k) => polyline(r.A, [p, [INNER_X - 4, ys[k] - 10]], LIST));
+      r.B = E("g", {}, g); const ob = outerArray(r.B, 480, bc);
+      polyline(r.B, [[r.ns.right, r.ns.mids[1]], [425, r.ns.mids[1]], [425, bc], [478, bc]]);
+      ob.pts.forEach((p, k) => polyline(r.B, [p, [INNER_X - 4, ys[k] + 10]], LIST));
+      return r;
+    },
+    render(i, r) {
+      const s = this.states[i];
+      r.code.set(NC, s.cur, s.cur); r.out.set(s.out);
+      r.ns.setId(0, "id10"); r.ns.setId(1, s.b ? "id22" : ""); vis(r.ns.names[1], s.b); vis(r.B, s.b);
+      edit(r.rows[2].cells[2], s.edit);
+    },
+  });
+  const DC = ["import copy", "FINAL = 2", "orig = [[87.0, 56.0, 100.0], [70.0, 95.0, 90.5], [80.0, 85.0, 89.0]]",
+    "deep = copy.deepcopy(orig)", "deep[2][FINAL] = 100.0", "print(orig, deep, sep='\\n')"];
+  scenes.push({
+    num: "VI", title: "Deep Copies", subtitle: "copy.deepcopy()", steps: [{}, {}, {}],
+    states: [{ cur: 3, out: [], edit: false }, { cur: 4, out: [], edit: true }, { cur: 5, out: [S_OLD, S_NEW], edit: true }],
+    build(g) {
+      const r = nestedCommon(g, { code: DC }), base = r.base;
+      const ya = [base + 18, base + 58, base + 98], yb = [base + 148, base + 188, base + 228], ac = base + 58, bc = base + 188;
+      r.ns = namespace(g, 280, base + 95, ["orig", "deep"], 44, 17);
+      r.A = E("g", {}, g);
+      ya.forEach((y, k) => tabList(r.A, INNER_X, y, ROWS[k]));
+      const oa = outerArray(r.A, 480, ac);
+      polyline(r.A, [[r.ns.right, r.ns.mids[0]], [440, r.ns.mids[0]], [440, ac], [478, ac]]);
+      oa.pts.forEach((p, k) => polyline(r.A, [p, [INNER_X - 4, ya[k]]], LIST));
+      r.B = E("g", {}, g);
+      r.rowsB = yb.map((y, k) => tabList(r.B, INNER_X, y, ROWS[k]));
+      const ob = outerArray(r.B, 480, bc);
+      polyline(r.B, [[r.ns.right, r.ns.mids[1]], [425, r.ns.mids[1]], [425, bc], [478, bc]]);
+      ob.pts.forEach((p, k) => polyline(r.B, [p, [INNER_X - 4, yb[k]]], LIST));
+      return r;
+    },
+    render(i, r) {
+      const s = this.states[i];
+      r.code.set(DC, s.cur, s.cur); r.out.set(s.out);
+      r.ns.setId(0, "id10"); r.ns.setId(1, "id22"); vis(r.B, true);
+      edit(r.rowsB[2].cells[2], s.edit);
+    },
+  });
+
+  // ---------------------------------------------------------------- summary
+  const SUM = [["alias = orig", "alias", "no", "no"], ["orig.copy()", "shallow copy", "yes", "no"], ["copy.deepcopy(orig)", "deep copy", "yes", "yes"]];
+  scenes.push({
+    num: "VII", title: "Alias, Shallow, Deep", subtitle: "Three ways of making a \"copy\"", steps: [{}, {}, {}],
+    build(g) {
+      const r = { rows: [] };
+      [["operation", 90, "start"], ["new outer list?", 760, "middle"], ["new inner lists?", 970, "middle"]].forEach((c) => txt(g, c[1], 100, c[0], { size: 22, weight: 700, anchor: c[2], mono: true }));
+      ln(g, 60, 118, 1090, 118, INK, 3);
+      SUM.forEach((row, i) => {
+        const gg = E("g", {}, g), y = 190 + i * 100;
+        rect(gg, 60, y - 44, 1030, 80, { rx: 14, fill: "#fff", stroke: i ? LIST : GREY, sw: 3 });
+        txt(gg, 90, y - 8, row[0], { size: 24, weight: 700, mono: true }); txt(gg, 90, y + 22, row[1], { size: 18, fill: "#6d6d6d", italic: true });
+        [[row[2], 760], [row[3], 970]].forEach((c) => txt(gg, c[1], y + 10, c[0], { size: 32, weight: 700, anchor: "middle", fill: c[0] === "yes" ? INTC : RED }));
+        gg.style.opacity = 0; r.rows.push(gg);
+      });
+      return r;
+    },
+    render(i, r) { r.rows.forEach((g, k) => vis(g, k <= i)); },
+  });
+
+  // ---------------------------------------------------------------- engine
+  const $ = (id) => document.getElementById(id), stage = $("stage"), refs = [];
+  scenes.forEach((sc, k) => {
+    sc.g = E("g", {}, stage); sc.g.style.display = "none"; refs.push(sc.build(sc.g));
+    if (k > 0) { sc.cg = E("g", {}, stage); sc.cg.style.display = "none"; card(sc.cg, "PART " + sc.num, sc.title, sc.subtitle, ""); }
+    sc.n = sc.steps.length + (sc.cg ? 1 : 0);
+  });
+  $("sec-total").textContent = scenes.length;
+  let si = 0, st = 0, last = "";
+  function show() {
+    const sc = scenes[si], isCard = !!sc.cg && st === 0, key = si + (isCard ? "c" : "s"), vg = isCard ? sc.cg : sc.g;
+    scenes.forEach((s) => { s.g.style.display = s === sc && !isCard ? "" : "none"; if (s.cg) s.cg.style.display = s === sc && isCard ? "" : "none"; });
+    if (!isCard) sc.render(st - (sc.cg ? 1 : 0), refs[si]);
+    if (key !== last && !DONE) { vg.style.opacity = 0; requestAnimationFrame(() => requestAnimationFrame(() => { vg.style.opacity = 1; })); }
+    else vg.style.opacity = 1;
+    last = key;
+    document.querySelector(".stage").style.visibility = sc.noHead || isCard ? "hidden" : "";
+    $("num").textContent = sc.num; $("title").textContent = sc.title; $("subtitle").textContent = isCard ? "" : sc.subtitle;
+    $("sec-n").textContent = si + 1; $("step-n").textContent = st + 1; $("step-total").textContent = sc.n; $("foot-left").textContent = sc.footer || sc.title;
+    history.replaceState(null, "", "#" + (si + 1) + "." + (st + 1));
+  }
+  const next = () => { if (st < scenes[si].n - 1) st++; else if (si < scenes.length - 1) { si++; st = 0; } show(); };
+  const prev = () => { if (st > 0) st--; else if (si > 0) { si--; st = scenes[si].n - 1; } show(); };
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowRight" || e.key === " " || e.key === "PageDown") { e.preventDefault(); if (e.shiftKey) { if (si < scenes.length - 1) { si++; st = 0; show(); } } else next(); }
+    else if (e.key === "ArrowLeft" || e.key === "PageUp") { e.preventDefault(); if (e.shiftKey) { if (si > 0) { si--; st = 0; show(); } } else prev(); }
+  });
+  const m = location.hash.match(/#(\d+)(?:\.(\d+))?/);
+  if (m) { si = Math.max(0, Math.min(scenes.length - 1, +m[1] - 1)); st = Math.max(0, Math.min(scenes[si].n - 1, (+m[2] || 1) - 1)); }
+  show();
+})();
+</script>
+</body>
+</html>

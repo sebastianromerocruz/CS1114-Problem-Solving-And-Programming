@@ -31,22 +31,22 @@ resource, send me an [**email**](mailto:src402@nyu.edu) about it with the subjec
 15. [**Python Lists**](lectures/15-lists)
 16. [**List Methods, Tuples, and Memory Maps**](lectures/16-list-methods-tuples-memory/)
 17. [**Copying Lists and Memory Maps**](lectures/17-memory-maps/)
+18. [**Nested Lists and Tuples**](lectures/18-nested-lists-and-tuples/)
 
 
 <!-- Released on a rolling basis as the semester progresses. To release a lecture,
 un-ignore its folder in .gitignore, `git add` it, and un-comment its entry here.
 
 Renumbered against the Fall 2026 syllabus (16-week schedule). Gaps below are reserved
-for lectures not yet written: 18-19 (2D lists—no existing content),
-22 (Exam 2 review), 27 (recursion—no existing content).
+for lectures not yet written: 21 (Exam 2 review), 26 (recursion—no existing content).
 
-20. [**Python Dictionaries**](lectures/20-dictionaries/)
-21. [**Dictionary Methods and Iteration**](lectures/21-dictionary-methods-and-iteration/)
-23. [**Comprehensions**](lectures/23-comprehensions/)
-24. [**Intro to Object-Oriented Programming**](lectures/24-oop-introduction/)
-25. [**Intro to Object-Oriented Programming: Methods and the `__str__()` Method**](lectures/25-oop-methods-and-str/)
-26. [**Intro to Object-Oriented Programming: Dunder / "Magic" Methods**](lectures/26-oop-dunder-methods/)
-28. [**Final Exam Review**](lectures/28-final-exam-review/) -->
+19. [**Python Dictionaries**](lectures/19-dictionaries/)
+20. [**Dictionary Methods and Iteration**](lectures/20-dictionary-methods-and-iteration/)
+22. [**Comprehensions**](lectures/22-comprehensions/)
+23. [**Intro to Object-Oriented Programming**](lectures/23-oop-introduction/)
+24. [**Intro to Object-Oriented Programming: Methods and the `__str__()` Method**](lectures/24-oop-methods-and-str/)
+25. [**Intro to Object-Oriented Programming: Dunder / "Magic" Methods**](lectures/25-oop-dunder-methods/)
+27. [**Final Exam Review**](lectures/27-final-exam-review/) -->
 
 ### Reviews
 

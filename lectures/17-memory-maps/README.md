@@ -296,4 +296,4 @@ One other cute and useful thing you can do is convert a string into a list of ea
 ['T', 'h', 'e', ' ', 'N', 'a', 't', 's', 'u', 'y', 'a', 's', 'u', 'm', 'i', ' ', 'B', 'a', 'n', 'd']
 ```
 
-<sub>**Previous: [List Methods, Tuples, and Memory Maps](/lectures/16-list-methods-tuples-memory/)** | **Next: [Python Dictionaries](/lectures/20-dictionaries/)**</sub>
+<sub>**Previous: [List Methods, Tuples, and Memory Maps](/lectures/16-list-methods-tuples-memory/)** | **Next: [Nested Lists and Tuples](/lectures/18-nested-lists-and-tuples/)**</sub>
