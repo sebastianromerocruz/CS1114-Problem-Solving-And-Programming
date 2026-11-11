@@ -141,7 +141,7 @@ Now that we know about memory maps, here is what is really going on:
 ![memory_grades](assets/memory_grades.svg)
 
 <sub>**Figure 2**: The `grades` list in memory. The outer list holds five **references**, one to each row, and every
-row is a separate list object with references of its own.</sub>
+row is a separate list object. The cells of the rows hold references to `str` and `int` objects.</sub>
 
 There is no special "table" object in Python. There is only a list whose elements happen to be lists. This is also why
 last lecture's warnings about copying apply here: copying the outer list copies the five references, but not the rows

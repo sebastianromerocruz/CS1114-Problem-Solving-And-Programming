@@ -1,37 +1,95 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 270" width="900" height="270">
-<rect width="900" height="270" rx="14" fill="#f7f7f4"/>
-<line x1="150" y1="110" x2="150" y2="200" stroke="#171715" stroke-width="4" stroke-linecap="round"/>
-<line x1="260" y1="110" x2="260" y2="200" stroke="#171715" stroke-width="4" stroke-linecap="round"/>
-<line x1="150" y1="130" x2="260" y2="130" stroke="#171715" stroke-width="4" stroke-linecap="round"/>
-<line x1="150" y1="180" x2="260" y2="180" stroke="#171715" stroke-width="4" stroke-linecap="round"/>
-<text x="138" y="163.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="24" font-weight="400" fill="#9a9a9a" text-anchor="end" font-style="italic">grid</text>
-<text x="205.0" y="163.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#0b4a8f" text-anchor="middle">id12</text>
-<rect x="300" y="124" width="70" height="82" rx="0" fill="#fff" stroke="#7b1f8f" stroke-width="4" opacity="1"/>
-<line x1="300" y1="156" x2="370" y2="156" stroke="#7b1f8f" stroke-width="4" stroke-linecap="round"/>
-<text x="335" y="149" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" font-weight="700" fill="#7b1f8f" text-anchor="middle">list</text>
-<polyline points="370,179 394,179 394,165 416,165" fill="none" stroke="#7b1f8f" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
-<polygon points="416.0,165.0 402.0,173.0 402.0,157.0" fill="#7b1f8f"/>
-<rect x="418" y="87.0" width="52" height="52" rx="0" fill="#ead9e6" stroke="#7b1f8f" stroke-width="4" opacity="1"/>
-<text x="444" y="119.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#9a9a9a" text-anchor="middle" font-style="italic">0</text>
-<rect x="418" y="139.0" width="52" height="52" rx="0" fill="#ead9e6" stroke="#7b1f8f" stroke-width="4" opacity="1"/>
-<text x="444" y="171.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#9a9a9a" text-anchor="middle" font-style="italic">1</text>
-<rect x="418" y="191.0" width="52" height="52" rx="0" fill="#ead9e6" stroke="#7b1f8f" stroke-width="4" opacity="1"/>
-<text x="444" y="223.0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#9a9a9a" text-anchor="middle" font-style="italic">2</text>
-<polyline points="260,155.0 270,155.0 270,151 300,151" fill="none" stroke="#171715" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
-<polygon points="300.0,151.0 286.0,159.0 286.0,143.0" fill="#171715"/>
-<rect x="600" y="144.0" width="52" height="42" rx="0" fill="#fff" stroke="#7b1f8f" stroke-width="3" opacity="1"/>
-<text x="626" y="170" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#7b1f8f" text-anchor="middle">list</text>
-<rect x="654" y="148.0" width="54" height="34" rx="0" fill="#ead9e6" stroke="#7b1f8f" stroke-width="3" opacity="1"/>
-<text x="681.0" y="171" font-family="SF Mono, Menlo, Consolas, monospace" font-size="17" font-weight="700" fill="#c1272d" text-anchor="middle">1</text>
-<rect x="708" y="148.0" width="54" height="34" rx="0" fill="#ead9e6" stroke="#7b1f8f" stroke-width="3" opacity="1"/>
-<text x="735.0" y="171" font-family="SF Mono, Menlo, Consolas, monospace" font-size="17" font-weight="700" fill="#171715" text-anchor="middle">0</text>
-<rect x="762" y="148.0" width="54" height="34" rx="0" fill="#ead9e6" stroke="#7b1f8f" stroke-width="3" opacity="1"/>
-<text x="789.0" y="171" font-family="SF Mono, Menlo, Consolas, monospace" font-size="17" font-weight="700" fill="#171715" text-anchor="middle">0</text>
-<polyline points="470,113.0 596,165.0" fill="none" stroke="#7b1f8f" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
-<polygon points="596.0,165.0 580.0,167.1 586.1,152.3" fill="#7b1f8f"/>
-<polyline points="470,165.0 596,165.0" fill="none" stroke="#7b1f8f" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
-<polygon points="596.0,165.0 582.0,173.0 582.0,157.0" fill="#7b1f8f"/>
-<polyline points="470,217.0 596,165.0" fill="none" stroke="#7b1f8f" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
-<polygon points="596.0,165.0 586.1,177.7 580.0,162.9" fill="#7b1f8f"/>
-<text x="780" y="225" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#6d6d6d" text-anchor="middle" font-style="italic">one list, referenced three times</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 270" width="960" height="270">
+<rect width="960" height="270" rx="14" fill="#f7f7f4"/>
+<line x1="150" y1="35" x2="150" y2="121" stroke="#171715" stroke-width="4" stroke-linecap="round"/>
+<line x1="260" y1="35" x2="260" y2="121" stroke="#171715" stroke-width="4" stroke-linecap="round"/>
+<line x1="150" y1="55" x2="260" y2="55" stroke="#171715" stroke-width="4" stroke-linecap="round"/>
+<line x1="150" y1="101" x2="260" y2="101" stroke="#171715" stroke-width="4" stroke-linecap="round"/>
+<text x="138" y="85" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="20" font-weight="400" fill="#9a9a9a" text-anchor="end" font-style="italic">bad_grid</text>
+<text x="205" y="85" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#0b4a8f" text-anchor="middle">id12</text>
+<rect x="300" y="60" width="70" height="82" fill="#fff" stroke="#7b1f8f" stroke-width="4"/>
+<line x1="300" y1="92" x2="370" y2="92" stroke="#7b1f8f" stroke-width="4" stroke-linecap="round"/>
+<text x="335" y="85" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" font-weight="700" fill="#7b1f8f" text-anchor="middle">list</text>
+<polyline points="260,78 280,78 280,77 300,77" fill="none" stroke="#171715" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="300.0,77.0 286.0,85.0 286.0,69.0" fill="#171715"/>
+<polyline points="370,126 394,126 394,112 416,112" fill="none" stroke="#7b1f8f" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="416.0,112.0 402.0,120.0 402.0,104.0" fill="#7b1f8f"/>
+<rect x="416" y="50" width="54" height="34" fill="#ead9e6" stroke="#7b1f8f" stroke-width="4"/>
+<text x="443" y="73" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#9a9a9a" text-anchor="middle" font-style="italic">0</text>
+<rect x="416" y="84" width="54" height="34" fill="#ead9e6" stroke="#7b1f8f" stroke-width="4"/>
+<text x="443" y="107" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#9a9a9a" text-anchor="middle" font-style="italic">1</text>
+<rect x="416" y="118" width="54" height="34" fill="#ead9e6" stroke="#7b1f8f" stroke-width="4"/>
+<text x="443" y="141" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#9a9a9a" text-anchor="middle" font-style="italic">2</text>
+<rect x="600" y="60" width="70" height="82" fill="#fff" stroke="#7b1f8f" stroke-width="4"/>
+<line x1="600" y1="92" x2="670" y2="92" stroke="#7b1f8f" stroke-width="4" stroke-linecap="round"/>
+<text x="635" y="85" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" font-weight="700" fill="#7b1f8f" text-anchor="middle">list</text>
+<polyline points="670,126 690,126 690,94 712,94" fill="none" stroke="#7b1f8f" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="712.0,94.0 698.0,102.0 698.0,86.0" fill="#7b1f8f"/>
+<rect x="714" y="76" width="66" height="36" fill="#ead9e6" stroke="#7b1f8f" stroke-width="4"/>
+<rect x="780" y="76" width="66" height="36" fill="#ead9e6" stroke="#7b1f8f" stroke-width="4"/>
+<rect x="846" y="76" width="66" height="36" fill="#ead9e6" stroke="#7b1f8f" stroke-width="4"/>
+<polyline points="747,112 747,142" fill="none" stroke="#0a7a52" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="747.0,142.0 739.0,128.0 755.0,128.0" fill="#0a7a52"/>
+<rect x="715.0" y="144" width="64" height="46" fill="#fff" stroke="#0a7a52" stroke-width="3"/>
+<line x1="715.0" y1="162" x2="779.0" y2="162" stroke="#0a7a52" stroke-width="3" stroke-linecap="round"/>
+<text x="747" y="158" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#0a7a52" text-anchor="middle">int</text>
+<text x="747" y="182" font-family="SF Mono, Menlo, Consolas, monospace" font-size="19" font-weight="700" fill="#c1272d" text-anchor="middle">1</text>
+<rect x="814.0" y="144" width="64" height="46" fill="#fff" stroke="#0a7a52" stroke-width="3"/>
+<line x1="814.0" y1="162" x2="878.0" y2="162" stroke="#0a7a52" stroke-width="3" stroke-linecap="round"/>
+<text x="846.0" y="158" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#0a7a52" text-anchor="middle">int</text>
+<text x="846.0" y="182" font-family="SF Mono, Menlo, Consolas, monospace" font-size="19" font-weight="700" fill="#0a7a52" text-anchor="middle">0</text>
+<polyline points="813,112 836.1,142" fill="none" stroke="#0a7a52" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="836.1,142.0 821.2,135.8 833.9,126.0" fill="#0a7a52"/>
+<polyline points="879,112 855.9,142" fill="none" stroke="#0a7a52" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="855.9,142.0 858.1,126.0 870.8,135.8" fill="#0a7a52"/>
+<polyline points="470,67 596,90" fill="none" stroke="#7b1f8f" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="596.0,90.0 580.8,95.4 583.7,79.6" fill="#7b1f8f"/>
+<rect x="600" y="60" width="70" height="82" fill="#fff" stroke="#7b1f8f" stroke-width="4"/>
+<line x1="600" y1="92" x2="670" y2="92" stroke="#7b1f8f" stroke-width="4" stroke-linecap="round"/>
+<text x="635" y="85" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" font-weight="700" fill="#7b1f8f" text-anchor="middle">list</text>
+<polyline points="670,126 690,126 690,94 712,94" fill="none" stroke="#7b1f8f" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="712.0,94.0 698.0,102.0 698.0,86.0" fill="#7b1f8f"/>
+<rect x="714" y="76" width="66" height="36" fill="#ead9e6" stroke="#7b1f8f" stroke-width="4"/>
+<rect x="780" y="76" width="66" height="36" fill="#ead9e6" stroke="#7b1f8f" stroke-width="4"/>
+<rect x="846" y="76" width="66" height="36" fill="#ead9e6" stroke="#7b1f8f" stroke-width="4"/>
+<polyline points="747,112 747,142" fill="none" stroke="#0a7a52" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="747.0,142.0 739.0,128.0 755.0,128.0" fill="#0a7a52"/>
+<rect x="715.0" y="144" width="64" height="46" fill="#fff" stroke="#0a7a52" stroke-width="3"/>
+<line x1="715.0" y1="162" x2="779.0" y2="162" stroke="#0a7a52" stroke-width="3" stroke-linecap="round"/>
+<text x="747" y="158" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#0a7a52" text-anchor="middle">int</text>
+<text x="747" y="182" font-family="SF Mono, Menlo, Consolas, monospace" font-size="19" font-weight="700" fill="#c1272d" text-anchor="middle">1</text>
+<rect x="814.0" y="144" width="64" height="46" fill="#fff" stroke="#0a7a52" stroke-width="3"/>
+<line x1="814.0" y1="162" x2="878.0" y2="162" stroke="#0a7a52" stroke-width="3" stroke-linecap="round"/>
+<text x="846.0" y="158" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#0a7a52" text-anchor="middle">int</text>
+<text x="846.0" y="182" font-family="SF Mono, Menlo, Consolas, monospace" font-size="19" font-weight="700" fill="#0a7a52" text-anchor="middle">0</text>
+<polyline points="813,112 836.1,142" fill="none" stroke="#0a7a52" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="836.1,142.0 821.2,135.8 833.9,126.0" fill="#0a7a52"/>
+<polyline points="879,112 855.9,142" fill="none" stroke="#0a7a52" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="855.9,142.0 858.1,126.0 870.8,135.8" fill="#0a7a52"/>
+<polyline points="470,101 596,90" fill="none" stroke="#7b1f8f" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="596.0,90.0 582.7,99.2 581.4,83.2" fill="#7b1f8f"/>
+<rect x="600" y="60" width="70" height="82" fill="#fff" stroke="#7b1f8f" stroke-width="4"/>
+<line x1="600" y1="92" x2="670" y2="92" stroke="#7b1f8f" stroke-width="4" stroke-linecap="round"/>
+<text x="635" y="85" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" font-weight="700" fill="#7b1f8f" text-anchor="middle">list</text>
+<polyline points="670,126 690,126 690,94 712,94" fill="none" stroke="#7b1f8f" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="712.0,94.0 698.0,102.0 698.0,86.0" fill="#7b1f8f"/>
+<rect x="714" y="76" width="66" height="36" fill="#ead9e6" stroke="#7b1f8f" stroke-width="4"/>
+<rect x="780" y="76" width="66" height="36" fill="#ead9e6" stroke="#7b1f8f" stroke-width="4"/>
+<rect x="846" y="76" width="66" height="36" fill="#ead9e6" stroke="#7b1f8f" stroke-width="4"/>
+<polyline points="747,112 747,142" fill="none" stroke="#0a7a52" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="747.0,142.0 739.0,128.0 755.0,128.0" fill="#0a7a52"/>
+<rect x="715.0" y="144" width="64" height="46" fill="#fff" stroke="#0a7a52" stroke-width="3"/>
+<line x1="715.0" y1="162" x2="779.0" y2="162" stroke="#0a7a52" stroke-width="3" stroke-linecap="round"/>
+<text x="747" y="158" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#0a7a52" text-anchor="middle">int</text>
+<text x="747" y="182" font-family="SF Mono, Menlo, Consolas, monospace" font-size="19" font-weight="700" fill="#c1272d" text-anchor="middle">1</text>
+<rect x="814.0" y="144" width="64" height="46" fill="#fff" stroke="#0a7a52" stroke-width="3"/>
+<line x1="814.0" y1="162" x2="878.0" y2="162" stroke="#0a7a52" stroke-width="3" stroke-linecap="round"/>
+<text x="846.0" y="158" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#0a7a52" text-anchor="middle">int</text>
+<text x="846.0" y="182" font-family="SF Mono, Menlo, Consolas, monospace" font-size="19" font-weight="700" fill="#0a7a52" text-anchor="middle">0</text>
+<polyline points="813,112 836.1,142" fill="none" stroke="#0a7a52" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="836.1,142.0 821.2,135.8 833.9,126.0" fill="#0a7a52"/>
+<polyline points="879,112 855.9,142" fill="none" stroke="#0a7a52" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="855.9,142.0 858.1,126.0 870.8,135.8" fill="#0a7a52"/>
+<polyline points="470,135 596,90" fill="none" stroke="#7b1f8f" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="596.0,90.0 585.5,102.2 580.1,87.2" fill="#7b1f8f"/>
+<text x="940" y="258" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#6d6d6d" text-anchor="end" font-style="italic">one list, referenced three times</text>
 </svg>

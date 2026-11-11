@@ -121,7 +121,7 @@ memory model would look like this:
 ![memory_nested](assets/memory_nested.svg)
 
 <sub>**Figure 3**: Memory model of our list of lists `class_grades_original`. The outer list holds three references, one
-for each inner list. (To keep the diagram readable, the `float` objects are drawn inside of the inner lists' cells.)</sub>
+for each inner list, and each inner list holds three references to `float` objects.</sub>
 
 So what happens when we make a copy using the `copy()` list method?
 
