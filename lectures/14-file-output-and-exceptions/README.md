@@ -10,6 +10,7 @@
 1. [**File Output**](#part-1-file-output)
 2. [**Exceptions**](#part-2-exceptions)
 3. [**The `try`-`except`-`else`-`finally` Structure**](#part-3-the-try-except-else-finally-structure)
+4. [**Raising Exceptions**](#part-4-raising-exceptions)
 
 ### Part 0: _Review_
 
@@ -265,6 +266,65 @@ finally:
 
 And there you go. We have code that, in spite of something going unexpectedly wrong, does _not_ crash and instead ends gracefully.
 
+#### An `except` Without a Name
+
+The name after `except` is not required. If we leave it out, that `except` block will run for **any** exception that
+happens inside of the `try` block:
+
+```python
+hkgtt = "Yui,Mio,Ritsu,Mugi,Azusa"
+
+try:
+    user_index = int(input(f"Enter an index (0-{len(hkgtt) - 1} only): "))
+    char = hkgtt[user_index]
+except:
+    print("WARNING: Something went wrong.")
+else:
+    print("FETCHING CHARACTER...")
+    print(f"The #{user_index} character is '{char}'.")
+finally:
+    print("\nPROGRAM FINISHED.")
+```
+
+Outputs:
+
+```text
+Enter an index (0-23 only): three
+WARNING: Something went wrong.
+
+PROGRAM FINISHED.
+```
+
+```text
+Enter an index (0-23 only): 100
+WARNING: Something went wrong.
+
+PROGRAM FINISHED.
+```
+
+This is shorter, and it is fine when we would do the same thing no matter what went wrong. The price is that we can no
+longer tell **what** went wrong, and that `except` will also hide mistakes that are _ours_. For example, if we misspell
+`hkgtt` inside of the `try` block:
+
+```python
+hkgtt = "Yui,Mio,Ritsu,Mugi,Azusa"
+
+try:
+    char = hkgttt[3]
+except:
+    print("WARNING: Something went wrong.")
+```
+
+Output:
+
+```text
+WARNING: Something went wrong.
+```
+
+The `NameError` caused by our typo is caught and hidden, and the program looks like it is working. If you know which
+exceptions can happen, **name them**. Use an `except` without a name only when any failure should get the same
+response.
+
 Back to our file of numbers from earlier ([**`grades_with_errors.txt`**](grades_with_errors.txt)). We now have everything
 we need to deal with the `"ERROR"` line, and with the possibility that the file doesn't exist at all
 ([**`sum_valid_numbers.py`**](sum_valid_numbers.py)):
@@ -311,6 +371,71 @@ None
 Two things to notice. First, a `try`-`except` block can live **inside a loop**, so one bad line only costs us that line
 instead of the whole run. Second, the `return None` in the `except` block ends the function early, which is a good way
 of saying "there was nothing to calculate".
+
+### Part 4: _Raising Exceptions_
+
+So far, the exceptions have come from Python: `int()` raises a `ValueError` and an out-of-range index raises an
+`IndexError`. We can also raise exceptions **ourselves**, with the `raise` keyword, followed by the exception we want and
+a message that explains what is wrong:
+
+```python
+raise ValueError("This is the message")
+```
+
+This is useful when our own function receives data that Python itself has no problem with, but that makes no sense for
+the problem at hand. A score of `140` is a perfectly fine number, but it is not a valid grade
+([**`raise_exceptions.py`**](raise_exceptions.py)):
+
+```python
+def get_letter_grade(score):
+    if score < 0 or score > 100:
+        raise ValueError(f"{score} is not a valid score (0-100)")
+
+    if score >= 90:
+        return 'A'
+    elif score >= 80:
+        return 'B'
+    elif score >= 70:
+        return 'C'
+    else:
+        return 'F'
+
+
+def main():
+    scores = [95, 72.5, 140, 81, -3]
+
+    for score in scores:
+        try:
+            letter = get_letter_grade(score)
+        except ValueError as error:
+            print(f"WARNING: {error}")
+        else:
+            print(f"{score} -> {letter}")
+
+
+main()
+```
+
+Output:
+
+```text
+95 -> A
+72.5 -> C
+WARNING: 140 is not a valid score (0-100)
+81 -> B
+WARNING: -3 is not a valid score (0-100)
+```
+
+A few things to notice:
+
+- A `raise` ends the function right away, much like a `return` does. The rest of `get_letter_grade()` does not run.
+- The exception travels **up the call stack**, just like the ones from Python do, until it reaches an `except` that
+  names it. In our example, that is the one in `main()`. If there is none, the program crashes with a traceback, with
+  our message at the end.
+- The `as error` after `except ValueError` gives us a name for the exception that was raised. Printing it shows the
+  message that we wrote.
+- The exception should fit the problem. `ValueError` is for a value of the right type that is not acceptable, as in our
+  example, and `TypeError` is for a value of the wrong type.
 
 <sub>**Previous: [File Input](/lectures/13-file-input/)** | **Next: [Python Lists](/lectures/15-lists/)**</sub>
 
