@@ -32,6 +32,7 @@ resource, send me an [**email**](mailto:src402@nyu.edu) about it with the subjec
 16. [**List Methods, Tuples, and Memory Maps**](lectures/16-list-methods-tuples-memory/)
 17. [**Copying Lists and Memory Maps**](lectures/17-memory-maps/)
 18. [**Nested Lists and Tuples**](lectures/18-nested-lists-and-tuples/)
+19. [**Python Dictionaries**](lectures/19-dictionaries/)
 
 
 <!-- Released on a rolling basis as the semester progresses. To release a lecture,
@@ -40,7 +41,6 @@ un-ignore its folder in .gitignore, `git add` it, and un-comment its entry here.
 Renumbered against the Fall 2026 syllabus (16-week schedule). Gaps below are reserved
 for lectures not yet written: 21 (Exam 2 review), 26 (recursion—no existing content).
 
-19. [**Python Dictionaries**](lectures/19-dictionaries/)
 20. [**Dictionary Methods and Iteration**](lectures/20-dictionary-methods-and-iteration/)
 22. [**Comprehensions**](lectures/22-comprehensions/)
 23. [**Intro to Object-Oriented Programming**](lectures/23-oop-introduction/)
