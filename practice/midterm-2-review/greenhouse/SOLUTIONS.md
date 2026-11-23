@@ -5,7 +5,6 @@
 These solutions use the following constants:
 
 ```python
-FIELD_COUNT = 3
 DAY_IDX, PLANT_IDX, ML_IDX = 0, 1, 2
 ```
 
@@ -14,37 +13,28 @@ DAY_IDX, PLANT_IDX, ML_IDX = 0, 1, 2
 ```python
 def read_log(filename):
     entries = []
-    bad_lines = []
-    line_number = 0
 
     with open(filename, "r") as file:
         for line in file:
-            line_number += 1
-            line = line.strip()
+            if not line.startswith("#"):
+                fields = line.strip().split(",")
 
-            if line != "" and not line.startswith("#"):
-                fields = line.split(",")
-                is_valid = len(fields) == FIELD_COUNT
+                is_valid = True
 
-                if is_valid:
-                    try:
-                        day = int(fields[DAY_IDX])
-                        ml = int(fields[ML_IDX])
-                    except ValueError:
-                        is_valid = False
+                try:
+                    day = int(fields[DAY_IDX])
+                    ml = int(fields[ML_IDX])
+                except ValueError:
+                    is_valid = False
 
                 if is_valid:
                     entries.append((day, fields[PLANT_IDX], ml))
-                else:
-                    bad_lines.append(line_number)
 
-    return entries, bad_lines
+    return entries
 ```
 
-`line_number` goes up for **every** line, including comments and blank ones, so it matches the numbers that an editor
-shows. A line is a problem if it has the wrong number of fields, or if a conversion fails; both cases end with
-`is_valid` being `False`, and so both end in `bad_lines`. Returning `entries, bad_lines` makes a tuple of two lists, and
-the caller can unpack it.
+The comment lines are left out by the first `if`. For every other line, the `try` converts the two numbers. If either
+conversion fails, `is_valid` becomes `False` and the entry is not added.
 
 ### 2. `safe_read(filename)`
 
@@ -54,7 +44,7 @@ def safe_read(filename):
         return read_log(filename)
     except FileNotFoundError:
         print(f"No log named {filename}")
-        return [], []
+        return []
 ```
 
 `read_log()` does not catch anything about the file, so the `FileNotFoundError` from `open()` travels **up** to the

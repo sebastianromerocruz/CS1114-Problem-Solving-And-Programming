@@ -23,31 +23,30 @@ Here are the first lines of the file:
 2,Pothos,180
 ```
 
-The file is **not clean**. Lines that start with a `#` are comments, and blank lines are just spacing: neither of them
-is an entry, and neither of them is a problem. But further down there are also lines with a missing field, lines with
-an extra field, and lines where a number was replaced by something that is not a number. Those **are** problems, and
-your functions have to cope with them without crashing.
+The file is **not clean**. Lines that start with a `#` are comments, and are not entries. But further down there are also
+lines where a number was replaced by something that is not a number. Your functions have to cope with that without
+crashing.
 
 For all of them, do not use dictionaries, sets, or list comprehensions. You do not need to write a `main()` unless a
 problem asks for one. Try to write each answer on paper first, as you would in the exam.
 
 ### 1. `read_log(filename)`
 
-Write a function that accepts a file name and returns a **tuple of two lists**:
+Write a function that accepts a file name and returns a **list of tuples**, one per valid entry, in the form
 
-- a list of tuples `(day, plant, ml)`, one per valid entry, with `day` and `ml` as integers;
-- a list with the **line number** (the first line of the file is line 1) of every line that was a problem.
+```text
+(day, plant, ml)
+```
 
-An entry is a problem when it does not have exactly three fields, or when `day` or `ml` cannot be converted to an
-`int`. Comments and blank lines are skipped, but they still count when numbering the lines. This function does **not**
-deal with a missing file.
+with `day` and `ml` as integers. Lines that start with a `#` are not entries. An entry is **not valid**, and must be
+left out of the list, when `day` or `ml` cannot be converted to an `int`. This function does **not** deal with a missing
+file.
 
 ```python
-entries, bad_lines = read_log("watering_log.txt")
+entries = read_log("watering_log.txt")
 
 print(len(entries))
 print(entries[0])
-print(bad_lines)
 ```
 
 Output:
@@ -55,22 +54,20 @@ Output:
 ```text
 10
 (1, 'Pothos', 200)
-[7, 11, 15, 16]
 ```
 
 <details>
 <summary>Stuck? Hint</summary>
 
-A `for`-loop over a file does not tell you which line you are on, so you need a counter of your own. And a line can be
-bad for two different reasons: one is a question that you can ask with `len()`, and the other is a `ValueError`. Both
-should end with the same result for the line number.
+Which exception does `int()` raise when it is given text like `"lots"`? Once you catch it, what should the loop do with
+that line?
 
 </details>
 
 ### 2. `safe_read(filename)`
 
 Write a function that calls `read_log()`, and that returns what it returns. If the file does not exist, it prints
-`No log named <filename>` and returns a tuple of two empty lists instead.
+`No log named <filename>` and returns an empty list instead.
 
 ```python
 print(safe_read("missing.txt"))
@@ -80,7 +77,7 @@ Output:
 
 ```text
 No log named missing.txt
-([], [])
+[]
 ```
 
 <details>
