@@ -55,6 +55,7 @@ for lectures not yet written: 21 (Exam 2 review), 26 (recursion—no existing co
     - [**Non-Programming**](practice/midterm-review)
     - [**Programming**](practice/midterm-review/word-scanning)
 2. **Midterm 2**
+    - [**Non-Programming**](practice/midterm-2-review)
     - [**Programming**](practice/midterm-2-review/greenhouse)
 
 ### How To Use This Repository
