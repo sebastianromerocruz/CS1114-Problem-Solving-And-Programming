@@ -1,130 +1,145 @@
 <h2 align=center>Review Solutions</h2>
 
-<h1 align=center>Midterm 2: Reading a Greenhouse Log</h1>
+<h1 align=center>Midterm 2: The Greenhouse Watering Log</h1>
 
 These solutions use the following constants:
 
 ```python
-FIELD_COUNT = 4
-HEIGHT_IDX, DAYS_IDX = 2, 3
+FIELD_COUNT = 3
+DAY_IDX, PLANT_IDX, ML_IDX = 0, 1, 2
 ```
 
-### 1. `read_plants(filename)`
+### 1. `read_log(filename)`
 
 ```python
-def read_plants(filename):
-    plants = []
+def read_log(filename):
+    entries = []
+    bad_lines = []
+    line_number = 0
 
+    with open(filename, "r") as file:
+        for line in file:
+            line_number += 1
+            line = line.strip()
+
+            if line != "" and not line.startswith("#"):
+                fields = line.split(",")
+                is_valid = len(fields) == FIELD_COUNT
+
+                if is_valid:
+                    try:
+                        day = int(fields[DAY_IDX])
+                        ml = int(fields[ML_IDX])
+                    except ValueError:
+                        is_valid = False
+
+                if is_valid:
+                    entries.append((day, fields[PLANT_IDX], ml))
+                else:
+                    bad_lines.append(line_number)
+
+    return entries, bad_lines
+```
+
+`line_number` goes up for **every** line, including comments and blank ones, so it matches the numbers that an editor
+shows. A line is a problem if it has the wrong number of fields, or if a conversion fails; both cases end with
+`is_valid` being `False`, and so both end in `bad_lines`. Returning `entries, bad_lines` makes a tuple of two lists, and
+the caller can unpack it.
+
+### 2. `safe_read(filename)`
+
+```python
+def safe_read(filename):
     try:
-        file = open(filename, "r")
+        return read_log(filename)
     except FileNotFoundError:
-        print(f"Could not open {filename}")
-        return plants
-
-    file.readline()  # skip the header
-
-    for line in file:
-        fields = line.strip().split(",")
-
-        if len(fields) == FIELD_COUNT:
-            is_valid = True
-
-            try:
-                height = int(fields[HEIGHT_IDX])
-                days = int(fields[DAYS_IDX])
-            except ValueError:
-                is_valid = False
-
-            if is_valid:
-                plants.append((fields[0], fields[1], height, days))
-
-    file.close()
-    return plants
+        print(f"No log named {filename}")
+        return [], []
 ```
 
-The `try`-`except` around `open()` deals with the missing file, and the one inside the loop deals with the bad
-numbers. The blank line and the line with three fields do not have four fields, so the first `if` leaves them out
-before we even try to convert anything. If a conversion fails, `is_valid` becomes `False` and the plant is not added.
+`read_log()` does not catch anything about the file, so the `FileNotFoundError` from `open()` travels **up** to the
+function that called it. That is where this `try`-`except` catches it.
 
-### 2. `tallest(plants)`
+### 3. `total_water(entries, plant)`
 
 ```python
-def tallest(plants):
-    if len(plants) == 0:
-        return None
+def total_water(entries, plant):
+    total = 0
 
-    best = plants[0]
-    for plant in plants:
-        if plant[HEIGHT_IDX] > best[HEIGHT_IDX]:
-            best = plant
+    for day, name, ml in entries:
+        if name == plant:
+            total += ml
 
-    return best
+    return total
 ```
 
-The comparison uses `>` and not `>=`, so that a tie keeps the plant that appeared first.
+Each entry is a tuple with three elements, so the `for`-loop can **unpack** it into three variables.
 
-### 3. `rooms(plants)`
-
-```python
-def rooms(plants):
-    found = []
-
-    for plant in plants:
-        if plant[1] not in found:
-            found.append(plant[1])
-
-    return found
-```
-
-### 4. `thirsty(plants, limit)`
+### 4. `ranking(entries)`
 
 ```python
-def thirsty(plants, limit):
+def ranking(entries):
+    names = []
+    for entry in entries:
+        if entry[PLANT_IDX] not in names:
+            names.append(entry[PLANT_IDX])
+
     pairs = []
-
-    for name, room, height, days in plants:
-        if days >= limit:
-            pairs.append((days, name))
+    for name in names:
+        pairs.append((total_water(entries, name), name))
 
     pairs.sort(reverse=True)
     return pairs
 ```
 
-Each plant is a tuple with four elements, so the `for`-loop can **unpack** it into four variables. Sorting compares the
-first element of each pair, which is why `days` goes first. `reverse=True` puts the largest first.
+The first loop collects each name once. The second one pairs each name with its total, using problem 3. Sorting compares
+the first element of each pair, which is why the total goes first. `reverse=True` puts the largest first.
 
-### 5. `write_report(plants, filename)`
+### 5. `write_summary(entries, filename)`
 
 ```python
-def write_report(plants, filename):
-    with open(filename, "w") as report:
-        for room in rooms(plants):
+def write_summary(entries, filename):
+    names = []
+    for entry in entries:
+        if entry[PLANT_IDX] not in names:
+            names.append(entry[PLANT_IDX])
+    names.sort()
+
+    with open(filename, "w") as summary:
+        for name in names:
             count = 0
-            total_height = 0
-
-            for plant in plants:
-                if plant[1] == room:
+            for entry in entries:
+                if entry[PLANT_IDX] == name:
                     count += 1
-                    total_height += plant[HEIGHT_IDX]
 
-            average = total_height / count
-            report.write(f"{room}: {count} plant(s), average height {average:.1f} cm\n")
+            summary.write(f"{name}: {count} watering(s), {total_water(entries, name)} ml\n")
+
+        total = 0
+        for entry in entries:
+            total += entry[ML_IDX]
+
+        summary.write(f"Total: {total} ml\n")
 ```
 
-`write()` does not add a new line by itself, so the `\n` at the end of the string is needed. `count` and `total_height`
-are created inside the outer loop so that they start at zero for every room.
+`write()` does not add a new line by itself, so the `\n` at the end of each string is needed. The `Total` line is written
+**after** the loop over the plants, but still inside the `with`, while the file is open.
 
-### 6. (Challenge) `grown(plants, extra)`
+### 6. (Challenge) `split_at(entries, day)`
 
 ```python
-def grown(plants, extra):
-    new_plants = []
+def split_at(entries, day):
+    before = []
+    after = []
 
-    for name, room, height, days in plants:
-        new_plants.append((name, room, height + extra, days))
+    for entry in entries:
+        if entry[DAY_IDX] < day:
+            before.append(entry)
+        else:
+            after.append(entry)
 
-    return new_plants
+    return before, after
 ```
 
-A tuple cannot be changed, so each plant is **rebuilt** with its new height, and the new tuples go into a new list. The
-original list is never touched.
+Both lists are built in a single pass, and `return before, after` returns them as a tuple. The entries themselves are
+tuples that are shared with the original list, but since tuples cannot change, and the original list is never modified,
+nothing that was passed in is touched.

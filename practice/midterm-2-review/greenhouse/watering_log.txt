@@ -1,0 +1,17 @@
+# Greenhouse watering log
+# day,plant,ml
+1,Pothos,200
+1,Fern,150
+2,Monstera,300
+2,Pothos,180
+3,Fern,lots
+3,Basil,100
+
+4,Monstera,250
+4,Aloe
+5,Pothos,200
+5,Fern,150
+6,Basil,90
+6,Aloe,50,extra
+7,Monstera,n/a
+7,Aloe,60

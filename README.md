@@ -34,6 +34,7 @@ resource, send me an [**email**](mailto:src402@nyu.edu) about it with the subjec
 18. [**Nested Lists and Tuples**](lectures/18-nested-lists-and-tuples/)
 19. [**Python Dictionaries**](lectures/19-dictionaries/)
 20. [**Dictionary Methods and Iteration**](lectures/20-dictionary-methods-and-iteration/)
+22. [**Comprehensions**](lectures/22-comprehensions/)
 
 
 
@@ -43,7 +44,6 @@ un-ignore its folder in .gitignore, `git add` it, and un-comment its entry here.
 Renumbered against the Fall 2026 syllabus (16-week schedule). Gaps below are reserved
 for lectures not yet written: 21 (Exam 2 review), 26 (recursion—no existing content).
 
-22. [**Comprehensions**](lectures/22-comprehensions/)
 23. [**Intro to Object-Oriented Programming**](lectures/23-oop-introduction/)
 24. [**Intro to Object-Oriented Programming: Methods and the `__str__()` Method**](lectures/24-oop-methods-and-str/)
 25. [**Intro to Object-Oriented Programming: Dunder / "Magic" Methods**](lectures/25-oop-dunder-methods/)

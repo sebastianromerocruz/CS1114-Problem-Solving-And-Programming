@@ -1,200 +1,200 @@
 <h2 align=center>Review</h2>
 
-<h1 align=center>Midterm 2: Reading a Greenhouse Log</h1>
+<h1 align=center>Midterm 2: The Greenhouse Watering Log</h1>
 
 [***Solutions***](SOLUTIONS.md)
 
 These problems practice what Midterm 2 is about: **files**, **exceptions**, **lists**, and **tuples**. They all use the
-same data file, [**`greenhouse.txt`**](greenhouse.txt), which has the plants of a greenhouse, one per line, with four
-fields separated by commas:
+same data file, [**`watering_log.txt`**](watering_log.txt), where a greenhouse keeps a record of every time a plant was
+watered. Each entry is a line with three fields separated by commas:
 
 ```text
-plant,room,height_cm,days_since_water
+day,plant,ml
 ```
 
 Here are the first lines of the file:
 
 ```csv
-plant,room,height_cm,days_since_water
-Monstera,Living Room,120,3
-Pothos,Kitchen,45,6
-Snake Plant,Bedroom,60,12
-Fern,Bathroom,30,2
-Basil,Kitchen,25,1
+# Greenhouse watering log
+# day,plant,ml
+1,Pothos,200
+1,Fern,150
+2,Monstera,300
+2,Pothos,180
 ```
 
-The file is **not clean**. Further down it has a blank line, a line with a missing field, and lines where a number was
-replaced by something that is not a number. Your functions have to cope with that without crashing.
+The file is **not clean**. Lines that start with a `#` are comments, and blank lines are just spacing: neither of them
+is an entry, and neither of them is a problem. But further down there are also lines with a missing field, lines with
+an extra field, and lines where a number was replaced by something that is not a number. Those **are** problems, and
+your functions have to cope with them without crashing.
 
 For all of them, do not use dictionaries, sets, or list comprehensions. You do not need to write a `main()` unless a
 problem asks for one. Try to write each answer on paper first, as you would in the exam.
 
-### 1. `read_plants(filename)`
+### 1. `read_log(filename)`
 
-Write a function that accepts a file name and returns a **list of tuples**, one per valid plant, in the form
+Write a function that accepts a file name and returns a **tuple of two lists**:
 
-```text
-(plant, room, height_cm, days_since_water)
-```
+- a list of tuples `(day, plant, ml)`, one per valid entry, with `day` and `ml` as integers;
+- a list with the **line number** (the first line of the file is line 1) of every line that was a problem.
 
-with the two numbers as integers. The first line of the file is a header, and is not a plant.
-
-A line is **not valid**, and must be left out of the list, when it does not have exactly four fields, or when either of
-its numbers cannot be converted to an `int`. If the file cannot be opened, the function prints `Could not open <filename>`
-and returns an empty list.
+An entry is a problem when it does not have exactly three fields, or when `day` or `ml` cannot be converted to an
+`int`. Comments and blank lines are skipped, but they still count when numbering the lines. This function does **not**
+deal with a missing file.
 
 ```python
-plants = read_plants("greenhouse.txt")
+entries, bad_lines = read_log("watering_log.txt")
 
-print(len(plants))
-print(plants[0])
-print(read_plants("missing.txt"))
+print(len(entries))
+print(entries[0])
+print(bad_lines)
 ```
 
 Output:
 
 ```text
-9
-('Monstera', 'Living Room', 120, 3)
-Could not open missing.txt
-[]
+10
+(1, 'Pothos', 200)
+[7, 11, 15, 16]
 ```
 
 <details>
 <summary>Stuck? Hint</summary>
 
-There are **two** things that can go wrong, and they are handled in different ways. A missing file is an exception that
-you handle around the call to `open()`. A line with the wrong number of fields is not an exception at all: it is a
-question that you can ask with `len()`. And the number conversions are the part that can raise a `ValueError`. What
-should the loop do with a line when that happens?
+A `for`-loop over a file does not tell you which line you are on, so you need a counter of your own. And a line can be
+bad for two different reasons: one is a question that you can ask with `len()`, and the other is a `ValueError`. Both
+should end with the same result for the line number.
 
 </details>
 
-### 2. `tallest(plants)`
+### 2. `safe_read(filename)`
 
-Write a function that accepts a list of plants as returned by problem 1, and returns the **tuple** of the tallest one.
-If there is a tie, return the one that appears first. If the list is empty, return `None`.
+Write a function that calls `read_log()`, and that returns what it returns. If the file does not exist, it prints
+`No log named <filename>` and returns a tuple of two empty lists instead.
 
 ```python
-print(tallest(plants))
-print(tallest([]))
+print(safe_read("missing.txt"))
 ```
 
 Output:
 
 ```text
-('Monstera', 'Living Room', 120, 3)
-None
+No log named missing.txt
+([], [])
 ```
 
 <details>
 <summary>Stuck? Hint</summary>
 
-Start by assuming that the first plant is the tallest. What do you need to do each time you see a plant that is taller
-than the best one so far? And what must you check **before** looking at the first plant?
+Which exception does `open()` raise for a file that does not exist? Where, in the code of problem 1, would it be raised,
+and where should it be caught?
 
 </details>
 
-### 3. `rooms(plants)`
+### 3. `total_water(entries, plant)`
 
-Write a function that accepts a list of plants and returns a list with the name of every room, **without repeats**, in
-the order in which each room first appears.
+Write a function that accepts a list of entries as returned by problem 1 and the name of a plant, and returns the total
+number of millilitres that plant has been given. If the plant does not appear, the total is `0`.
 
 ```python
-print(rooms(plants))
+print(total_water(entries, "Pothos"))
+print(total_water(entries, "Rose"))
 ```
 
 Output:
 
 ```text
-['Living Room', 'Kitchen', 'Bedroom', 'Bathroom']
+580
+0
 ```
 
 <details>
 <summary>Stuck? Hint</summary>
 
-You are building a new list as you go. Before adding a room to it, how can you know whether it is already there?
+Each entry is a tuple with three elements. Can the `for`-loop give you each of them a name of its own?
 
 </details>
 
-### 4. `thirsty(plants, limit)`
+### 4. `ranking(entries)`
 
-Write a function that accepts a list of plants and a number of days, and returns a list of tuples `(days, plant)` for
-every plant that has gone **at least** `limit` days without water. The list must go from the plant that has waited the
-longest to the one that has waited the least.
+Write a function that accepts a list of entries and returns a list of tuples `(total, plant)`, one per plant, that goes
+from the plant that was given the most water to the one that was given the least. You are encouraged to reuse your
+previous functions.
 
 ```python
-print(thirsty(plants, 6))
-print(thirsty(plants, 99))
+print(ranking(entries))
 ```
 
 Output:
 
 ```text
-[(15, 'Aloe'), (12, 'Snake Plant'), (9, 'Mint'), (6, 'Pothos')]
-[]
+[(580, 'Pothos'), (550, 'Monstera'), (300, 'Fern'), (190, 'Basil'), (60, 'Aloe')]
 ```
 
 <details>
 <summary>Stuck? Hint</summary>
 
-The tuples are `(days, plant)` and not `(plant, days)` for a reason: when Python sorts a list of tuples, it compares
-their **first** elements first. Look at the options of the list method `sort()`.
+You need two things: the name of each plant **once**, and the total of each one. The tuples are `(total, plant)` and not
+`(plant, total)` for a reason: when Python sorts a list of tuples, it compares their **first** elements first. Look at
+the options of the list method `sort()`.
 
 </details>
 
-### 5. `write_report(plants, filename)`
+### 5. `write_summary(entries, filename)`
 
-Write a function that accepts a list of plants and a file name, and **writes** a new file with one line per room, in the
-order given by problem 3. Each line has the room, the number of plants in it, and their average height with one
-decimal. You are encouraged to reuse your previous functions.
+Write a function that accepts a list of entries and a file name, and **writes** a new file with one line per plant, in
+**alphabetical order**, followed by a last line with the total number of millilitres.
 
 ```python
-write_report(plants, "report.txt")
+write_summary(entries, "summary.txt")
 ```
 
-After running it, `report.txt` contains:
+After running it, `summary.txt` contains:
 
 ```text
-Living Room: 3 plant(s), average height 70.0 cm
-Kitchen: 3 plant(s), average height 30.7 cm
-Bedroom: 2 plant(s), average height 39.0 cm
-Bathroom: 1 plant(s), average height 30.0 cm
+Aloe: 1 watering(s), 60 ml
+Basil: 2 watering(s), 190 ml
+Fern: 2 watering(s), 300 ml
+Monstera: 2 watering(s), 550 ml
+Pothos: 3 watering(s), 580 ml
+Total: 1680 ml
 ```
 
 <details>
 <summary>Stuck? Hint</summary>
 
-For each room, you need two running totals: how many plants you have seen in it, and how tall they are all together. Both
-start at zero, and both need to be reset for every new room. What do you do with them once you have gone through
-all the plants?
+Build the list of names first, and sort it. Then, for each name, how many entries have that name? And what is the total
+of the **whole** log, once the loop over the plants is over?
 
 </details>
 
-### 6. (Challenge) `grown(plants, extra)`
+### 6. (Challenge) `split_at(entries, day)`
 
-Write a function that accepts a list of plants and a number of centimetres, and returns a **new** list in which every
-plant is `extra` centimetres taller. The list that was passed in must **not** change.
+Write a function that accepts a list of entries and a day, and returns a tuple of two **new** lists: the entries from
+**before** that day, and the entries from that day **onwards**. The list that was passed in must **not** change.
 
 ```python
-taller = grown(plants, 10)
+before, after = split_at(entries, 4)
 
-print(taller[0])
-print(plants[0])
+print(len(before), len(after))
+print(before[-1])
+print(after[0])
+print(len(entries))
 ```
 
 Output:
 
 ```text
-('Monstera', 'Living Room', 130, 3)
-('Monstera', 'Living Room', 120, 3)
+5 5
+(3, 'Basil', 100)
+(4, 'Monstera', 250)
+10
 ```
 
 <details>
 <summary>Stuck? Hint</summary>
 
-Tuples cannot be changed once they are made, so you cannot write `plant[2] += extra`. What can you do instead, with
-the four values that a tuple holds? And what would happen to the original list if you modified its contents in place
-instead of building a new one?
+A function can only `return` one value, but that value can be a tuple that holds two lists. How do you build two lists
+in a single pass through the entries?
 
 </details>
